@@ -19,39 +19,39 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,s
 .rf-section-top h2,.rf-why h2,.rf-faq h2,.rf-cta h2{font-size:clamp(36px,4.4vw,61px);font-weight:500;line-height:1.11;letter-spacing:-.06em;margin:17px 0 0}
 .rf-section-top p{margin:0 0 18px}
 /* Encabezado: cápsula translúcida DENTRO del hero, como en la captura */
-.rf-header{height:auto!important;position:absolute!important;left:50%!important;top:39px!important;transform:translateX(-50%);z-index:90;background:transparent!important;width:min(var(--rf-container),calc(100% - 62px));margin:0!important;padding:0!important}
-.rf-header-pill{display:flex;align-items:center;gap:25px;height:64px;border-radius:90px;border:1px solid rgba(255,255,255,.23);background:rgba(235,245,255,.23);box-shadow:0 4px 14px rgba(9,29,46,.04);padding:8px 12px 8px 29px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.rf-logo{display:inline-flex;align-items:center;gap:5px;color:white;line-height:.94;white-space:nowrap;letter-spacing:-.045em;font-size:18px;font-weight:750;min-width:178px}
-.rf-logo-mark{display:grid;place-items:center;width:31px;height:31px;color:#e4ff69;font-size:31px;line-height:1}
-.rf-logo b{display:block;font-weight:800}.rf-logo small{display:block;font-size:11px;font-weight:600;letter-spacing:-.018em;margin-top:3px}
-.rf-nav{display:flex;align-items:center;gap:21px;font-size:12px;color:white;font-weight:600;margin:0 auto}
+.rf-header{height:auto!important;position:absolute!important;left:50%!important;top:18px!important;transform:translateX(-50%);z-index:90;background:transparent!important;width:min(1400px,68.5vw);margin:0!important;padding:0!important}
+.rf-header-pill{display:flex;align-items:center;gap:24px;height:clamp(64px,4vw,82px);border-radius:90px;border:1px solid rgba(255,255,255,.28);background:rgba(232,241,249,.23);box-shadow:0 4px 14px rgba(9,29,46,.04);padding:8px 26px 8px 34px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.rf-logo{display:inline-flex;align-items:center;gap:7px;color:white;line-height:.95;white-space:nowrap;letter-spacing:-.045em;font-size:clamp(17px,1.08vw,23px);font-weight:750;min-width:178px}
+.rf-logo-mark{display:grid;place-items:center;width:39px;height:39px;color:white;line-height:1;flex:none}
+.rf-logo b{display:block;font-weight:800}.rf-logo small{display:block;font-size:10px;font-weight:750;letter-spacing:.12em;margin-top:4px}
+.rf-nav{display:flex;align-items:center;gap:clamp(17px,2vw,39px);font-size:clamp(12px,.9vw,18px);color:white;font-weight:500;margin:0 auto}
 .rf-nav>a,.rf-menu>a{color:white;white-space:nowrap;padding:18px 0;opacity:.98}
 .rf-nav a:hover{color:var(--rf-lime)}.rf-menu{position:relative}.rf-menu>a span{margin-left:3px}
 .rf-submenu{display:none;position:absolute;top:48px;left:-18px;min-width:240px;background:white;color:var(--rf-ink);border-radius:15px;padding:10px;box-shadow:0 22px 45px rgba(8,34,50,.2);z-index:100}
 .rf-submenu a{display:block;border-radius:8px;font-size:12px;padding:10px 12px;color:#233744;line-height:1.45}
 .rf-submenu a:hover{background:#f3f7ee;color:#0b6270}.rf-menu:focus-within .rf-submenu,.rf-menu:hover .rf-submenu{display:block}
-.rf-nav-cta{background:var(--rf-lime);font-size:11px;color:#19302d;border-radius:50px;display:inline-flex;align-items:center;gap:7px;padding:12px 18px;font-weight:750;white-space:nowrap;flex:none;line-height:1.3}
+.rf-nav-cta{background:var(--rf-lime);font-size:clamp(12px,.82vw,17px);color:#152928;border-radius:50px;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:46px;padding:11px 26px;font-weight:500;white-space:nowrap;flex:none;line-height:1.3}
 .rf-mobile-menu{display:none;position:relative}.rf-mobile-menu summary{display:grid;place-items:center;list-style:none;cursor:pointer;color:#163343;background:var(--rf-lime);border-radius:100px;width:41px;height:41px}.rf-mobile-menu summary::-webkit-details-marker{display:none}
 .rf-mobile-menu nav{position:absolute;right:0;top:50px;width:min(320px,84vw);display:grid;padding:11px;background:white;color:#223944;box-shadow:0 18px 44px rgba(0,0,0,.2);border-radius:15px}
 .rf-mobile-menu nav a{padding:9px 12px;font-weight:650;font-size:14px;border-radius:7px}.rf-mobile-menu nav a:hover{background:#f1f5e9}
 /* HERO casi idéntico en estructura a la referencia */
-.rf-hero{position:relative;isolation:isolate;min-height:855px;margin:22px 22px 0;overflow:hidden;border-radius:16px;background:#1c4f70;color:white}
+.rf-hero{position:relative;isolation:isolate;min-height:max(840px,60vw);margin:0;overflow:hidden;border-radius:0;background:#1c4f70;color:white}
 .rf-hero-photo,.rf-hero-tint{position:absolute;inset:0}.rf-hero-photo{z-index:-2;background:linear-gradient(125deg,#2f6896,#15354c)}
 .rf-hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
 .rf-hero-tint{z-index:-1;background:linear-gradient(90deg,rgba(13,45,72,.74) 0%,rgba(15,53,82,.40) 50%,rgba(18,45,70,.16) 100%),linear-gradient(0deg,rgba(12,29,41,.23),transparent 56%)}
-.rf-hero-body{position:relative;padding-top:187px;z-index:5}
-.rf-hero h1{font-size:clamp(51px,5.1vw,72px);font-weight:450;line-height:1.11;letter-spacing:-.065em;max-width:810px;margin:0 0 29px;color:white}
-.rf-hero-body>p{font-size:14px;max-width:660px;line-height:1.72;margin:0 0 23px;color:white;font-weight:500}
-.rf-hero-tiles{display:flex;align-items:stretch;gap:22px;margin-top:29px;max-width:670px}
-.rf-feature-tile,.rf-numeric-tile{background:#fff;border-radius:15px;min-height:140px;color:#222729;position:relative;box-shadow:0 6px 25px rgba(0,0,0,.06)}
-.rf-feature-tile{width:480px;display:flex;align-items:center;gap:19px;padding:13px;flex:1 1 480px}
-.rf-feature-thumbnail{width:137px;height:112px;border-radius:12px;overflow:hidden;flex:none;background:#d3e7ec}.rf-feature-thumbnail img{width:100%;height:100%;object-fit:cover;object-position:65% center}
-.rf-feature-tile strong{display:block;font-size:21px;line-height:1.18;font-weight:500;max-width:248px;letter-spacing:-.03em}
-.rf-feature-tile small{display:block;color:#6b7479;font-size:11.5px;line-height:1.35;margin-top:13px}
+.rf-hero-body{position:relative;width:min(1400px,68.5vw);padding-top:clamp(160px,10.9vw,226px);z-index:5}
+.rf-hero h1{font-size:clamp(56px,4.2vw,86px);font-weight:400;line-height:1.12;letter-spacing:-.045em;max-width:min(1140px,66vw);margin:0 0 36px;color:white}
+.rf-hero-body>p{font-size:clamp(13px,.84vw,17px);max-width:min(1030px,50.6vw);line-height:1.5;margin:0 0 17px;color:white;font-weight:600}
+.rf-hero-tiles{display:flex;align-items:stretch;gap:clamp(16px,1.45vw,30px);margin-top:25px;max-width:min(820px,40.5vw)}
+.rf-feature-tile,.rf-numeric-tile{background:#fff;border-radius:16px;min-height:clamp(125px,9vw,184px);color:#222729;position:relative;box-shadow:0 6px 25px rgba(0,0,0,.06)}
+.rf-feature-tile{width:526px;display:flex;align-items:center;gap:clamp(14px,1.3vw,27px);padding:clamp(12px,1vw,21px);flex:1 1 526px}
+.rf-feature-thumbnail{width:27%;height:auto;aspect-ratio:142/120;border-radius:15px;overflow:hidden;flex:none;background:#d3e7ec}.rf-feature-thumbnail img{width:100%;height:100%;object-fit:cover;object-position:50% center}
+.rf-feature-tile strong{display:block;font-size:clamp(18px,1.4vw,29px);line-height:1.18;font-weight:500;max-width:310px;letter-spacing:-.03em}
+.rf-feature-tile small{display:block;color:#575f61;font-size:clamp(11px,.76vw,15px);line-height:1.35;margin-top:14px}
 .rf-tile-arrow{position:absolute;right:12px;bottom:13px;display:grid;place-items:center;width:26px;height:26px;border:1px solid #c8ced0;border-radius:50%;color:#1b2f35}
-.rf-numeric-tile{flex:0 0 140px;display:flex;flex-direction:column;justify-content:center;padding:17px;text-align:left}
-.rf-bubbles{display:flex;align-items:center;padding-left:3px;margin-bottom:9px}.rf-bubbles span{display:grid;place-items:center;background:#edf5e7;width:24px;height:24px;border-radius:50%;font-size:11px;border:2px solid white;margin-left:-4px}.rf-numeric-tile strong{font-size:29px;letter-spacing:-.06em;line-height:1}.rf-numeric-tile small{font-size:11.5px;color:#4f575b;line-height:1.18;margin-top:5px}
-.rf-hero-word{position:absolute;z-index:2;left:50%;bottom:-.07em;transform:translateX(-50%);font-size:clamp(76px,10.4vw,158px);font-weight:550;line-height:1;letter-spacing:-.08em;white-space:nowrap;color:rgba(255,255,255,.76);pointer-events:none}
+.rf-numeric-tile{flex:0 0 21.1%;display:flex;flex-direction:column;justify-content:center;padding:18px;text-align:center}
+.rf-bubbles{display:flex;align-items:center;justify-content:center;padding-left:3px;margin-bottom:12px}.rf-bubbles img{display:block;width:clamp(24px,1.85vw,38px);height:clamp(24px,1.85vw,38px);object-fit:cover;border-radius:50%;border:2px solid white;margin-left:-5px;background:#edf5e7}.rf-numeric-tile strong{font-size:clamp(25px,1.8vw,37px);letter-spacing:-.06em;line-height:1;font-weight:550}.rf-numeric-tile small{font-size:12.5px;color:#4f575b;line-height:1.2;margin-top:7px}
+.rf-hero-word{position:absolute;z-index:2;left:50%;bottom:3vw;transform:translateX(-50%);font-size:clamp(90px,12vw,250px);font-weight:500;line-height:1;letter-spacing:-.075em;white-space:nowrap;color:rgba(255,255,255,.76);pointer-events:none}
 /* Logos / confianza: diseño de palabra gris, no logos comerciales falsos */
 .rf-trust{padding-top:53px;text-align:center}
 .rf-trust-title{font-size:12px;font-weight:700;margin:0 0 27px;letter-spacing:-.01em}.rf-trust-row{display:flex;align-items:center;justify-content:space-between;gap:25px;overflow:hidden}
@@ -126,10 +126,71 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,s
 /* Ajuste geométrico de escritorio contra la captura 736px del usuario,
    escalada a un viewport 1440px: alineación de texto, chips y tarjetas. */
 @media(min-width:981px){
- .rf-header{left:calc(50% + 27px)!important;width:min(1050px,calc(100% - 54px))}
- .rf-hero-body{padding-top:151px;transform:translateX(40px)}
- .rf-hero-tiles{max-width:630px}
+ .rf-header{left:50%!important;width:min(1400px,68.5vw)}
+ .rf-hero-body{padding-top:clamp(160px,10.9vw,226px);transform:none}
+ .rf-hero-tiles{max-width:min(820px,40.5vw)}
  .rf-trust{max-width:calc(100% - 44px);width:calc(100% - 44px)}
  .rf-intro{width:min(1056px,calc(100% - 54px));position:relative;left:30px;padding-top:94px}
  .rf-intro h2{margin-bottom:45px}
+}
+
+/* Ajustes del header y hero según la captura de referencia (noviembre 2026).
+   Las páginas interiores conservan su propio contenido y maquetación. */
+.rf-hero .rf-button{font-size:15px;font-weight:500;padding:12px 35px;min-height:46px}
+.rf-nav .rf-menu:nth-of-type(3) .rf-submenu{left:auto;right:-15px}
+@media(max-width:1300px) and (min-width:981px){
+ .rf-header{width:min(1400px,68.5vw)!important}
+ .rf-header-pill{padding-left:26px;padding-right:18px}
+ .rf-nav{gap:20px;font-size:13px}
+ .rf-logo{min-width:148px;font-size:17px}
+ .rf-nav-cta{font-size:12px;padding-inline:18px}
+ .rf-hero{min-height:875px}
+ .rf-hero-body{padding-top:169px}
+ .rf-hero h1{font-size:clamp(52px,5vw,65px)}
+}
+@media(max-width:980px){
+ .rf-header{width:calc(100% - 54px)!important;top:26px!important}
+ .rf-hero{margin:12px 12px 0;border-radius:14px;min-height:760px}
+ .rf-hero-body{width:calc(100% - 38px);padding-top:156px;transform:none}
+ .rf-hero h1{font-size:clamp(42px,6vw,58px)}
+ .rf-hero-tiles{max-width:570px}
+ .rf-feature-tile,.rf-numeric-tile{min-height:120px}
+ .rf-feature-thumbnail{width:86px;height:94px}
+ .rf-feature-tile strong{font-size:17px}
+ .rf-feature-tile small{font-size:11px}
+ .rf-numeric-tile{flex-basis:108px;padding:10px}
+}
+@media(max-width:720px){
+ .rf-hero{min-height:755px}
+ .rf-hero-body{padding-top:145px}
+ .rf-hero h1{font-size:clamp(37px,8.5vw,55px);line-height:1.13}
+ .rf-hero-body>p{font-size:13px;line-height:1.62}
+ .rf-hero-tiles{gap:10px}
+ .rf-feature-tile{padding:10px;gap:11px}
+ .rf-feature-thumbnail{width:74px;height:90px}
+ .rf-feature-tile strong{font-size:14px}
+ .rf-numeric-tile{flex:0 0 98px}
+ .rf-bubbles img{width:23px;height:23px}
+ .rf-numeric-tile strong{font-size:26px}
+ .rf-numeric-tile small{font-size:10px}
+}
+@media(max-width:390px){
+ .rf-hero{min-height:795px}
+ .rf-feature-thumbnail{width:61px}
+ .rf-feature-tile strong{font-size:13px}
+ .rf-logo{min-width:0}
+}
+/* El menú de seis enlaces requiere una versión compacta en portátiles estrechos.
+   Evita colisiones entre el logotipo, los desplegables y el CTA. */
+@media (min-width:981px) and (max-width:1150px){
+  .rf-header{width:calc(100% - 54px)!important}
+  .rf-header-pill{justify-content:space-between}
+  .rf-nav,.rf-nav-cta{display:none}
+  .rf-mobile-menu{display:block}
+}
+@media(max-width:390px){
+  .rf-hero{min-height:835px}
+}
+@media (min-width:981px) and (max-width:1150px){
+  .rf-intro{left:0}
 }

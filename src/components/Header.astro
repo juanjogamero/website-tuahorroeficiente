@@ -2,15 +2,55 @@
 import Icon from './Icon.astro';
 ---
 <header class="site-header rf-header">
- <div class="rf-header-pill">
-   <a class="rf-logo" href="/" aria-label="Tu Ahorro Eficiente — Ir al inicio"><span class="rf-logo-mark" aria-hidden="true">✦</span><span><b>Tu Ahorro</b><small>Eficiente</small></span></a>
-   <nav class="rf-nav" aria-label="Navegación principal">
-    <a href="/">Inicio</a><a href="/sobre-nosotros/">Nosotros</a>
-    <div class="rf-menu"><a href="/herramientas/">Calculadoras <span aria-hidden="true">⌄</span></a><div class="rf-submenu"><a href="/herramientas/">Todas las calculadoras</a><a href="/herramientas/calculadora-consumo-electrico/">Consumo eléctrico</a><a href="/herramientas/cuanto-gasta-radiador-electrico/">Radiador eléctrico</a><a href="/herramientas/calculadora-gasto-ducha/">Coste de una ducha</a></div></div>
-    <div class="rf-menu"><a href="/categorias/">Temáticas <span aria-hidden="true">⌄</span></a><div class="rf-submenu"><a href="/categorias/electricidad/">Electricidad</a><a href="/categorias/climatizacion/">Climatización</a><a href="/categorias/agua/">Agua</a><a href="/categorias/electrodomesticos/">Electrodomésticos</a></div></div>
-    <a href="/comparativas/">Comparativas</a><a href="/guias/">Blog</a><a href="/contacto/">Contacto</a>
-   </nav>
-   <a class="rf-nav-cta" href="/herramientas/">Empezar gratis <span aria-hidden="true">↗</span></a>
-   <details class="rf-mobile-menu"><summary aria-label="Abrir menú"><Icon name="menu" size={22}/></summary><nav aria-label="Menú móvil"><a href="/">Inicio</a><a href="/sobre-nosotros/">Nosotros</a><a href="/herramientas/">Calculadoras</a><a href="/categorias/">Temáticas</a><a href="/comparativas/">Comparativas</a><a href="/guias/">Blog</a><a href="/contacto/">Contacto</a></nav></details>
- </div>
+  <div class="rf-header-pill">
+    <a class="rf-logo" href="/" aria-label="Tu Ahorro Eficiente — volver al inicio">
+      <span class="rf-logo-mark" aria-hidden="true"><Icon name="zap" size={31}/></span>
+      <span class="rf-logo-type"><b>Tu Ahorro</b><small>EFICIENTE</small></span>
+    </a>
+    <nav class="rf-nav" aria-label="Navegación principal">
+      <a href="/">Inicio</a>
+      <a href="/sobre-nosotros/">Nosotros</a>
+      <div class="rf-menu">
+        <a href="/herramientas/">Calculadoras <span aria-hidden="true">⌄</span></a>
+        <div class="rf-submenu">
+          <a href="/herramientas/">Todas las calculadoras</a>
+          <a href="/herramientas/calculadora-consumo-electrico/">Consumo eléctrico</a>
+          <a href="/herramientas/cuanto-gasta-radiador-electrico/">Radiador eléctrico</a>
+          <a href="/herramientas/cuanto-gasta-aire-acondicionado/">Aire acondicionado</a>
+          <a href="/herramientas/calculadora-gasto-ducha/">Coste de una ducha</a>
+        </div>
+      </div>
+      <div class="rf-menu">
+        <a href="/comparativas/">Comparativas <span aria-hidden="true">⌄</span></a>
+        <div class="rf-submenu">
+          <a href="/comparativas/">Todas las comparativas</a>
+          <a href="/comparativas/freidora-aire-vs-horno/">Freidora de aire frente a horno</a>
+          <a href="/categorias/">Explorar categorías</a>
+        </div>
+      </div>
+      <div class="rf-menu">
+        <a href="/guias/">Blog <span aria-hidden="true">⌄</span></a>
+        <div class="rf-submenu">
+          <a href="/guias/">Todas las guías</a>
+          <a href="/guias/como-leer-factura-luz/">Entender la factura de luz</a>
+          <a href="/guias/que-es-kwh/">Qué es un kWh</a>
+          <a href="/fuentes/">Fuentes y metodología</a>
+        </div>
+      </div>
+      <a href="/contacto/">Contacto</a>
+    </nav>
+    <a class="rf-nav-cta" href="/herramientas/">Empezar gratis</a>
+    <details class="rf-mobile-menu">
+      <summary aria-label="Abrir el menú de navegación"><Icon name="menu" size={22}/></summary>
+      <nav aria-label="Navegación móvil">
+        <a href="/">Inicio</a>
+        <a href="/sobre-nosotros/">Nosotros</a>
+        <a href="/herramientas/">Calculadoras</a>
+        <a href="/comparativas/">Comparativas</a>
+        <a href="/categorias/">Categorías</a>
+        <a href="/guias/">Blog</a>
+        <a href="/contacto/">Contacto</a>
+      </nav>
+    </details>
+  </div>
 </header>

@@ -1,17 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Tu Ahorro Eficiente — Calcula lo que gastas. Ahorra con criterio" description="Calculadoras gratuitas para conocer el coste real de electricidad, climatización y agua. Compara alternativas con tus propios datos, sin registro.">
+<BaseLayout title="Calculadoras de consumo eléctrico y ahorro en casa | Tu Ahorro Eficiente" description="Calcula el gasto de luz, calefacción, aire acondicionado y agua con tus precios y hábitos. Herramientas gratis con fórmulas explicadas y comparativas útiles.">
  <section class="rf-hero" aria-labelledby="rf-title">
    <div class="rf-hero-photo"><img src="/images/hero-renovables.webp" alt="" aria-hidden="true" width="1672" height="941" fetchpriority="high" /></div>
    <div class="rf-hero-tint"></div>
    <div class="rf-container rf-hero-body">
-     <h1 id="rf-title">Calcula lo que gastas.<br/>Ahorra con criterio.</h1>
-     <p>Descubre cuánto cuestan realmente la electricidad, el aire acondicionado y el agua en casa. Compara alternativas y toma decisiones con cálculos claros y gratuitos.</p>
-     <a class="rf-button" href="/herramientas/">Explorar calculadoras <span aria-hidden="true">↗</span></a>
+     <h1 id="rf-title">Calcula cuánto gastas<br/>en luz, agua y calefacción</h1>
+     <p>Calcula el consumo eléctrico de tus aparatos, el coste de usar la calefacción o el aire acondicionado y los litros de una ducha. Introduce potencia, horas de uso y precios de tu suministro para comparar kWh, litros y euros con fórmulas claras. Los resultados estiman el coste variable, no toda tu factura.</p>
+     <a class="rf-button" href="/herramientas/">Calcular gratis</a>
      <div class="rf-hero-tiles">
-       <a class="rf-feature-tile" href="/herramientas/"><div class="rf-feature-thumbnail"><img src="/images/equipo-renovables.webp" alt="" loading="eager" width="160" height="160" /></div><div><strong>Calculadoras y comparativas para tu hogar</strong><small>Resuelve tus dudas con datos propios.</small></div><span class="rf-tile-arrow" aria-hidden="true">↗</span></a>
-       <a class="rf-numeric-tile" href="/herramientas/"><div class="rf-bubbles" aria-hidden="true"><span>⚡</span><span>💧</span><span>☀</span></div><strong>7</strong><small>herramientas gratuitas</small></a>
+       <a class="rf-feature-tile" href="/herramientas/calculadora-consumo-electrico/">
+         <div class="rf-feature-thumbnail"><img src="/images/paneles-solares.webp" alt="" loading="eager" width="160" height="160" /></div>
+         <div><strong>¿Cuánto cuesta usar tus aparatos?</strong><small>Calcula los kWh y euros según tu consumo y tu tarifa.</small></div>
+       </a>
+       <a class="rf-numeric-tile" href="/herramientas/" aria-label="Explorar las siete calculadoras gratuitas">
+         <div class="rf-bubbles" aria-hidden="true">
+           <img src="/images/paneles-solares.webp" alt="" width="30" height="30"/>
+           <img src="/images/equipo-renovables.webp" alt="" width="30" height="30"/>
+           <img src="/images/aerogenerador.webp" alt="" width="30" height="30"/>
+         </div>
+         <strong>7</strong><small>calculadoras gratis</small>
+       </a>
      </div>
    </div>
    <div class="rf-hero-word" aria-hidden="true">AHORRO REAL</div>
