@@ -32,3 +32,11 @@ test('franja de referencias situada inmediatamente después del hero con poco ma
  assert.match(css, /padding: 34px 0 50px/);
  assert.match(css, /width: min\(950px, calc\(100% - 120px\)\)/);
 });
+
+test('en portada la cápsula empieza dentro del hero y se fija arriba tras scroll', () => {
+ assert.match(layout, /const isHomePage = localPath === '' \|\| localPath === 'index.html'/);
+ assert.match(layout, /<body class=\{isHomePage \? 'page-home' : undefined\}>/);
+ assert.match(css, /\.page-home \.rf-header:not\(\.is-scrolled\) \{ top: 38px !important; \}/);
+ assert.match(css, /\.page-home \.rf-header.is-scrolled \{ top: 14px !important; \}/);
+ assert.match(css, /\.page-home \.rf-header:not\(\.is-scrolled\) \{ top: 27px !important; \}/);
+});

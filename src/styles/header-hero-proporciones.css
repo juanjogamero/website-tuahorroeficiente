@@ -23,22 +23,22 @@
 
 @media (min-width: 981px) {
   .rf-hero {
-    height: clamp(700px, calc(100svh - 84px), 780px);
-    min-height: 700px;
+    height: clamp(780px, calc(100svh - 84px), 840px);
+    min-height: 780px;
     margin: 22px 20px 0;
     border-radius: 20px;
     overflow: hidden;
   }
   .rf-hero-body {
     width: min(960px, calc(100% - 96px));
-    padding-top: clamp(150px, 18vh, 178px);
+    padding-top: clamp(145px, 17vh, 171px);
     transform: none;
   }
   .rf-hero h1 {
-    font-size: clamp(56px, 4.3vw, 78px);
+    font-size: clamp(58px, 3.8vw, 70px);
     font-weight: 400;
-    max-width: 720px;
-    line-height: 1.04;
+    max-width: 950px;
+    line-height: 1.09;
     letter-spacing: -.05em;
     margin: 0 0 24px;
   }
@@ -94,7 +94,7 @@
   .rf-numeric-tile strong { font-size: 27px; }
   .rf-numeric-tile small { font-size: 11px; }
   .rf-hero-word {
-    font-size: clamp(96px, 9.7vw, 170px);
+    font-size: clamp(96px, 8.5vw, 155px);
     bottom: -.05em;
     line-height: .92;
     letter-spacing: -.075em;

@@ -15,6 +15,7 @@ const originalPath=Astro.url.pathname;
 const localPath=(basePath!=='/' && originalPath.startsWith(basePath))
   ? originalPath.slice(basePath.length)
   : originalPath.replace(/^\/+/, '');
+const isHomePage = localPath === '' || localPath === 'index.html';
 const url=canonical??new URL(localPath, demoBase).toString();
 const siteTitle=title.includes('Tu Ahorro Eficiente')?title:`${title} | Tu Ahorro Eficiente`;
 const ogImage=image?new URL(image.replace(/^\/+/,''),demoBase).toString():undefined;
@@ -39,7 +40,7 @@ const defaultSchema={"@context":"https://schema.org","@type":"WebSite",name:'Tu 
 {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 {!schema && (Astro.url.pathname==='/' || Astro.url.pathname===import.meta.env.BASE_URL) && <script type="application/ld+json" set:html={JSON.stringify(defaultSchema)} />}
 </head>
-<body>
+<body class={isHomePage ? 'page-home' : undefined}>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <Header/>
 <main id="contenido"><slot/></main>

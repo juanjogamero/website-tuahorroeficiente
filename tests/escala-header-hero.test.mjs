@@ -11,11 +11,13 @@ test('las proporciones del hero se cargan después del CSS base', () => {
 });
 
 test('hero de escritorio proporcionado a la referencia, con márgenes y esquinas redondeadas', () => {
-  assert.match(proportions, /height:\s*clamp\(700px,\s*calc\(100svh - 84px\),\s*780px\)/);
+  assert.match(proportions, /height:\s*clamp\(780px,\s*calc\(100svh - 84px\),\s*840px\)/);
   assert.match(proportions, /margin:\s*22px 20px 0/);
   assert.match(proportions, /border-radius:\s*20px/);
-  assert.match(proportions, /font-size:\s*clamp\(56px,\s*4\.3vw,\s*78px\)/);
+  assert.match(proportions, /font-size:\s*clamp\(58px,\s*3\.8vw,\s*70px\)/);
   assert.match(proportions, /max-width:\s*560px/);
+  assert.match(proportions, /max-width:\s*950px/);
+  assert.match(proportions, /font-size:\s*clamp\(96px,\s*8\.5vw,\s*155px\)/);
 });
 
 test('el texto grande nace visible arriba y se desvanece por abajo', () => {

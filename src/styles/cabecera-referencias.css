@@ -112,3 +112,14 @@
 @media (prefers-reduced-motion: reduce) {
   .rf-header-pill, .rf-trust-row .rf-trust-logo { transition: none; }
 }
+
+/* En portada la cápsula nace completamente dentro de la fotografía.
+   Al desplazarse se recoloca sin perder el fondo negro del estado fijo. */
+@media (min-width: 981px) {
+  .page-home .rf-header:not(.is-scrolled) { top: 38px !important; }
+  .page-home .rf-header.is-scrolled { top: 14px !important; }
+}
+@media (max-width: 980px) {
+  .page-home .rf-header:not(.is-scrolled) { top: 27px !important; }
+  .page-home .rf-header.is-scrolled { top: 12px !important; }
+}
