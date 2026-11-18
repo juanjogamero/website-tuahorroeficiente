@@ -1,0 +1,123 @@
+/*
+ * Tu Ahorro Eficiente — escala tipográfica y dimensiones del header/hero.
+ * Mantiene la composición aprobada; adapta la referencia grande a tamaños
+ * habituales de lectura y evita sobrescrituras históricas de fidelidad.css.
+ * Alcance: solo .rf-header y .rf-hero (sin cambios a las secciones interiores).
+ */
+@media (min-width: 1151px) {
+  .rf-header {
+    top: 16px !important;
+    width: min(1180px, calc(100% - 52px)) !important;
+  }
+  .rf-header-pill {
+    height: 60px;
+    padding: 7px 16px 7px 23px;
+    gap: 17px;
+  }
+  .rf-logo { min-width: 155px; font-size: 17px; gap: 5px; }
+  .rf-logo-mark { width: 31px; height: 31px; }
+  .rf-logo small { font-size: 9px; margin-top: 3px; }
+  .rf-nav { gap: clamp(13px, 1.2vw, 21px); font-size: 12px; }
+  .rf-nav-cta { min-height: 39px; padding: 10px 19px; font-size: 12px; }
+}
+@media (min-width: 981px) {
+  .rf-hero { min-height: clamp(640px, 49vw, 730px); }
+  .rf-hero-body {
+    width: min(1180px, calc(100% - 52px));
+    padding-top: clamp(137px, 10vw, 169px);
+    transform: none;
+  }
+  .rf-hero h1 {
+    font-size: clamp(43px, 3.65vw, 58px);
+    max-width: 810px;
+    line-height: 1.12;
+    letter-spacing: -.045em;
+    margin-bottom: 23px;
+  }
+  .rf-hero-body > p {
+    max-width: 730px;
+    font-size: 14px;
+    line-height: 1.65;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .rf-hero .rf-button { min-height: 42px; padding: 11px 24px; font-size: 13px; }
+  .rf-hero-tiles { margin-top: 22px; gap: 16px; max-width: 565px; }
+  .rf-feature-tile, .rf-numeric-tile { min-height: 113px; border-radius: 14px; }
+  .rf-feature-tile { width: auto; min-width: 0; flex: 1 1 auto; padding: 10px; gap: 13px; }
+  .rf-feature-thumbnail { width: 104px; height: 92px; aspect-ratio: auto; border-radius: 10px; }
+  .rf-feature-tile strong { font-size: 17px; line-height: 1.2; }
+  .rf-feature-tile small { font-size: 11px; margin-top: 7px; line-height: 1.4; }
+  .rf-numeric-tile { flex: 0 0 118px; padding: 12px; }
+  .rf-bubbles { margin-bottom: 8px; }
+  .rf-bubbles img { width: 26px; height: 26px; }
+  .rf-numeric-tile strong { font-size: 27px; }
+  .rf-numeric-tile small { font-size: 10px; }
+  .rf-hero-word {
+    font-size: clamp(74px, 8.2vw, 155px);
+    bottom: -.065em;
+    letter-spacing: -.065em;
+  }
+}
+/* En portátiles estrechos, el menú móvil sigue siendo el punto de acceso.
+   El titular y las tarjetas se ajustan sin ocupar toda la pantalla. */
+@media (min-width: 981px) and (max-width: 1150px) {
+  .rf-header { top: 18px !important; width: calc(100% - 52px) !important; }
+  .rf-header-pill { height: 59px; padding: 7px 12px 7px 20px; }
+  .rf-hero { min-height: 640px; }
+  .rf-hero-body { width: min(880px, calc(100% - 52px)); padding-top: 141px; }
+  .rf-hero h1 { font-size: 46px; }
+}
+@media (min-width: 721px) and (max-width: 980px) {
+  .rf-hero { min-height: 645px; }
+  .rf-header { top: 20px !important; }
+  .rf-header-pill { height: 58px; }
+  .rf-hero-body { padding-top: 132px; }
+  .rf-hero h1 { font-size: clamp(40px, 5vw, 47px); margin-bottom: 20px; }
+  .rf-hero-body > p { max-width: 660px; font-size: 14px; line-height: 1.6; }
+  .rf-hero .rf-button { min-height: 43px; padding: 11px 22px; font-size: 13px; }
+  .rf-hero-tiles { margin-top: 20px; max-width: 540px; }
+  .rf-feature-tile, .rf-numeric-tile { min-height: 112px; }
+  .rf-feature-tile strong { font-size: 16px; }
+  .rf-hero-word { font-size: clamp(63px, 9vw, 87px); bottom: -.05em; }
+}
+@media (max-width: 720px) {
+  .rf-header { width: calc(100% - 36px) !important; top: 19px !important; }
+  .rf-header-pill { height: 56px; padding: 7px 10px 7px 15px; }
+  .rf-logo { min-width: 0; font-size: 16px; }
+  .rf-logo-mark { width: 30px; height: 30px; }
+  .rf-mobile-menu summary { width: 39px; height: 39px; }
+  .rf-hero { min-height: 695px; margin: 12px 12px 0; border-radius: 14px; }
+  .rf-hero-body { width: calc(100% - 40px); padding-top: 124px; }
+  .rf-hero h1 { font-size: clamp(33px, 7.6vw, 43px); line-height: 1.12; margin-bottom: 17px; }
+  .rf-hero-body > p { font-size: 13px; line-height: 1.58; max-width: 560px; margin-bottom: 14px; font-weight: 500; }
+  .rf-hero .rf-button { min-height: 40px; font-size: 12px; padding: 10px 20px; }
+  .rf-hero-tiles { margin-top: 19px; max-width: 550px; gap: 9px; }
+  .rf-feature-tile, .rf-numeric-tile { min-height: 108px; border-radius: 12px; }
+  .rf-feature-tile { padding: 8px; gap: 9px; }
+  .rf-feature-thumbnail { width: 72px; height: 84px; }
+  .rf-feature-tile strong { font-size: 14px; line-height: 1.2; }
+  .rf-feature-tile small { font-size: 10px; line-height: 1.35; margin-top: 5px; }
+  .rf-numeric-tile { flex: 0 0 98px; padding: 8px; }
+  .rf-bubbles { margin-bottom: 6px; }
+  .rf-bubbles img { width: 22px; height: 22px; }
+  .rf-numeric-tile strong { font-size: 24px; }
+  .rf-numeric-tile small { font-size: 10px; }
+  .rf-hero-word { font-size: clamp(39px, 10.6vw, 75px); bottom: -.035em; }
+}
+@media (max-width: 420px) {
+  .rf-hero { min-height: 700px; }
+  .rf-hero h1 { font-size: 34px; }
+  .rf-feature-thumbnail { width: 60px; height: 80px; }
+  .rf-feature-tile strong { font-size: 13px; }
+  .rf-feature-tile small { font-size: 9.5px; }
+  .rf-numeric-tile { flex: 0 0 91px; }
+}
+@media (max-width: 350px) {
+  .rf-hero { min-height: 755px; }
+  .rf-hero-body { width: calc(100% - 30px); }
+  .rf-hero h1 { font-size: 31px; }
+  .rf-feature-thumbnail { width: 49px; height: 72px; }
+  .rf-numeric-tile { flex: 0 0 79px; padding: 6px; }
+  .rf-numeric-tile small { font-size: 9px; }
+}
