@@ -9,7 +9,10 @@
     "preview": "astro preview --host 0.0.0.0",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "check": "npm test && npm run build && npm run audit:dist",
-    "audit:dist": "node scripts/audit-dist.mjs"
+    "audit:dist": "node scripts/audit-dist.mjs",
+    "prebuild": "node scripts/descargar-fotografias.mjs",
+    "predev": "node scripts/descargar-fotografias.mjs",
+    "fotos:sync": "node scripts/descargar-fotografias.mjs"
   },
   "engines": {
     "node": ">=22.6.0"

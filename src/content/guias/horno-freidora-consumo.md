@@ -7,8 +7,8 @@ reading: "5 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 3
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "kitchen"
+imageAlt: "Freidora de aire y tostadora en una encimera de cocina."
+imageName: "fryer"
 sources:
   - name: "Comisión Europea · base de etiquetas EPREL"
     url: "https://energy-efficient-products.ec.europa.eu/what-eprel_en"

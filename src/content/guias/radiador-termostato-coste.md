@@ -7,8 +7,8 @@ reading: "6 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 4
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "home"
+imageAlt: "Radiador doméstico blanco situado debajo de una ventana."
+imageName: "heating"
 sources:
   - name: "IDAE · guías energéticas"
     url: "https://www.idae.es/"

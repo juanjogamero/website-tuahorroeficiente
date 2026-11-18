@@ -7,8 +7,8 @@ reading: "6 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 10
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "home"
+imageAlt: "Paneles solares instalados sobre el tejado de una vivienda."
+imageName: "solarRoof"
 sources:
   - name: "CNMC · electricidad y factura"
     url: "https://www.cnmc.es/"

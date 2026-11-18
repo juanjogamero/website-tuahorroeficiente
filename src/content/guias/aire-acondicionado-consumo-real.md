@@ -7,8 +7,8 @@ reading: "7 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 6
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "home"
+imageAlt: "Equipo de aire acondicionado instalado en el interior de una vivienda."
+imageName: "cooling"
 sources:
   - name: "IDAE · eficiencia y climatización"
     url: "https://www.idae.es/"

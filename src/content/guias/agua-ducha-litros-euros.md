@@ -7,8 +7,8 @@ reading: "6 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 7
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "kitchen"
+imageAlt: "Ducha de pared en un cuarto de baño con azulejos."
+imageName: "shower"
 sources:
   - name: "IDAE · información sobre agua caliente sanitaria"
     url: "https://www.idae.es/"

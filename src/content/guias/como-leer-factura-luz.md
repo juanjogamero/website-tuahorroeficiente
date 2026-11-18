@@ -7,8 +7,8 @@ reading: "7 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 9
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "home"
+imageAlt: "Pantalla doméstica para consultar el consumo de electricidad y gas."
+imageName: "meter"
 sources:
   - name: "CNMC · información para consumidores de electricidad"
     url: "https://www.cnmc.es/"
@@ -19,7 +19,7 @@ related: ["electricidad", "standby"]
 
 Para decidir si un aparato consume demasiado o si vale la pena modificar un hábito, lo primero es saber **qué parte de tu factura depende del consumo**. Una factura eléctrica no es una única multiplicación de kWh por un precio: puede incluir varios conceptos y tributos. La terminología y presentación varían según la comercializadora y el tipo de contrato.
 
-## Término de energía: los kWh utilizados
+## Término de energía: los kWhutilizados
 
 Busca el apartado de energía consumida, donde debería aparecer una cantidad en **kWh** para el periodo facturado. Puede haber un solo precio o varios precios si tu tarifa distingue periodos o tiene una estructura indexada. Para calcular el gasto adicional de un dispositivo, trabaja con el precio variable correspondiente a las horas en las que se utiliza.
 

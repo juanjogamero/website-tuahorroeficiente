@@ -4,14 +4,27 @@ export const categories=[
  {slug:'agua',name:'Agua y ACS',subtitle:'Cada litro tiene dos costes.',description:'Calculadoras de agua corriente y caliente con precios locales y explicación de energía térmica.',icon:'droplets',gradient:'mint',photo:'water'},
  {slug:'electrodomesticos',name:'Electrodomésticos',subtitle:'Compara lo que cuesta utilizarlos.',description:'Decisiones de cocina, etiquetas energéticas y consumo por ciclo, no promesas de ahorro universales.',icon:'chef',gradient:'lime',photo:'kitchen'}
 ];
-// Fotografía original realizada para este proyecto. Todos los archivos son locales para GitHub Pages.
+// Catálogo editorial: fotografías gratuitas de Unsplash y Pexels,
+// optimizadas en la compilación y servidas localmente desde GitHub Pages.
+// Autores, URL original y licencias: docs/22-fotografia-editorial-y-licencias.md
 export const photoUrls={
  hero:'/images/hero-renovables.webp',
- home:'/images/aerogenerador.webp',
- kitchen:'/images/paneles-solares.webp',
- solar:'/images/hero-renovables.webp',
- energy:'/images/paneles-solares.webp',
- heating:'/images/equipo-renovables.webp',
- cooling:'/images/equipo-renovables.webp',
- water:'/images/aerogenerador.webp'
+ home:'/images/vida-hogar.webp',
+ kitchen:'/images/horno-cocina.webp',
+ solar:'/images/placas-tejado.webp',
+ energy:'/images/medidor-consumo.webp',
+ heating:'/images/radiador-hogar.webp',
+ cooling:'/images/aire-acondicionado.webp',
+ water:'/images/ducha-bano.webp',
+ shower:'/images/ducha-bano.webp',
+ tap:'/images/grifo-agua.webp',
+ radiator:'/images/radiador-hogar.webp',
+ outsideCooling:'/images/climatizacion-exterior.webp',
+ oven:'/images/horno-cocina.webp',
+ fryer:'/images/freidora-aire.jpg',
+ washing:'/images/lavanderia.webp',
+ solarRoof:'/images/placas-tejado.webp',
+ meter:'/images/medidor-consumo.webp',
+ waterHome:'/images/agua-hogar.webp',
+ homeLiving:'/images/vida-hogar.webp'
 } as const;

@@ -7,8 +7,8 @@ reading: "7 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 2
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "kitchen"
+imageAlt: "Lavadora doméstica y cesto de ropa en el cuarto de lavado."
+imageName: "washing"
 sources:
   - name: "Comisión Europea · etiquetado energético"
     url: "https://energy-efficient-products.ec.europa.eu/what-eprel_en"

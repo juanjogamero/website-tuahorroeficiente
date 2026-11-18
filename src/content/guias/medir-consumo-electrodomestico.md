@@ -7,8 +7,8 @@ reading: "6 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 8
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "kitchen"
+imageAlt: "Electrodomésticos empotrados en una cocina contemporánea."
+imageName: "oven"
 sources:
   - name: "Comisión Europea · EPREL"
     url: "https://energy-efficient-products.ec.europa.eu/what-eprel_en"
@@ -23,7 +23,7 @@ Si un aparato dice 2.000 W, no significa que consuma 2 kWh durante cualquier hor
 
 La **potencia nominal en W** describe una potencia de referencia o máxima indicada por el fabricante. El **consumo en kWh por ciclo** informa de energía a lo largo de una operación bajo condiciones determinadas. El **consumo anual en kWh** agrega una metodología de ensayo o uso. Ninguno debería intercambiarse sin conocer las condiciones.
 
-Para una lavadora, lavavajillas o secadora, suele ser más útil la cifra de kWh/ciclo del programa aplicable. Para un frigorífico, las etiquetas pueden aportar kWh/año. Si necesitas comparar modelos concretos, la base [EPREL de la Comisión Europea](https://energy-efficient-products.ec.europa.eu/what-eprel_en) ayuda a consultar fichas oficiales, pero hay que comprobar la variante exacta.
+Para una lavadora, lavavajillas o secadora, suele ser más útil la cifra de kWh/ciclodel programa aplicable. Para un frigorífico, las etiquetas pueden aportar kWh/año. Si necesitas comparar modelos concretos, la base [EPREL de la Comisión Europea](https://energy-efficient-products.ec.europa.eu/what-eprel_en) ayuda a consultar fichas oficiales, pero hay que comprobar la variante exacta.
 
 ## ¿Cuándo usar un medidor de enchufe?
 

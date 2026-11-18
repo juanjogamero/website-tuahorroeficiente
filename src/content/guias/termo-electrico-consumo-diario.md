@@ -7,8 +7,8 @@ reading: "6 min"
 reviewed: "2026-11-18"
 published: "2026-11-18"
 order: 5
-imageAlt: "Imagen editorial ilustrativa sobre energías renovables; no representa un aparato concreto"
-imageName: "home"
+imageAlt: "Persona sirviendo agua en un vaso en la cocina de su casa."
+imageName: "waterHome"
 sources:
   - name: "IDAE · publicaciones y consumo residencial"
     url: "https://www.idae.es/publicaciones"
@@ -19,7 +19,7 @@ Un termo eléctrico tiene una resistencia y un depósito de agua que mantiene un
 
 ## Por qué 1.500 W no significa 36 kWh al día
 
-Si un termo tiene una resistencia de **1.500 W**, esa potencia representa 1,5 kW mientras funciona a dicho nivel. Multiplicar por 24 horas produciría 36 kWh, pero eso supondría una resistencia encendida continuamente durante todo el día. En uso normal, el termostato puede cortar cuando el depósito alcanza la temperatura de consigna.
+Si un termo tiene una resistencia de **1.500W**, esa potencia representa 1,5 kW mientras funciona a dicho nivel. Multiplicar por 24 horas produciría 36 kWh, pero eso supondría una resistencia encendida continuamente durante todo el día. En uso normal, el termostato puede cortar cuando el depósito alcanza la temperatura de consigna.
 
 La energía diaria depende de cuánta agua caliente se usa, de su temperatura, del agua que entra, de las pérdidas del depósito y de la instalación. Para calcular costes con cierta confianza, hay que partir de los **kWh realmente consumidos en un día o periodo**, no de la potencia multiplicada por todas las horas.
 
