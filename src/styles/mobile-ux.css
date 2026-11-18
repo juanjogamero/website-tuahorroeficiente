@@ -1,0 +1,151 @@
+/*
+ * Tu Ahorro Eficiente — navegación y uso móvil, 18-11-2026.
+ * Capa final: no altera la versión de escritorio ni las fórmulas.
+ * Objetivos: lectura sin zoom, controles táctiles >=44px, tarjetas claras,
+ * navegación accesible, resultados a la vista y ningún scroll horizontal.
+ */
+@media (max-width: 980px) {
+  /* La cápsula queda por encima de todos los bloques del hero. */
+  .rf-header { z-index: 200 !important; }
+  .rf-header-pill { min-height: 60px; }
+  .rf-mobile-menu { display: block; position: relative; z-index: 201; }
+  .rf-mobile-menu summary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: auto; min-width: 50px; min-height: 48px; padding: 0 12px;
+    font-size: 14px; font-weight: 700; line-height: 1;
+    color: #102d36; background: var(--rf-lime); border-radius: 999px;
+    -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  }
+  .rf-mobile-menu summary svg { width: 21px; height: 21px; }
+  .rf-mobile-menu nav {
+    display: grid; gap: 2px;
+    position: absolute; top: calc(100% + 14px); right: -7px;
+    width: min(360px, calc(100vw - 32px));
+    max-height: min(76svh, 670px); overflow: auto; overscroll-behavior: contain;
+    padding: 14px; border-radius: 18px;
+    background: #fff; box-shadow: 0 22px 65px rgba(8, 30, 48, .28);
+    border: 1px solid #e6ebe9;
+    scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+  }
+  .rf-mobile-menu:not([open]) nav { display: none; }
+  .rf-mobile-menu nav a {
+    display: flex; justify-content: space-between; align-items: center;
+    min-height: 48px; padding: 12px 14px; font-size: 15px; font-weight: 650;
+    line-height: 1.35; color: #183a47; border-radius: 10px;
+    -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  }
+  .rf-mobile-menu nav a:active,
+  .rf-mobile-menu nav a:focus-visible { background: #eef6ec; }
+  .rf-mobile-menu nav .rf-mobile-menu-cta {
+    min-height: 52px; background: var(--rf-lime); color: #172d29; font-weight: 800;
+  }
+  .rf-mobile-section {
+    margin: 15px 10px 5px; padding-top: 11px; border-top: 1px solid #e8ece9;
+    color: #647b83; font-size: 11px; font-weight: 800;
+    letter-spacing: .07em; text-transform: uppercase;
+  }
+  .rf-mobile-section:first-of-type { border-top: 0; padding-top: 0; }
+  .rf-nav, .rf-nav-cta { display: none; }
+  .rf-logo { flex-shrink: 1; min-width: 0; }
+  .rf-hero-photo img { object-position: 59% center; }
+  /* Las herramientas no compiten en altura con las imágenes decorativas. */
+  .tool-hero-grid, .article-hero-columns, .interior-hero-content { grid-template-columns: 1fr; }
+  .tool-hero .tool-art, .article-hero .article-hero-image, .interior-hero .interior-art { display: none; }
+  .tool-hero, .article-hero, .interior-hero, .rf-innerhero {
+    min-height: 0 !important; padding-top: 124px !important; padding-bottom: 44px !important;
+  }
+  .tool-hero .lead, .article-hero .lead, .interior-hero .lead, .rf-innerhero p {
+    font-size: 15px; line-height: 1.65;
+  }
+  .tool-hero .btn, .article-hero .btn { min-height: 48px; font-size: 14px; }
+  .breadcrumbs { font-size: 12px; line-height: 1.6; }
+}
+@media (max-width: 720px) {
+  /* El hero crece con el contenido en móviles de cualquier altura. */
+  .rf-header { width: calc(100% - 32px) !important; top: 16px !important; }
+  .rf-header-pill { min-height: 60px; padding: 6px 8px 6px 13px; }
+  .rf-logo { font-size: 16px; }
+  .rf-logo-mark { width: 31px; height: 31px; }
+  .rf-hero {
+    height: auto; min-height: 100svh; padding-bottom: 104px;
+    margin: 0; border-radius: 0;
+  }
+  .rf-hero-body { width: calc(100% - 40px); padding-top: 125px; }
+  .rf-hero h1 { font-size: clamp(34px, 8.4vw, 46px); line-height: 1.12; margin-bottom: 19px; }
+  .rf-hero-body > p { font-size: 15px; line-height: 1.65; margin-bottom: 22px; font-weight: 500; }
+  .rf-hero .rf-button {
+    min-height: 52px; padding: 15px 24px; font-size: 15px; font-weight: 700;
+    touch-action: manipulation;
+  }
+  /* En vez de comprimir 2 tarjetas en 320px, se apilan. */
+  .rf-hero-tiles { display: grid; grid-template-columns: minmax(0,1fr); gap: 12px; max-width: 100%; margin-top: 23px; }
+  .rf-feature-tile { width: 100%; min-width: 0; min-height: 120px; padding: 12px; gap: 12px; }
+  .rf-feature-thumbnail { flex: 0 0 94px; width: 94px; height: 95px; }
+  .rf-feature-tile strong { font-size: 17px; line-height: 1.2; max-width: none; }
+  .rf-feature-tile small { font-size: 12px; line-height: 1.45; margin-top: 6px; }
+  .rf-numeric-tile {
+    width: 100%; min-height: 70px; padding: 10px 16px;
+    flex: auto; display: flex; flex-direction: row; justify-content: flex-start;
+    align-items: center; gap: 14px; text-align: left;
+  }
+  .rf-bubbles { margin: 0; justify-content: flex-start; padding-left: 4px; flex: none; }
+  .rf-bubbles img { width: 28px; height: 28px; }
+  .rf-numeric-tile strong { font-size: 28px; flex: none; }
+  .rf-numeric-tile small { font-size: 13px; margin-top: 0; }
+  .rf-hero-word { bottom: -.02em; font-size: clamp(41px, 11.9vw, 85px); letter-spacing: -.075em; }
+  .rf-trust { padding-top: 37px; }
+  .rf-trust-title { font-size: 14px; }
+  .rf-trust-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+  .rf-trust-row span { white-space: normal; overflow-wrap: anywhere; text-align: center; font-size: 15px !important; }
+  .rf-trust-disclaimer { font-size: 12px; line-height: 1.6; }
+  .rf-intro { padding-top: 72px; }
+  .rf-intro h2 { font-size: clamp(29px, 7.1vw, 39px); line-height: 1.17; }
+  .rf-bento-name { font-size: 20px; }
+  .rf-bento p, .rf-bento-cream > p { font-size: 14px; }
+  .rf-service-grid { grid-template-columns: 1fr; gap: 14px; }
+  .rf-service-card { min-height: 0; }
+  .rf-service-card h3 { font-size: 24px; }
+  .rf-service-card p { font-size: 14px; line-height: 1.65; }
+  .rf-service-img { height: 190px; }
+  .rf-topic-card h3, .rf-blog-grid h3 { font-size: 24px; }
+  .rf-faq-list summary { min-height: 48px; font-size: 16px; line-height: 1.4; }
+  /* Formularios diseñados para el pulgar y teclados iOS/Android. */
+  .calculator-section { padding-top: 48px; }
+  .calculator-grid { grid-template-columns: 1fr; }
+  .calculator-form { padding: 24px 19px; }
+  .calculator-fields { grid-template-columns: 1fr; gap: 18px; }
+  .field label { min-height: 0; font-size: 14px; line-height: 1.45; }
+  .field-unit { font-size: 12px; }
+  .field input {
+    min-height: 52px; padding: 12px 14px; margin-top: 8px;
+    font-size: 16px; border-radius: 12px;
+  }
+  .field input[aria-invalid="true"] { border-color: #b62f3a; background: #fff7f7; }
+  .field small { font-size: 12px; margin-top: 7px; line-height: 1.55; }
+  .calculator-actions .btn, .calculator-result .btn { min-height: 52px; font-size: 15px; }
+  .link-reset { min-height: 48px; width: 100%; font-size: 14px; }
+  .calculator-result { padding: 26px 20px; scroll-margin-top: 18px; }
+  .calculator-result:focus { outline: none; }
+  .result-main { font-size: clamp(39px, 11vw, 54px); overflow-wrap: anywhere; }
+  .result-label, .result-values dt { font-size: 14px; }
+  .result-values dd { font-size: 15px; }
+  .result-helper, .result-note p, .share-note { font-size: 12px; line-height: 1.6; }
+  .privacy-inline { font-size: 12px; line-height: 1.5; }
+  .prose { font-size: 16px; line-height: 1.78; }
+  .article-card p, .article-card .text-link { font-size: 14px; }
+  .article-aside { display: none; }
+  .article-structure { display: block; }
+}
+@media (max-width: 380px) {
+  .rf-hero-body { width: calc(100% - 32px); }
+  .rf-hero h1 { font-size: 34px; }
+  .rf-feature-thumbnail { flex-basis: 72px; width: 72px; height: 86px; }
+  .rf-feature-tile strong { font-size: 15px; }
+  .rf-feature-tile small { font-size: 11.5px; }
+  .rf-numeric-tile { gap: 11px; }
+  .rf-bubbles img { width: 25px; height: 25px; }
+  .rf-numeric-tile small { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rf-mobile-menu nav, .rf-hero .rf-button { transition: none !important; }
+}

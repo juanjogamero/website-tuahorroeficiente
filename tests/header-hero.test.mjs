@@ -25,7 +25,7 @@ test('cabecera: seis enlaces principales, desplegables y navegación móvil acce
   assert.equal((nav.match(/<a href=/g) ?? []).length >= 6, true);
   assert.equal((nav.match(/class="rf-menu"/g) ?? []).length, 3);
   assert.match(header, /<details class="rf-mobile-menu">/);
-  assert.match(header, /aria-label="Abrir el menú de navegación"/);
+  assert.match(header, /aria-label="Abrir o cerrar el menú de navegación"/);
 });
 
 test('hero: fotografía local, tipografía original y respuesta móvil', () => {

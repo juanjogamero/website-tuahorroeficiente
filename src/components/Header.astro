@@ -41,16 +41,43 @@ import Icon from './Icon.astro';
     </nav>
     <a class="rf-nav-cta" href="/herramientas/">Empezar gratis</a>
     <details class="rf-mobile-menu">
-      <summary aria-label="Abrir el menú de navegación"><Icon name="menu" size={22}/></summary>
+      <summary aria-label="Abrir o cerrar el menú de navegación"><span>Menú</span><Icon name="menu" size={23}/></summary>
       <nav aria-label="Navegación móvil">
+        <a class="rf-mobile-menu-cta" href="/herramientas/">Ir a las calculadoras <span aria-hidden="true">↗</span></a>
+        <p class="rf-mobile-section">Secciones</p>
         <a href="/">Inicio</a>
-        <a href="/sobre-nosotros/">Nosotros</a>
-        <a href="/herramientas/">Calculadoras</a>
         <a href="/comparativas/">Comparativas</a>
-        <a href="/categorias/">Categorías</a>
-        <a href="/guias/">Blog</a>
+        <a href="/guias/">Blog y guías</a>
+        <p class="rf-mobile-section">Calcula por temática</p>
+        <a href="/categorias/electricidad/">Electricidad</a>
+        <a href="/categorias/climatizacion/">Climatización</a>
+        <a href="/categorias/agua/">Agua</a>
+        <a href="/categorias/electrodomesticos/">Electrodomésticos</a>
+        <p class="rf-mobile-section">Información</p>
+        <a href="/sobre-nosotros/">Sobre el proyecto</a>
         <a href="/contacto/">Contacto</a>
       </nav>
     </details>
+
   </div>
 </header>
+
+<script is:inline>
+  // El menú sigue funcionando sin JavaScript gracias a <details>.
+  // Mejoramos el cierre al tocar fuera, seguir un enlace o pulsar Escape.
+  const mobileMenu = document.querySelector('.rf-mobile-menu');
+  if (mobileMenu) {
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && mobileMenu.open) {
+        mobileMenu.open = false;
+        mobileMenu.querySelector('summary')?.focus();
+      }
+    });
+    document.addEventListener('pointerdown', event => {
+      if (mobileMenu.open && !mobileMenu.contains(event.target)) mobileMenu.open = false;
+    });
+    mobileMenu.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => { mobileMenu.open = false; });
+    });
+  }
+</script>

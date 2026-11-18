@@ -20,14 +20,14 @@ function present(value:number,unit:string){return unit==='eur'?money(value):`${n
        <small id={`${tool.id}-${field.key}-help`}>{field.help}</small>
      </div>)}
     </div>
-    <p data-error role="alert" class="form-error" hidden></p>
+    <p data-error role="alert" class="form-error" tabindex="-1" hidden></p>
     <div class="calculator-actions"><button class="btn btn-lime btn-full" type="submit">Calcular mi resultado <Icon name="arrow" size={17}/></button><button class="link-reset" data-reset type="button">Restablecer valores</button></div>
     <div class="privacy-inline"><Icon name="shield" size={16}/> Sin registro. Los datos se calculan en tu navegador.</div>
    </form>
-   <aside class="calculator-result" aria-label="Resumen del resultado">
+   <aside class="calculator-result" aria-label="Resumen del resultado" tabindex="-1">
      <div class="result-top"><span class="result-eyebrow">TU RESULTADO</span><span class="result-tag"><span class="dot"></span> Estimación</span></div>
      <p class="result-label" data-primary-label>{initial.primaryLabel}</p>
-     <strong class="result-main" data-primary>{money(initial.primary)}</strong>
+     <strong class="result-main" role="status" aria-live="polite" aria-atomic="true" data-primary>{money(initial.primary)}</strong>
      <p class="result-helper">Con las condiciones introducidas. No es una tarifa ni un ahorro garantizado.</p>
      <div class="result-divider"></div>
      <dl class="result-values">{initial.secondary.map((x,i)=><div><dt>{x.label}</dt><dd data-secondary={i}>{present(x.value,x.unit)}</dd></div>)}</dl>

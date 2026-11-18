@@ -11,7 +11,7 @@ function init(root:CalculatorElement) {
  const setText=(sel:string,value:string)=>{const el=root.querySelector<HTMLElement>(sel);if(el)el.textContent=value;};
  const update=()=>{
   const data:Record<string,number>={};
-  for(const input of fieldInputs){const value=parseEs(input.value);if(!Number.isFinite(value)){throw new RangeError(`${input.labels?.[0]?.textContent?.trim()||input.name}: escribe un número válido.`);}data[input.name]=value;}
+  for(const input of fieldInputs){const value=parseEs(input.value);input.removeAttribute('aria-invalid');if(!Number.isFinite(value)){input.setAttribute('aria-invalid','true');input.focus();throw new RangeError(`${input.labels?.[0]?.textContent?.trim()||input.name}: escribe un número válido.`);}data[input.name]=value;}
   const out=calculate(root.dataset.tool??'',data);
   setText('[data-primary]',money(out.primary));setText('[data-primary-label]',out.primaryLabel);
   out.secondary.forEach((item,i)=>setText(`[data-secondary="${i}"]`,formatUnit(item.value,item.unit)));
@@ -20,7 +20,23 @@ function init(root:CalculatorElement) {
   if(error){error.hidden=true;error.textContent='';}
   return data;
  };
- form.addEventListener('submit',ev=>{ev.preventDefault();try{update();root.querySelector<HTMLElement>('.calculator-result')?.scrollIntoView({block:'nearest',behavior:'smooth'});}catch(e){if(error){error.hidden=false;error.textContent=e instanceof Error?e.message:'Revisa los valores.';error.scrollIntoView({block:'nearest'});}}});
+ form.addEventListener('submit',ev=>{
+  ev.preventDefault();
+  try {
+    update();
+    const result = root.querySelector<HTMLElement>('.calculator-result');
+    if (result) {
+      // En una columna, el resultado está debajo del formulario: llevarlo a la vista.
+      // En escritorio preservamos la posición para evitar saltos innecesarios.
+      if (window.matchMedia('(max-width: 890px)').matches) {
+        result.focus({preventScroll:true});
+        result.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+      } else result.scrollIntoView({block:'nearest',behavior:'smooth'});
+    }
+  } catch(e) {
+    if(error){error.hidden=false;error.textContent=e instanceof Error?e.message:'Revisa los valores.';error.scrollIntoView({block:'nearest'});}
+  }
+ });
  root.querySelector<HTMLButtonElement>('[data-reset]')?.addEventListener('click',()=>{
   for(const i of fieldInputs)i.value=i.dataset.default??'';
   try { history.replaceState(null,'',location.pathname+location.hash); } catch { /* La vista previa local puede restringir History API. */ }
