@@ -5,7 +5,7 @@ const src = file => readFileSync(new URL('../src/' + file, import.meta.url), 'ut
 const header = src('components/Header.astro');
 const home = src('pages/index.astro');
 const css = src('styles/cabecera-referencias.css');
-const layout =src('layouts/BaseLayout.astro');
+const layout = src('layouts/BaseLayout.astro');
 
 test('header fijo y negro al desplazarse, con estado inicial actualizado', () => {
  assert.match(css, /position: fixed !important/);
@@ -21,7 +21,7 @@ test('el estilo final se importa después del móvil, sin alterar sus calculador
 test('franja editorial posterior al hero con siete marcas tipográficas enlazadas', () => {
  const trust = home.match(/<section class="rf-trust[\s\S]*?<\/section>/)?.[0];
  assert.ok(trust);
-assert.equal((trust.match(/class="rf-trust-logo /g) || []).length, 7);
+ assert.equal((trust.match(/class="rf-trust-logo /g) || []).length, 7);
  assert.match(trust, /IDAE/);assert.match(trust, /CNMC/);assert.match(trust, /EPREL/);
  assert.match(trust, /sin acuerdos ni avales/i);
  assert.match(trust, /sin patrocinio|sin vinculación|No existe patrocinio/i);

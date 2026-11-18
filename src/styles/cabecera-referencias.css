@@ -6,7 +6,7 @@
 .rf-header {
   position: fixed !important;
   top: 14px !important;
-  left: 50%!important;
+  left: 50% !important;
   transform: translateX(-50%) !important;
   width: min(1080px, calc(100% - 44px)) !important;
   z-index: 220 !important;
@@ -31,7 +31,7 @@
 @media (min-width: 981px) {
   .rf-hero { min-height: 100svh; height: 100svh; }
   .rf-hero-body { width: min(1200px, calc(100% - 64px)); padding-top: clamp(148px, 16.3vh, 186px); }
-  .rf-hero h1 { font-size: clamp(55px, 4vw, 72px); line-height: 1.1;max-width: 850px; margin-bottom: 24px; }
+  .rf-hero h1 { font-size: clamp(55px, 4vw, 72px); line-height: 1.1; max-width: 850px; margin-bottom: 24px; }
   .rf-hero-body > p { max-width: 740px; font-size: 15px; line-height: 1.6; }
   .rf-hero-tiles { max-width: 720px; gap: 18px; margin-top: 23px; }
   .rf-feature-tile, .rf-numeric-tile { min-height: 125px; }
@@ -52,7 +52,7 @@
 /* Franja editorial después del hero, a todo el ancho como en la referencia. */
 .rf-trust.rf-container {
   width: 100% !important;
-max-width: none !important;
+  max-width: none !important;
   padding: 169px 0 78px;
   background: #fff;
   text-align: center;
@@ -92,7 +92,7 @@ max-width: none !important;
   transition: color .2s ease;
 }
 .rf-trust-row .rf-trust-logo:hover,
-.rf-trust-row .rf-trust-logo:focus-visible { color:#4c7078; }
+.rf-trust-row .rf-trust-logo:focus-visible { color: #4c7078; }
 .rf-trust-row .rf-trust-symbol {
   font: inherit;
   font-size: 1.18em;
@@ -110,7 +110,7 @@ max-width: none !important;
 .rf-trust .rf-trust-disclaimer { font-size: 11px; line-height: 1.6; color: #8e999a; margin: 58px 18px 0; }
 
 @media (max-width: 1300px) and (min-width: 721px) {
-  .rf-trust .rf-trust-row { display: grid; grid-template-columns: repeat(4,minmax(0, 1fr)); gap: 23px 12px; width: calc(100% - 68px); justify-items: center; }
+  .rf-trust .rf-trust-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 23px 12px; width: calc(100% - 68px); justify-items: center; }
   .rf-trust-row .rf-trust-logo { font-size: 20px; }
   .rf-trust-row .rf-trust-method, .rf-trust-row .rf-trust-free, .rf-trust-row .rf-trust-edit { font-size: 18px; }
   .rf-trust.rf-container { padding-top: 130px; }
@@ -126,7 +126,7 @@ max-width: none !important;
   .rf-header-pill { min-height: 58px; height: 58px; }
   .rf-trust.rf-container { padding: 108px 0 55px; }
   .rf-trust .rf-trust-title { font-size: 15px; max-width: 300px; margin: 0 auto 27px; padding: 0 10px; }
-  .rf-trust .rf-trust-row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr));width: calc(100% - 40px); gap: 13px 12px; justify-items: center; }
+  .rf-trust .rf-trust-row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); width: calc(100% - 40px); gap: 13px 12px; justify-items: center; }
   .rf-trust-row .rf-trust-logo,
   .rf-trust-row .rf-trust-method,
   .rf-trust-row .rf-trust-free,
