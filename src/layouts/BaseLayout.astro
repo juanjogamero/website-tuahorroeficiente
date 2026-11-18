@@ -6,6 +6,7 @@ import '../styles/fidelidad.css';
 import '../styles/header-hero-proporciones.css';
 import '../styles/mobile-ux.css';
 import '../styles/cabecera-referencias.css';
+import '../styles/presentacion-editorial.css';
 interface Props{title:string;description:string;image?:string;ogType?:string;canonical?:string;schema?:Record<string,unknown>|Array<Record<string,unknown>>;noindex?:boolean}
 const {title,description,image,ogType='website',canonical,schema,noindex=false}=Astro.props;
 const isPreview=process.env.PUBLICATION_MODE !== 'production';
