@@ -1,0 +1,190 @@
+/*
+ * Portada · indicadores y soluciones (paso editorial siguiente).
+ * Escala inspirada en el bloque bajo las tres tarjetas de la referencia,
+ * adaptada a datos reales del portal y sin testimonios ni ahorros inventados.
+ * Esta hoja se carga al final para mantener los estilos globales intactos.
+ */
+
+/* Franja de cuatro indicadores: misma retícula que la presentación. */
+.rf-intro .rf-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 77px;
+}
+.rf-intro .rf-kpi-grid > div {
+  min-width: 0;
+  border-bottom: 1px solid #e5e7e4;
+  padding: 0 0 22px;
+}
+.rf-intro .rf-kpi-grid span {
+  display: block;
+  min-height: 21px;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: #596363;
+}
+.rf-intro .rf-kpi-grid strong {
+  display: block;
+  margin-top: 10px;
+  font-size: clamp(36px, 3.4vw, 52px);
+  line-height: 1.05;
+  font-weight: 500;
+  color: #202728;
+  letter-spacing: -.055em;
+  overflow-wrap: anywhere;
+}
+
+/* Siguiente bloque: encabezado editorial y cuatro tarjetas de soluciones. */
+.rf-services.rf-container {
+  width: min(1140px, calc(100% - 56px));
+  max-width: none;
+  margin-top: 122px;
+  padding-top: 0;
+}
+.rf-services .rf-section-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+.rf-services .rf-section-top > div:first-child { max-width: 680px; }
+.rf-services .rf-section-top > div:last-child { max-width: 310px; }
+.rf-services .rf-section-top h2 {
+  margin-top: 19px;
+  font-size: clamp(40px, 3.2vw, 54px);
+  line-height: 1.09;
+  font-weight: 500;
+  letter-spacing: -.052em;
+}
+.rf-services .rf-section-top p {
+  margin: 0 0 17px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #626e70;
+}
+.rf-services .rf-section-top .rf-underlink {
+  font-size: 13px;
+  color: #202728;
+}
+.rf-services .rf-service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+.rf-services .rf-service-card {
+  min-width: 0;
+  min-height: 422px;
+  border: 1px solid #eceee9;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #f5f6f0;
+  color: #233035;
+  text-decoration: none;
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+.rf-services .rf-service-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 21px 20px 0;
+  font-size: 12px;
+  color: #537276;
+}
+.rf-services .rf-service-head span:last-child {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #b8c7c3;
+  font-size: 17px;
+  color: #223a40;
+}
+.rf-services .rf-service-card h3 {
+  min-height: 62px;
+  margin: 20px 0 11px;
+  padding: 0 20px;
+  font-size: clamp(20px, 1.5vw, 23px);
+  font-weight: 500;
+  line-height: 1.17;
+  letter-spacing: -.043em;
+}
+.rf-services .rf-service-card p {
+  min-height: 59px;
+  margin: 0;
+  padding: 0 20px;
+  color: #627072;
+  font-size: 12px;
+  line-height: 1.58;
+}
+.rf-services .rf-service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 20px 19px;
+  color: #1d2c2d;
+  font-size: 12px;
+  font-weight: 700;
+}
+.rf-services .rf-service-img {
+  height: 142px;
+  margin-top: auto;
+  overflow: hidden;
+  background: #cbdcdb;
+}
+.rf-services .rf-service-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .28s ease;
+}
+.rf-services .rf-service-card:hover,
+.rf-services .rf-service-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(24, 52, 58, .12);
+}
+.rf-services .rf-service-card:hover .rf-service-img img,
+.rf-services .rf-service-card:focus-visible .rf-service-img img { transform: scale(1.035); }
+.rf-services .rf-service-card:focus-visible { outline: 3px solid #157d80; outline-offset: 4px; }
+
+@media (min-width: 721px) and (max-width: 1100px) {
+  .rf-services.rf-container { margin-top: 95px; }
+  .rf-services .rf-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .rf-services .rf-service-card { min-height: 420px; }
+  .rf-services .rf-service-card h3 { font-size: 23px; }
+  .rf-services .rf-service-card p { font-size: 13px; }
+  .rf-services .rf-service-img { height: 165px; }
+}
+
+@media (max-width: 720px) {
+  .rf-intro .rf-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 18px;
+    margin-top: 50px;
+  }
+  .rf-intro .rf-kpi-grid > div { padding-bottom: 17px; }
+  .rf-intro .rf-kpi-grid span { font-size: 12px; min-height: 36px; }
+  .rf-intro .rf-kpi-grid strong { margin-top: 7px; font-size: clamp(33px, 9vw, 43px); }
+  .rf-services.rf-container { width: calc(100% - 40px); margin-top: 74px; }
+  .rf-services .rf-section-top { display: block; margin-bottom: 27px; }
+  .rf-services .rf-section-top h2 { font-size: clamp(33px, 8vw, 43px); line-height: 1.12; }
+  .rf-services .rf-section-top > div:last-child { max-width: none; margin-top: 21px; }
+  .rf-services .rf-section-top p { font-size: 14px; line-height: 1.65; }
+  .rf-services .rf-service-grid { grid-template-columns: 1fr; gap: 17px; }
+  .rf-services .rf-service-card { min-height: 0; }
+  .rf-services .rf-service-card h3 { min-height: 0; font-size: 23px; }
+  .rf-services .rf-service-card p { min-height: 0; font-size: 14px; line-height: 1.6; }
+  .rf-services .rf-service-link { font-size: 14px; margin: 18px 20px 19px; }
+  .rf-services .rf-service-img { height: 182px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rf-services .rf-service-card,
+  .rf-services .rf-service-img img { transition: none; }
+}
