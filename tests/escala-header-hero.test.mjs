@@ -10,12 +10,12 @@ test('las proporciones del hero se cargan después del CSS base', () => {
   assert.ok(layout.indexOf("import '../styles/header-hero-proporciones.css';") > layout.indexOf("import '../styles/fidelidad.css';"));
 });
 
-test('el hero ocupa la altura de pantalla sin reducir su contenido a miniatura', () => {
-  assert.match(proportions, /height:\s*100svh/);
-  assert.match(proportions, /min-height:\s*710px/);
-  assert.match(proportions, /font-size:\s*clamp\(56px,\s*4\.6vw,\s*76px\)/);
-  assert.match(proportions, /font-size:\s*16px/);
-  assert.match(proportions, /max-width:\s*770px/);
+test('hero de escritorio proporcionado a la referencia, con márgenes y esquinas redondeadas', () => {
+  assert.match(proportions, /height:\s*clamp\(700px,\s*calc\(100svh - 84px\),\s*780px\)/);
+  assert.match(proportions, /margin:\s*22px 20px 0/);
+  assert.match(proportions, /border-radius:\s*20px/);
+  assert.match(proportions, /font-size:\s*clamp\(56px,\s*4\.3vw,\s*78px\)/);
+  assert.match(proportions, /max-width:\s*560px/);
 });
 
 test('el texto grande nace visible arriba y se desvanece por abajo', () => {

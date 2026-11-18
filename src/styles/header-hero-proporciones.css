@@ -1,69 +1,67 @@
 /*
- * Header y hero de portada — ajuste editorial a pantalla completa.
- * Archivo de ajustes intencionalmente aislado de fidelidad.css y cargado al final.
- * El H1, los enlaces y la tipografía DM Sans se conservan; solo cambia su escala.
- * Decisión y criterios de prueba: docs/16-hero-pantalla-completa.md.
+ * Header y hero de portada — afinado para acercarse a la referencia visual.
+ * Mantiene la estructura actual, pero corrige escala, márgenes y proporciones.
  */
 
-/* Escritorio: una sección hero que llena el viewport y se lee sin ampliar zoom. */
 @media (min-width: 1151px) {
   .rf-header {
-    width: min(1250px, calc(100% - 64px)) !important;
-    top: 16px !important;
+    width: min(950px, calc(100% - 120px)) !important;
+    top: 18px !important;
   }
   .rf-header-pill {
-    height: 64px;
-    gap: 22px;
-    padding: 8px 20px 8px 27px;
+    height: 68px;
+    gap: 24px;
+    padding: 8px 22px 8px 28px;
+    border-radius: 999px;
   }
-  .rf-logo { min-width: 175px; font-size: 19px; gap: 7px; }
+  .rf-logo { min-width: 185px; font-size: 19px; gap: 7px; }
   .rf-logo-mark { width: 36px; height: 36px; }
   .rf-logo small { font-size: 10px; }
-  .rf-nav { gap: clamp(15px, 1.4vw, 26px); font-size: 13px; }
+  .rf-nav { gap: clamp(15px, 1.2vw, 24px); font-size: 13px; }
   .rf-nav-cta { font-size: 13px; min-height: 44px; padding: 10px 22px; }
 }
 
 @media (min-width: 981px) {
   .rf-hero {
-    height: 100vh;
-    height: 100svh;
-    min-height: 710px;
-    margin: 0;
-    border-radius: 0;
+    height: clamp(700px, calc(100svh - 84px), 780px);
+    min-height: 700px;
+    margin: 22px 20px 0;
+    border-radius: 20px;
+    overflow: hidden;
   }
   .rf-hero-body {
-    width: min(1200px, calc(100% - 64px));
-    padding-top: clamp(150px, 17vh, 192px);
+    width: min(960px, calc(100% - 96px));
+    padding-top: clamp(150px, 18vh, 178px);
     transform: none;
   }
   .rf-hero h1 {
-    font-size: clamp(56px, 4.6vw, 76px);
+    font-size: clamp(56px, 4.3vw, 78px);
     font-weight: 400;
-    max-width: 900px;
-    line-height: 1.085;
+    max-width: 720px;
+    line-height: 1.04;
     letter-spacing: -.05em;
-    margin: 0 0 27px;
+    margin: 0 0 24px;
   }
   .rf-hero-body > p {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.56;
     font-weight: 500;
-    max-width: 760px;
-    margin: 0 0 21px;
+    max-width: 700px;
+    margin: 0 0 20px;
   }
   .rf-hero .rf-button {
     font-size: 15px;
-    min-height: 48px;
-    padding: 12px 29px;
+    min-height: 46px;
+    padding: 11px 26px;
     font-weight: 600;
   }
   .rf-hero-tiles {
-    max-width: 770px;
+    max-width: 560px;
     gap: 18px;
-    margin-top: 26px;
+    margin-top: 22px;
   }
   .rf-feature-tile, .rf-numeric-tile {
-    min-height: 130px;
+    min-height: 122px;
     border-radius: 15px;
   }
   .rf-feature-tile {
@@ -74,43 +72,42 @@
     gap: 18px;
   }
   .rf-feature-thumbnail {
-    width: 105px;
-    height: 104px;
+    width: 96px;
+    height: 96px;
     aspect-ratio: auto;
     border-radius: 12px;
   }
   .rf-feature-tile strong {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 500;
     line-height: 1.2;
-    max-width: 350px;
+    max-width: 280px;
   }
   .rf-feature-tile small {
-    font-size: 12px;
+    font-size: 11px;
     margin-top: 9px;
     line-height: 1.4;
   }
-  .rf-numeric-tile { flex: 0 0 136px; padding: 14px; }
+  .rf-numeric-tile { flex: 0 0 118px; padding: 14px 12px; }
   .rf-bubbles { margin-bottom: 9px; }
-  .rf-bubbles img { width: 27px; height: 27px; }
-  .rf-numeric-tile strong { font-size: 31px; }
+  .rf-bubbles img { width: 24px; height: 24px; }
+  .rf-numeric-tile strong { font-size: 27px; }
   .rf-numeric-tile small { font-size: 11px; }
   .rf-hero-word {
-    font-size: clamp(105px, 11.4vw, 205px);
-    bottom: -.045em;
-    line-height: 1;
+    font-size: clamp(96px, 9.7vw, 170px);
+    bottom: -.05em;
+    line-height: .92;
     letter-spacing: -.075em;
   }
 }
 
-/* El rótulo es decorativo: se aclara arriba y desaparece progresivamente abajo. */
 .rf-hero-word {
   color: transparent;
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, .94) 0%,
-    rgba(255, 255, 255, .87) 37%,
-    rgba(255, 255, 255, .55) 68%,
+    rgba(255, 255, 255, .88) 42%,
+    rgba(255, 255, 255, .58) 72%,
     rgba(255, 255, 255, 0) 100%
   );
   background-clip: text;
@@ -118,59 +115,69 @@
   pointer-events: none;
 }
 
-/* Portátiles: la cabecera pasa a navegación compacta cuando no caben enlaces. */
 @media (min-width: 981px) and (max-width: 1150px) {
-  .rf-header { width: calc(100% - 52px) !important; top: 18px !important; }
-  .rf-header-pill { height: 62px; padding: 8px 15px 8px 22px; }
-  .rf-hero { height: 100svh; min-height: 750px; }
-  .rf-hero-body { width: min(930px, calc(100% - 52px)); padding-top: 151px; }
-  .rf-hero h1 { font-size: clamp(52px, 5.1vw, 60px); }
-  .rf-hero-body > p { font-size: 15.5px; max-width: 700px; }
-  .rf-hero-tiles { max-width: 710px; }
+  .rf-header { width: calc(100% - 72px) !important; top: 18px !important; }
+  .rf-header-pill { height: 64px; padding: 8px 15px 8px 22px; }
+  .rf-hero {
+    height: clamp(720px, calc(100svh - 74px), 790px);
+    min-height: 720px;
+    margin: 18px 16px 0;
+    border-radius: 18px;
+  }
+  .rf-hero-body { width: min(860px, calc(100% - 72px)); padding-top: 152px; }
+  .rf-hero h1 { font-size: clamp(50px, 5vw, 63px); max-width: 690px; }
+  .rf-hero-body > p { font-size: 14.5px; max-width: 640px; }
+  .rf-hero-tiles { max-width: 540px; }
+  .rf-hero-word { font-size: clamp(92px, 10.5vw, 150px); }
 }
 
 @media (min-width: 721px) and (max-width: 980px) {
-  .rf-header { top: 20px !important; }
+  .rf-header { top: 18px !important; }
   .rf-header-pill { height: 60px; }
-  .rf-hero { height: 100svh; min-height: 780px; margin: 12px 12px 0; border-radius: 14px; }
+  .rf-hero {
+    height: clamp(720px, calc(100svh - 52px), 850px);
+    min-height: 760px;
+    margin: 14px 12px 0;
+    border-radius: 16px;
+  }
   .rf-hero-body { width: calc(100% - 52px); padding-top: 145px; }
-  .rf-hero h1 { font-size: clamp(47px, 5.9vw, 59px); margin-bottom: 22px; line-height: 1.09; }
-  .rf-hero-body > p { font-size: 15px; line-height: 1.55; max-width: 710px; margin-bottom: 19px; }
+  .rf-hero h1 { font-size: clamp(47px, 5.9vw, 59px); margin-bottom: 22px; line-height: 1.08; }
+  .rf-hero-body > p { font-size: 15px; line-height: 1.55; max-width: 610px; margin-bottom: 19px; }
   .rf-hero .rf-button { font-size: 14px; min-height: 46px; padding: 11px 25px; }
-  .rf-hero-tiles { margin-top: 23px; gap: 14px; max-width: 700px; }
-  .rf-feature-tile, .rf-numeric-tile { min-height: 124px; }
+  .rf-hero-tiles { margin-top: 22px; gap: 14px; max-width: 540px; }
+  .rf-feature-tile, .rf-numeric-tile { min-height: 120px; }
   .rf-feature-tile { padding: 11px; gap: 15px; }
-  .rf-feature-thumbnail { width: 95px; height: 100px; aspect-ratio: auto; }
+  .rf-feature-thumbnail { width: 90px; height: 96px; aspect-ratio: auto; }
   .rf-feature-tile strong { font-size: 18px; }
   .rf-feature-tile small { font-size: 11px; }
-  .rf-numeric-tile { flex: 0 0 130px; padding: 10px; }
+  .rf-numeric-tile { flex: 0 0 126px; padding: 10px; }
   .rf-hero-word { font-size: clamp(82px, 11vw, 120px); bottom: -.04em; }
 }
 
-/* Móvil: mantiene legibilidad y no recorta tarjetas en alturas pequeñas. */
 @media (max-width: 720px) {
-  .rf-header { width: calc(100% - 38px) !important; top: 19px !important; }
-  .rf-header-pill { height: 57px; padding: 7px 10px 7px 16px; }
+  .rf-header { width: calc(100% - 34px) !important; top: 16px !important; }
+  .rf-header-pill { height: 56px; padding: 7px 10px 7px 16px; }
   .rf-logo { min-width: 0; font-size: 17px; }
   .rf-logo-mark { width: 31px; height: 31px; }
   .rf-mobile-menu summary { width: 40px; height: 40px; }
   .rf-hero {
-    height: 100svh;
-    min-height: 790px;
+    height: auto;
+    min-height: 760px;
     margin: 12px 12px 0;
-    border-radius: 14px;
+    border-radius: 16px;
+    padding-bottom: 94px;
   }
-  .rf-hero-body { width: calc(100% - 38px); padding-top: 136px; }
-  .rf-hero h1 { font-size: clamp(36px, 8.8vw, 48px); line-height: 1.09; margin-bottom: 18px; }
+  .rf-hero-body { width: calc(100% - 38px); padding-top: 126px; }
+  .rf-hero h1 { font-size: clamp(36px, 8.8vw, 48px); line-height: 1.08; margin-bottom: 18px; }
   .rf-hero-body > p { font-size: 13.5px; line-height: 1.55; max-width: 560px; margin-bottom: 16px; font-weight: 500; }
   .rf-hero .rf-button { min-height: 44px; font-size: 13px; padding: 11px 22px; }
-  .rf-hero-tiles { margin-top: 22px; max-width: 560px; gap: 10px; }
-  .rf-feature-tile, .rf-numeric-tile { min-height: 115px; border-radius: 12px; }
+  .rf-hero-tiles { margin-top: 20px; max-width: 100%; gap: 10px; }
+  .rf-feature-tile, .rf-numeric-tile { min-height: 112px; border-radius: 12px; }
   .rf-feature-tile { padding: 9px; gap: 10px; }
-  .rf-feature-thumbnail { width: 73px; height: 89px; aspect-ratio: auto; }
+  .rf-feature-thumbnail { width: 70px; height: 86px; aspect-ratio: auto; }
   .rf-feature-tile strong { font-size: 14px; line-height: 1.22; }
   .rf-feature-tile small { font-size: 10px; margin-top: 6px; }
-  .rf-numeric-tile { flex: 0 0 101px; padding: 9px; }
+  .rf-numeric-tile { flex: 0 0 98px; padding: 9px; }
   .rf-bubbles { margin-bottom: 7px; }
   .rf-bubbles img { width: 23px; height: 23px; }
   .rf-numeric-tile strong { font-size: 26px; }
@@ -179,7 +186,7 @@
 }
 
 @media (max-width: 420px) {
-  .rf-hero { min-height: 830px; }
+  .rf-hero { min-height: 810px; }
   .rf-hero h1 { font-size: clamp(35px, 9vw, 39px); }
   .rf-feature-thumbnail { width: 62px; height: 82px; }
   .rf-feature-tile strong { font-size: 13px; }
@@ -188,7 +195,7 @@
 }
 
 @media (max-width: 350px) {
-  .rf-hero { min-height: 895px; }
+  .rf-hero { min-height: 875px; }
   .rf-hero-body { width: calc(100% - 30px); }
   .rf-hero h1 { font-size: 34px; }
   .rf-feature-thumbnail { width: 52px; height: 74px; }

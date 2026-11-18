@@ -26,8 +26,9 @@ test('franja editorial posterior al hero con siete marcas tipográficas enlazada
  assert.match(trust, /sin acuerdos ni avales/i);
  assert.match(trust, /sin patrocinio|sin vinculación|No existe patrocinio/i);
 });
-test('hero de escritorio con escala moderada y altura de viewport', () => {
- assert.match(css, /height: 100svh/);
- assert.match(css, /font-size: clamp\(55px, 4vw, 72px\)/);
- assert.match(css, /min-height: 720px/);
+test('franja de referencias situada inmediatamente después del hero con poco margen', () => {
+ assert.match(css, /padding: 42px 0 62px/);
+ assert.match(css, /margin: 0 0 26px/);
+ assert.match(css, /padding: 34px 0 50px/);
+ assert.match(css, /width: min\(950px, calc\(100% - 120px\)\)/);
 });
