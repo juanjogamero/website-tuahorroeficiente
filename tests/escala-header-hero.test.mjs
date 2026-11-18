@@ -6,22 +6,27 @@ const layout = readFileSync(new URL('../src/layouts/BaseLayout.astro', import.me
 const proportions = readFileSync(new URL('../src/styles/header-hero-proporciones.css', import.meta.url), 'utf8');
 const home = readFileSync(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
 
-test('la escala equilibrada se carga después del tema base', () => {
-  const base = layout.indexOf("import '../styles/fidelidad.css';");
-  const scale = layout.indexOf("import '../styles/header-hero-proporciones.css';");
-  assert.ok(base !== -1 && scale > base);
+test('las proporciones del hero se cargan después del CSS base', () => {
+  assert.ok(layout.indexOf("import '../styles/header-hero-proporciones.css';") > layout.indexOf("import '../styles/fidelidad.css';"));
 });
 
-test('el hero de escritorio tiene un máximo de altura y titular legible', () => {
-  assert.match(proportions, /min-height:\s*clamp\(640px,\s*49vw,\s*730px\)/);
-  assert.match(proportions, /font-size:\s*clamp\(43px,\s*3\.65vw,\s*58px\)/);
-  assert.match(proportions, /height:\s*60px/);
-  assert.match(proportions, /max-width:\s*565px/);
+test('el hero ocupa la altura de pantalla sin reducir su contenido a miniatura', () => {
+  assert.match(proportions, /height:\s*100svh/);
+  assert.match(proportions, /min-height:\s*710px/);
+  assert.match(proportions, /font-size:\s*clamp\(56px,\s*4\.6vw,\s*76px\)/);
+  assert.match(proportions, /font-size:\s*16px/);
+  assert.match(proportions, /max-width:\s*770px/);
 });
 
-test('mantiene composición y contenido sin cambios, y adapta el móvil estrecho', () => {
-  assert.match(home, /class="rf-hero-tiles"/);
+test('el texto grande nace visible arriba y se desvanece por abajo', () => {
+  assert.match(proportions, /background:\s*linear-gradient\(\s*to bottom,/);
+  assert.match(proportions, /rgba\(255, 255, 255, 0\) 100%/);
+  assert.match(proportions, /background-clip:\s*text/);
   assert.match(home, /class="rf-hero-word" aria-hidden="true">AHORRO REAL/);
+});
+
+test('se conserva el contenido y se adapta a pantallas estrechas', () => {
+  assert.match(home, /class="rf-hero-tiles"/);
   assert.match(proportions, /@media \(max-width: 420px\)/);
   assert.match(proportions, /@media \(max-width: 350px\)/);
 });
