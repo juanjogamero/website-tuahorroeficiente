@@ -1,0 +1,22 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import Icon from '../../components/Icon.astro';
+import {getCollection} from 'astro:content';
+import {photoUrls} from '../../data/categories';
+const posts=(await getCollection('guias')).filter(p=>!p.data.draft).sort((a,b)=>b.data.order-a.data.order);
+---
+<ContentLayout title="Blog de ahorro y consumo doméstico" description="Guías originales sobre el coste de luz y agua, climatización, electrodomésticos y cómo entender facturas. Fórmulas, ejemplos y herramientas relacionadas." category="Blog y guías" breadcrumbs={[{label:'Blog y guías'}]} eyebrow="ARTÍCULOS QUE TE SIRVEN">
+<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">· CONTENIDO ORIGINAL</span><h2>Aprender también <span class="purple-text">ahorra dudas.</span></h2><p>Sin trucos universales ni cifras sin contexto. Elige un tema y encuentra un ejemplo verificable.</p></div></div>
+<div class="search-tools"><label class="sr-only" for="guide-search">Buscar guías</label><Icon name="search" size={19}/><input id="guide-search" data-guide-search type="search" placeholder="Busca por energía, ducha, factura, kWh…" autocomplete="off"/></div>
+<div class="article-cards article-index" data-guides>{posts.map((g,i)=><a href={`/guias/${g.id}/`} class="article-card" data-search-text={`${g.data.title} ${g.data.description} ${g.data.category}`.toLowerCase()}><div class="article-art"><img src={photoUrls[g.data.imageName]} alt={g.data.imageAlt} width="600" height="370" loading="lazy"/></div><div class="article-card-body"><span class="small-label">{g.data.category.toUpperCase()} · {g.data.reading}</span><h3>{g.data.title}</h3><p>{g.data.description}</p><span class="inline-link">Leer guía <Icon name="arrowUp" size={17}/></span></div></a>)}</div>
+<p class="search-empty" data-empty hidden>No hay guías que coincidan. Prueba con una palabra diferente.</p>
+</div></section>
+</ContentLayout>
+<script>
+const field=document.querySelector<HTMLInputElement>('[data-guide-search]');
+field?.addEventListener('input',()=>{
+ const q=(field.value||'').toLocaleLowerCase('es').trim();let found=0;
+ document.querySelectorAll<HTMLElement>('[data-guides] [data-search-text]').forEach(el=>{const hit=(el.dataset.searchText??'').toLocaleLowerCase('es').includes(q);el.hidden=!hit;if(hit)found++;});
+ const empty=document.querySelector<HTMLElement>('[data-empty]');if(empty)empty.hidden=found>0;
+});
+</script>

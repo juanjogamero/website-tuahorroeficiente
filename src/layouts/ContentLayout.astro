@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+interface Props { title:string; description:string; category:string; breadcrumbs:{label:string;url?:string}[];reading?:string;eyebrow?:string;image?:string;schema?:Record<string,unknown> }
+const {title,description,category,breadcrumbs,reading='Lectura útil',eyebrow='GUÍA PRÁCTICA',image,schema}=Astro.props;
+---
+<BaseLayout title={title} description={description} image={image} schema={schema}>
+ <section class="rf-innerhero" aria-label={category}>
+   <img class="rf-inner-bgimage" src="/images/hero-renovables.webp" alt="" aria-hidden="true"/>
+   <div class="rf-innerhero-backdrop"></div>
+   <div class="rf-container rf-innerhero-content">
+     <Breadcrumbs items={breadcrumbs}/>
+     <span class="rf-overline rf-overline-white">✦ {eyebrow.toUpperCase()} · {category.toUpperCase()}</span>
+     <h1>{title}</h1>
+     <p>{description}</p>
+     <div class="rf-innerhero-info"><span>Sin registro</span><span>España</span><span>Información verificable</span></div>
+   </div>
+   <span class="rf-innerhero-mark" aria-hidden="true">AHORRA CON CRITERIO</span>
+ </section>
+ <slot/>
+</BaseLayout>

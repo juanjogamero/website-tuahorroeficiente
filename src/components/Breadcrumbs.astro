@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+interface Crumb{label:string;url?:string}
+interface Props{items:Crumb[]}
+const {items}=Astro.props;
+const elements=[{label:'Inicio',url:'/'},...items];
+const schema={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:elements.map((b,i)=>({"@type":"ListItem",position:i+1,name:b.label,item:b.url?new URL(b.url.replace(/^\/+/,''),new URL(import.meta.env.BASE_URL,Astro.site)).toString():undefined}))};
+---
+<nav class="breadcrumbs" aria-label="Ruta de navegación">{elements.map((b,i)=><span>{i>0 && <span class="crumb-arrow" aria-hidden="true">/</span>}{b.url?<a href={b.url}>{b.label}</a>:<span aria-current="page">{b.label}</span>}</span>)}</nav>
+<script type="application/ld+json" set:html={JSON.stringify(schema)}/>

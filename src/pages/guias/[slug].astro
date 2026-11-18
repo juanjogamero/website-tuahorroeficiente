@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import Icon from '../../components/Icon.astro';
+import {getCollection,render} from 'astro:content';
+import {photoUrls} from '../../data/categories';
+import {byId} from '../../data/tools';
+export async function getStaticPaths(){const entries=await getCollection('guias');return entries.filter(p=>!p.data.draft).map(post=>({params:{slug:post.id},props:{post}}));}
+const {post}=Astro.props;
+const {Content,headings}=await render(post);
+const articleSchema={"@context":"https://schema.org","@type":"Article",headline:post.data.title,description:post.data.description,datePublished:post.data.published,dateModified:post.data.reviewed,author:{"@type":"Organization",name:'Tu Ahorro Eficiente'},publisher:{"@type":"Organization",name:'Tu Ahorro Eficiente',url:new URL(import.meta.env.BASE_URL,Astro.site).toString()},inLanguage:'es-ES',mainEntityOfPage:new URL(`guias/${post.id}/`,new URL(import.meta.env.BASE_URL,Astro.site)).toString()};
+const related=post.data.related.map(byId).filter(Boolean);
+---
+<BaseLayout title={post.data.title} description={post.data.description} image={photoUrls[post.data.imageName]} ogType="article" schema={articleSchema}>
+<section class="article-hero"><img class="rf-inner-bgimage" src="/images/hero-renovables.webp" alt="" aria-hidden="true"/><div class="wrap"><Breadcrumbs items={[{label:'Blog y guías',url:'/guias/'},{label:post.data.title}]}/><div class="article-hero-columns"><div><span class="eyebrow">{post.data.category.toUpperCase()} · GUÍA PRÁCTICA</span><h1>{post.data.title}</h1><p class="lead">{post.data.description}</p><div class="hero-meta"><span><Icon name="clock" size={16}/>{post.data.reading}</span><span><Icon name="shield" size={16}/> Revisado: 18/11/2026</span></div></div><div class="article-hero-image"><img src={photoUrls[post.data.imageName]} alt={post.data.imageAlt} width="680" height="510"/></div></div></div></section>
+<div class="wrap article-structure"><article class="prose"><div class="article-notice"><Icon name="info" size={20}/><p>Esta guía explica conceptos generales y utiliza ejemplos didácticos. Las cifras hipotéticas no son promedios nacionales ni precios vigentes.</p></div><Content/></article>
+<aside class="article-aside"><div class="sticky-aside"><span class="eyebrow">EN ESTA GUÍA</span><nav aria-label="Índice de la guía">{headings.filter(h=>h.depth===2).map(h=><a href={`#${h.slug}`}>{h.text}</a>)}</nav><a href="/herramientas/" class="sidebar-cta"><Icon name="calculator" size={22}/><strong>Convierte lo que lees en números</strong><span>Explora calculadoras →</span></a></div></aside></div>
+<section class="section article-sources"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">· REFERENCIAS</span><h2>Fuentes para <span class="purple-text">seguir comprobando.</span></h2><p>La metodología y los datos concretos de tus aparatos deben verificarse en sus fuentes de origen.</p></div></div><div class="source-rows">{post.data.sources.map(s=><a href={s.url} target="_blank" rel="noopener noreferrer"><span><Icon name="book" size={20}/></span><div><strong>{s.name}</strong><p>Consultar fuente original</p></div><Icon name="arrowUp" size={17}/></a>)}</div><p class="source-fineprint">Publicado: {post.data.published} · Última revisión editorial: {post.data.reviewed} · <a href="/contacto/">Correcciones</a></p></div></section>
+<section class="section related-section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">· PONLO EN PRÁCTICA</span><h2>Ahora, <span class="purple-text">haz el cálculo.</span></h2></div></div><div class="tool-grid">{related.map(t=><ToolCard tool={t}/>)}</div></div></section>
+</BaseLayout>

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# Sitio de pruebas: Google respeta el meta noindex de cada pagina.

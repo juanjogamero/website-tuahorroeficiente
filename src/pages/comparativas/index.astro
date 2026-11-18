@@ -1,0 +1,8 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import {tools} from '../../data/tools';
+---
+<ContentLayout title="Comparativas de consumo: decide con datos" description="Compara el consumo de opciones domésticas con escenarios equivalentes: freidora de aire frente a horno y nuevas decisiones fundamentadas." category="Comparativas" breadcrumbs={[{label:'Comparativas'}]} eyebrow="DECISIONES COMPARADAS">
+<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">NO TODO ES MÁS EFICIENTE SIEMPRE</span><h2>Comparar bien cambia <span class="purple-text">la respuesta.</span></h2><p>Solo publicamos comparativas con calculadoras realmente operativas y una unidad de comparación justa.</p></div></div><div class="tool-grid">{tools.filter(t=>t.group==='comparativas').map(t=><ToolCard tool={t}/>)}</div><div class="wide-tip"><h3>¿Y la comparación de otros equipos?</h3><p>Los modelos de bomba de calor frente a radiadores, o ventiladores frente a aire acondicionado, necesitan contemplar confort térmico distinto y están en investigación. No publicamos cifras de ahorro hasta poder justificarlas.</p></div></div></section>
+</ContentLayout>

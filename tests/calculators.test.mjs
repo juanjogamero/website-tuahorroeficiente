@@ -1,0 +1,13 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {calculate,parseEs} from '../src/lib/calculators.ts';
+const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-9, `${a} !== ${b}`);
+test('es decimal comma and grouping',()=>{close(parseEs('0,20'),.2);close(parseEs('1.234,56'),1234.56);close(parseEs('1.234'),1234);assert.ok(Number.isNaN(parseEs('1,2,3')));});
+test('electricity monthly and annual variable cost',()=>{const r=calculate('electricidad',{watts:1500,hours:3,uses:5,factor:100,price:.2});close(r.primary,19.5);close(r.secondary[1].value,1170);});
+test('radiator verified example: 90 kWh and 18 euro monthly',()=>{const r=calculate('radiador',{watts:1500,hours:3,days:20,months:5,factor:100,altFactor:50,price:.2});close(r.primary,18);close(r.secondary[0].value,90);close(r.difference,45);});
+test('air electrical range',()=>{const r=calculate('aire',{kw:1,hours:4,days:30,low:50,high:100,price:.2});close(r.primary,12);close(r.secondary[0].value,24);});
+test('shower: 10 L/min 8 min 30 showers = 2400 L',()=>{const r=calculate('ducha',{flow:10,minutes:8,uses:30/52*52/52,water:0,sewer:0,delta:0,eff:100,price:0,altMinutes:5});close(r.secondary[0].value,80);});
+test('shower thermal energy formula (80 litres, 23 C)',()=>{const r=calculate('ducha',{flow:10,minutes:8,uses:7,water:0,sewer:0,delta:23,eff:100,price:1,altMinutes:5});close(r.primary,80*23*.001163);});
+test('airfryer vs oven 20.80 annual saving',()=>{const r=calculate('freidora',{oven:1.2,air:.7,uses:4,price:.2});close(r.primary,20.8);});
+test('termo with measured kWh per day',()=>{const r=calculate('termo',{kwhDay:3,altKwhDay:2,days:365,price:.2});close(r.difference,73);});
+test('standby yearly energy',()=>{const r=calculate('standby',{watts:5,hours:24,units:2,days:365,price:.2});close(r.secondary[0].value,87.6);});
+test('rejects invalid inputs and inverted ranges',()=>{assert.throws(()=>calculate('aire',{kw:1,hours:4,days:10,low:90,high:10,price:.2}),RangeError);assert.throws(()=>calculate('electricidad',{watts:-1,hours:3,uses:2,factor:100,price:.2}),RangeError);});

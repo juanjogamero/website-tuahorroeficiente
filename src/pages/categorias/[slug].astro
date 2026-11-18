@@ -1,0 +1,17 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import {categories} from '../../data/categories';
+import {tools} from '../../data/tools';
+import {getCollection} from 'astro:content';
+export async function getStaticPaths(){return categories.map(category=>({params:{slug:category.slug},props:{category}}));}
+const {category}=Astro.props;
+const related=tools.filter(t=>t.categorySlug===category.slug);
+const guides=(await getCollection('guias')).filter(g=>g.data.categorySlug===category.slug&&!g.data.draft);
+---
+<ContentLayout title={`${category.name}: calculadoras y guías`} description={category.description} category={category.name} breadcrumbs={[{label:'Categorías',url:'/categorias/'},{label:category.name}]} eyebrow="GUÍAS POR TEMÁTICA">
+<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">CALCULA Y COMPRENDE</span><h2>{category.subtitle}</h2><p>{category.description}</p></div></div>
+{related.length?<div class="tool-grid">{related.map(t=><ToolCard tool={t}/>)}</div>:<div class="wide-tip"><p>Esta temática comienza con guías editoriales. Las próximas calculadoras se publicarán cuando estén probadas.</p></div>}
+{guides.length>0&&<div class="category-guides"><h2>Lecturas relacionadas</h2><div class="article-row-list">{guides.map(g=><a href={`/guias/${g.id}/`}><span class="small-label">GUÍA PRÁCTICA</span><strong>{g.data.title}</strong><span>Leer →</span></a>)}</div></div>}
+</div></section>
+</ContentLayout>

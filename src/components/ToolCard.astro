@@ -1,0 +1,15 @@
+---
+import Icon from './Icon.astro';
+import {pathOf,type Tool} from '../data/tools';
+interface Props{tool:Tool;size?:'normal'|'large'}
+const {tool,size='normal'}=Astro.props;
+const tone=tool.categorySlug==='agua'?'mint':tool.categorySlug==='climatizacion'?'ice':tool.group==='comparativas'?'lime':'lavender';
+---
+<a class:list={['tool-card','tone-'+tone,'size-'+size]} href={pathOf(tool)}>
+ <span class="tool-icon"><Icon name={tool.icon} size={23}/></span>
+ <span class="tool-tag">{tool.tag}</span>
+ <h3>{tool.title}</h3>
+ <p>{tool.short}</p>
+ <span class="text-link">Usar calculadora <Icon name="arrowUp" size={17}/></span>
+ <span class="card-decoration" aria-hidden="true"><img src="/illustrations/orbit.svg" width="190" height="125" alt="" loading="lazy" /></span>
+</a>

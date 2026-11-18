@@ -1,0 +1,11 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import {tools} from '../../data/tools';
+---
+<ContentLayout title="Calculadoras de consumo y ahorro doméstico" description="Explora calculadoras gratuitas para electricidad, climatización y agua. Coste por uso, mes o año con metodología y parámetros editables." category="Herramientas" breadcrumbs={[{label:'Herramientas'}]} eyebrow="EXPLORA NUESTRAS HERRAMIENTAS">
+<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">HECHAS PARA TU CASO</span><h2>Elige qué quieres <span class="purple-text">calcular.</span></h2><p>Cada herramienta incluye contexto, fórmula, ejemplo y límites; no requiere registro.</p></div></div>
+<div class="tool-grid">{tools.filter(t=>t.group==='herramientas').map(t=><ToolCard tool={t}/>)}</div>
+<div class="wide-tip"><h3>¿No sabes por dónde empezar?</h3><p>Si quieres calcular el gasto de un dispositivo cualquiera, usa la calculadora eléctrica general. Si tu aparato tiene termostato, consumo medido por ciclo o agua caliente, elige una herramienta especializada.</p><a class="inline-link" href="/guias/que-es-kwh/">Aprender qué es un kWh →</a></div>
+</div></section>
+</ContentLayout>

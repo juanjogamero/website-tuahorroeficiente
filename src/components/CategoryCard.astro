@@ -1,0 +1,8 @@
+---
+import Icon from './Icon.astro';
+const {category}=Astro.props;
+---
+<a href={`/categorias/${category.slug}/`} class:list={['category-card','tone-'+category.gradient]}>
+  <span class="tool-icon"><Icon name={category.icon} size={23}/></span><span class="small-label">{category.name}</span>
+  <h3>{category.subtitle}</h3><p>{category.description}</p><span class="text-link">Explorar <Icon name="arrowUp" size={17}/></span>
+</a>

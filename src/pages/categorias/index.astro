@@ -1,0 +1,8 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import {categories} from '../../data/categories';
+---
+<ContentLayout title="Categorías de ahorro en casa" description="Electricidad, climatización, agua y electrodomésticos: calcula el gasto, encuentra guías útiles y compara alternativas por temática." category="Categorías" breadcrumbs={[{label:'Categorías'}]} eyebrow="TODO EN SU SITIO">
+<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">NAVEGA POR TU CASA</span><h2>Un tema. Muchas <span class="purple-text">decisiones útiles.</span></h2></div></div><div class="category-grid">{categories.map(c=><CategoryCard category={c}/>)}</div></div></section>
+</ContentLayout>
