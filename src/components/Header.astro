@@ -15,7 +15,7 @@ import Icon from './Icon.astro';
         <div class="rf-submenu">
           <a href="/herramientas/">Todas las calculadoras</a>
           <a href="/herramientas/calculadora-consumo-electrico/">Consumo eléctrico</a>
-          <a href="/herramientas/cuanto-gasta-radiador-electrico/">Radiador eléctrico</a>
+          <ahref="/herramientas/cuanto-gasta-radiador-electrico/">Radiador eléctrico</a>
           <a href="/herramientas/cuanto-gasta-aire-acondicionado/">Aire acondicionado</a>
           <a href="/herramientas/calculadora-gasto-ducha/">Coste de una ducha</a>
         </div>
@@ -33,7 +33,7 @@ import Icon from './Icon.astro';
         <div class="rf-submenu">
           <a href="/guias/">Todas las guías</a>
           <a href="/guias/como-leer-factura-luz/">Entender la factura de luz</a>
-          <a href="/guias/que-es-kwh/">Qué es un kWh</a>
+          <ahref="/guias/que-es-kwh/">Qué es un kWh</a>
           <a href="/fuentes/">Fuentes y metodología</a>
         </div>
       </div>
@@ -51,7 +51,7 @@ import Icon from './Icon.astro';
         <p class="rf-mobile-section">Calcula por temática</p>
         <a href="/categorias/electricidad/">Electricidad</a>
         <a href="/categorias/climatizacion/">Climatización</a>
-        <a href="/categorias/agua/">Agua</a>
+        <ahref="/categorias/agua/">Agua</a>
         <a href="/categorias/electrodomesticos/">Electrodomésticos</a>
         <p class="rf-mobile-section">Información</p>
         <a href="/sobre-nosotros/">Sobre el proyecto</a>
@@ -65,7 +65,16 @@ import Icon from './Icon.astro';
 <script is:inline>
   // El menú sigue funcionando sin JavaScript gracias a <details>.
   // Mejoramos el cierre al tocar fuera, seguir un enlace o pulsar Escape.
-  const mobileMenu = document.querySelector('.rf-mobile-menu');
+  // La cápsula permanece fija. En cuanto se desplaza la página,
+  // abandona la transparencia de la fotografía y adopta fondo negro.
+  const stickyHeader = document.querySelector('.rf-header');
+  if (stickyHeader) {
+    const syncHeader = () => stickyHeader.classList.toggle('is-scrolled', window.scrollY > 48);
+    syncHeader();
+    window.addEventListener('scroll', syncHeader, { passive: true });
+    window.addEventListener('pageshow', syncHeader);
+  }
+  const mobileMenu =document.querySelector('.rf-mobile-menu');
   if (mobileMenu) {
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && mobileMenu.open) {

@@ -1,0 +1,139 @@
+/*
+ * Cabecera al desplazarse y franja de fuentes: referencia visual del 18/11/2026.
+ * Es una capa de ajuste cargada después de los estilos del tema y del móvil.
+ * Conserva Astro estático: no requiere dependencias ni API externa.
+ */
+.rf-header {
+  position: fixed !important;
+  top: 14px !important;
+  left: 50%!important;
+  transform: translateX(-50%) !important;
+  width: min(1080px, calc(100% - 44px)) !important;
+  z-index: 220 !important;
+}
+.rf-header-pill {
+  height: 62px;
+  transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.rf-header.is-scrolled .rf-header-pill {
+  background: #08090a !important;
+  border-color: #08090a !important;
+  box-shadow: 0 9px 30px rgba(5, 15, 22, .17);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.rf-header.is-scrolled .rf-logo,
+.rf-header.is-scrolled .rf-nav,
+.rf-header.is-scrolled .rf-nav > a,
+.rf-header.is-scrolled .rf-menu > a { color: #fff; }
+
+/* Mantener el hero a altura de pantalla, con tamaños más próximos a la referencia. */
+@media (min-width: 981px) {
+  .rf-hero { min-height: 100svh; height: 100svh; }
+  .rf-hero-body { width: min(1200px, calc(100% - 64px)); padding-top: clamp(148px, 16.3vh, 186px); }
+  .rf-hero h1 { font-size: clamp(55px, 4vw, 72px); line-height: 1.1;max-width: 850px; margin-bottom: 24px; }
+  .rf-hero-body > p { max-width: 740px; font-size: 15px; line-height: 1.6; }
+  .rf-hero-tiles { max-width: 720px; gap: 18px; margin-top: 23px; }
+  .rf-feature-tile, .rf-numeric-tile { min-height: 125px; }
+  .rf-feature-tile strong { font-size: 18px; }
+  .rf-feature-thumbnail { width: 102px; height: 99px; }
+  .rf-numeric-tile { flex-basis: 128px; }
+  .rf-hero-word { font-size: clamp(105px, 11.25vw, 190px); bottom: -.04em; }
+}
+@media (min-width: 981px) and (max-height: 800px) {
+  .rf-hero { min-height: 720px; height: max(100svh, 720px); }
+  .rf-hero-body { padding-top: 132px; }
+  .rf-hero h1 { font-size: clamp(51px, 3.7vw, 65px); margin-bottom: 18px; }
+  .rf-hero-body > p { margin-bottom: 15px; }
+  .rf-hero-tiles { margin-top: 16px; }
+  .rf-hero-word { font-size: clamp(102px, 10vw, 157px); }
+}
+
+/* Franja editorial después del hero, a todo el ancho como en la referencia. */
+.rf-trust.rf-container {
+  width: 100% !important;
+max-width: none !important;
+  padding: 169px 0 78px;
+  background: #fff;
+  text-align: center;
+}
+.rf-trust .rf-trust-title {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -.01em;
+  color: #202529;
+  margin: 0 0 18px;
+}
+.rf-trust .rf-trust-row {
+  width: min(1910px, calc(100% - 112px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  overflow: visible;
+}
+.rf-trust-row .rf-trust-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 45px;
+  flex: 0 1 auto;
+  color: #b3b6b6;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: clamp(18px, 1.34vw, 29px);
+  line-height: 1.1;
+  font-weight: 650;
+  letter-spacing: -.04em;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+.rf-trust-row .rf-trust-logo:hover,
+.rf-trust-row .rf-trust-logo:focus-visible { color:#4c7078; }
+.rf-trust-row .rf-trust-symbol {
+  font: inherit;
+  font-size: 1.18em;
+  line-height: 1;
+  font-weight: 500;
+  color: inherit;
+}
+.rf-trust-row .rf-trust-cnmc,
+.rf-trust-row .rf-trust-boe { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: .005em; }
+.rf-trust-row .rf-trust-method { font-size: clamp(16px, 1.1vw, 24px); font-weight: 650; }
+.rf-trust-row .rf-trust-free,
+.rf-trust-row .rf-trust-edit { font-size: clamp(17px, 1.12vw, 25px); }
+.rf-trust-row .rf-trust-dots { letter-spacing: -.27em; margin-right: 7px; font-size: 1.2em; }
+.rf-trust-row .rf-trust-eprel small { border: 1px solid currentColor; border-radius: 2px; font-size: 10px; padding: 0 3px; margin-left: 2px; letter-spacing: 0; }
+.rf-trust .rf-trust-disclaimer { font-size: 11px; line-height: 1.6; color: #8e999a; margin: 58px 18px 0; }
+
+@media (max-width: 1300px) and (min-width: 721px) {
+  .rf-trust .rf-trust-row { display: grid; grid-template-columns: repeat(4,minmax(0, 1fr)); gap: 23px 12px; width: calc(100% - 68px); justify-items: center; }
+  .rf-trust-row .rf-trust-logo { font-size: 20px; }
+  .rf-trust-row .rf-trust-method, .rf-trust-row .rf-trust-free, .rf-trust-row .rf-trust-edit { font-size: 18px; }
+  .rf-trust.rf-container { padding-top: 130px; }
+}
+@media (max-width: 980px) {
+  .rf-header { width: calc(100% - 36px) !important; top: 12px !important; }
+  .rf-header-pill { min-height: 59px; height: 59px; }
+  .rf-mobile-menu { position: relative; }
+  .rf-trust.rf-container { padding-top: 82px; padding-bottom: 55px; }
+}
+@media (max-width: 720px) {
+  .rf-header { width: calc(100% - 28px) !important; top: 12px !important; }
+  .rf-header-pill { min-height: 58px; height: 58px; }
+  .rf-trust.rf-container { padding: 108px 0 55px; }
+  .rf-trust .rf-trust-title { font-size: 15px; max-width: 300px; margin: 0 auto 27px; padding: 0 10px; }
+  .rf-trust .rf-trust-row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr));width: calc(100% - 40px); gap: 13px 12px; justify-items: center; }
+  .rf-trust-row .rf-trust-logo,
+  .rf-trust-row .rf-trust-method,
+  .rf-trust-row .rf-trust-free,
+  .rf-trust-row .rf-trust-edit { font-size: 16px; min-height: 52px; white-space: normal; }
+  .rf-trust-row .rf-trust-symbol { font-size: 1.13em; }
+  .rf-trust .rf-trust-disclaimer { font-size: 12px; max-width: 330px; margin: 27px auto 0; padding: 0 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rf-header-pill, .rf-trust-row .rf-trust-logo { transition: none; }
+}
