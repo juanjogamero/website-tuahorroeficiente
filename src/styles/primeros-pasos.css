@@ -1,0 +1,140 @@
+/* ADR 31: rutas gratuitas de entrada con retícula visual de planes, sin precio ni suscripciones */
+.rf-pathways.rf-section {
+  width: min(1200px, calc(100% - 72px));
+  margin: 26px auto 0;
+  padding: 0;
+  color: #292c2b;
+}
+.rf-pathways-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.04fr) minmax(0, 1.04fr);
+  gap: clamp(22px, 2.4vw, 42px);
+  align-items: stretch;
+}
+.rf-pathways-intro { min-width: 0; align-self: center; padding: 15px 10px 15px 0; }
+.rf-pathways-intro .rf-chip {
+  font-size: 12px;
+  padding: 8px 16px;
+  line-height: 1.35;
+}
+.rf-pathways-intro h2 {
+  margin: 32px 0 30px;
+  max-width: 375px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: clamp(42px, 3.12vw, 57px);
+  line-height: 1.16;
+  letter-spacing: -.05em;
+  font-weight: 500;
+  color: #282a29;
+  text-wrap: pretty;
+}
+.rf-pathways-intro > p {
+  max-width: 340px;
+  margin: 0 0 28px;
+  color: #6d7270;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.rf-pathways-main-link,
+.rf-pathways-card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 21px;
+  min-height: 46px;
+  border-radius: 999px;
+  background: #050606;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color .18s ease;
+}
+.rf-pathways-main-link:hover,
+.rf-pathways-card-link:hover { background: #295154; }
+.rf-pathways-main-link:focus-visible,
+.rf-pathways-card-link:focus-visible { outline: 3px solid #4d8490; outline-offset: 4px; }
+.rf-pathways-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 555px;
+  padding: 29px 27px 27px;
+  border-radius: 18px;
+  background: #f2f3ea;
+}
+.rf-pathways-card > h3 {
+  margin: 0 0 27px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 21px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -.018em;
+  color: #282a28;
+}
+.rf-pathways-description {
+  min-height: 72px;
+  margin: 0 0 20px;
+  font-size: 13px;
+  line-height: 1.58;
+  color: #727875;
+}
+.rf-pathways-figure { display: flex; align-items: baseline; gap: 13px; margin: 0 0 25px; }
+.rf-pathways-figure strong {
+  font: 400 clamp(53px, 3.8vw, 70px)/1 'DM Sans', Arial, sans-serif;
+  letter-spacing: -.07em;
+  color: #282a28;
+}
+.rf-pathways-figure span { color: #636b69; font-size: 13px; font-weight: 600; }
+.rf-pathways-divider { border-top: 1px solid #d7dbd3; margin-bottom: 32px; }
+.rf-pathways-card h4 {
+  display: flex; align-items: center; gap: 10px;
+  margin: 0 0 25px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 13px;
+  color: #5b6260;
+  line-height: 1.5;
+  letter-spacing: .015em;
+  font-weight: 600;
+}
+.rf-pathways-card h4 span { width: 15px; height: 15px; border-radius: 50%; flex: none; background: #000; }
+.rf-pathways-card ul { list-style: none; padding: 0; margin: 0 0 27px; display: grid; gap: 16px; }
+.rf-pathways-card li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #555d5a;
+}
+.rf-pathways-card li::before { content: '✓'; position: absolute; left: 0; color: #111; font-weight: 700; }
+.rf-pathways-card-link { align-self: flex-start; margin-top: auto; padding-inline: 25px; }
+@media (max-width: 1080px) {
+  .rf-pathways.rf-section { width: min(920px, calc(100% - 56px)); }
+  .rf-pathways-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .rf-pathways-intro { grid-column: 1 / -1; align-self: start; padding: 0 0 12px; }
+  .rf-pathways-intro h2 { max-width: 720px; margin: 21px 0 17px; font-size: clamp(38px, 5vw, 51px); }
+  .rf-pathways-intro > p { max-width: 640px; }
+  .rf-pathways-card { min-height: 530px; }
+}
+@media (max-width: 680px) {
+  .rf-pathways.rf-section { width: calc(100% - 40px); margin-top: 20px; }
+  .rf-pathways-layout { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+  .rf-pathways-intro { grid-column: auto; padding-bottom: 14px; }
+  .rf-pathways-intro .rf-chip { font-size: 11px; }
+  .rf-pathways-intro h2 { margin: 22px 0 19px; font-size: clamp(34px, 8vw, 43px); }
+  .rf-pathways-intro > p { font-size: 14px; margin-bottom: 21px; }
+  .rf-pathways-main-link { min-height: 48px; font-size: 13px; }
+  .rf-pathways-card { min-height: 0; padding: 25px 23px 24px; }
+  .rf-pathways-card > h3 { font-size: 20px; margin-bottom: 19px; }
+  .rf-pathways-description { min-height: 0; margin-bottom: 21px; font-size: 14px; }
+  .rf-pathways-figure strong { font-size: 56px; }
+  .rf-pathways-divider { margin-bottom: 21px; }
+  .rf-pathways-card h4 { margin-bottom: 18px; }
+  .rf-pathways-card ul { gap: 12px; margin-bottom: 26px; }
+  .rf-pathways-card li { font-size: 14px; }
+  .rf-pathways-card-link { min-height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rf-pathways-main-link, .rf-pathways-card-link { transition: none; }
+}
