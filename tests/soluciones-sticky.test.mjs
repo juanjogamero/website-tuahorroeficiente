@@ -6,11 +6,14 @@ const home = src('pages/index.astro');
 const css = src('styles/soluciones-oscuras.css');
 const layout = src('layouts/BaseLayout.astro');
 
-test('bloque oscuro aparece inmediatamente tras las cuatro herramientas', () => {
-  const services=home.indexOf('class="rf-services rf-section rf-container"');
-  const dark=home.indexOf('class="rf-dark-solutions rf-section"');
+test('bloque oscuro sigue inmediatamente a la presentación con indicadores', () => {
+  const stats=home.indexOf('class="rf-kpi-grid"');
+  const introEnd=home.indexOf('</section>',stats);
+  const dark=home.indexOf('<section class="rf-dark-solutions rf-section"', introEnd);
   const categories=home.indexOf('class="rf-topics rf-section rf-container"');
-  assert.ok(services >= 0 && services < dark && dark < categories);
+  assert.ok(stats >= 0 && introEnd > stats && dark > introEnd && categories > dark);
+  assert.equal(home.slice(introEnd+'</section>'.length, dark).trim(), '');
+  assert.doesNotMatch(home, /class="rf-services rf-section rf-container"/);
   assert.doesNotMatch(home, /<section class="rf-why rf-section"/);
 });
 test('cuatro tarjetas temáticas con fotos locales y enlaces de categorías existentes', () => {
