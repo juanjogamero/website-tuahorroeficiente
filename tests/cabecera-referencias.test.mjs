@@ -36,7 +36,7 @@ test('franja de referencias situada inmediatamente después del hero con poco ma
 test('en portada la cápsula empieza dentro del hero y se fija arriba tras scroll', () => {
  assert.match(layout, /const isHomePage = localPath === '' \|\| localPath === 'index.html'/);
  assert.match(layout, /const isAboutPage = \['sobre-nosotros'/);
- assert.match(layout, /<body class=\{isHomePage \? 'page-home' : isAboutPage \? 'page-about' : undefined\}>/);
+ assert.match(layout, /<body class=\{isHomePage \? 'page-home' : isAboutPage \? 'page-about' : isToolsPage \? 'page-tools' : isCalculatorPage \? 'page-calculator' : undefined\}>/);
  assert.match(css, /\.page-home \.rf-header:not\(\.is-scrolled\) \{ top: 38px !important; \}/);
  assert.match(css, /\.page-home \.rf-header.is-scrolled \{ top: 14px !important; \}/);
  assert.match(css, /\.page-home \.rf-header:not\(\.is-scrolled\) \{ top: 27px !important; \}/);
