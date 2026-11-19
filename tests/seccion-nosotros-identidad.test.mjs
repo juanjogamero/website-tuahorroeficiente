@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 const get=p=>readFileSync(new URL('../src/'+p,import.meta.url),'utf8');
 const about=get('pages/sobre-nosotros.astro');
 const css=get('styles/pagina-nosotros.css');
-const photoCatalog=get('scripts/descargar-fotografias.mjs');
+const photoCatalog=readFileSync(new URL('../scripts/descargar-fotografias.mjs',import.meta.url),'utf8');
 
 test('presentación editorial sigue al hero y no duplica el bento de la portada',()=>{
   const hero=about.indexOf('<section class="ta-about-hero"');
@@ -18,7 +18,7 @@ test('presentación editorial sigue al hero y no duplica el bento de la portada'
 test('presenta una misión concreta y tres principios con enlaces reales',()=>{
   for(const phrase of [
     'Ahorrar empieza por', 'lo que consume tu hogar', 'datos cotidianos',
-    'Sin prometer ahorros garantizados', 'Empieza con tus números.',
+    'Los resultados son orientativos', 'Empieza con tus números.',
     'Comprueba cada resultado.', 'Compara sin prisas.'
   ])assert.ok(about.includes(phrase),phrase);
   assert.equal((about.match(/class="ta-about-story-principle"/g)||[]).length,3);
