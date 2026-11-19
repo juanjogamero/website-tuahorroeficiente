@@ -231,10 +231,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
    </div>
  </section>
 
+
+ <section class="rf-faq rf-section rf-container rf-faq-modern" id="preguntas-frecuentes" aria-labelledby="rf-faq-title">
+   <div class="rf-faq-left">
+     <span class="rf-chip">✦ Preguntas frecuentes</span>
+     <h2 id="rf-faq-title">Preguntas<br/>frecuentes.</h2>
+     <p>Resolvemos las dudas más habituales sobre nuestros cálculos, los precios que debes introducir y la forma de comparar alternativas.</p>
+     <a class="rf-faq-cta" href="/guias/">Explorar guías <span aria-hidden="true">↗</span></a>
+   </div>
+   <div class="rf-faq-list">
+     <details name="faq-portada" open>
+       <summary>¿Qué necesito para calcular el gasto de un aparato?<span class="rf-faq-toggle" aria-hidden="true"></span></summary>
+       <p>La potencia eléctrica en vatios (W) o el consumo medido, el tiempo de utilización y el precio de energía por kWh de tu contrato. Si el aparato funciona por ciclos o tiene termostato, ajusta el funcionamiento efectivo cuando corresponda.</p>
+     </details>
+     <details name="faq-portada">
+       <summary>¿Por qué el resultado no coincide con toda mi factura?<span class="rf-faq-toggle" aria-hidden="true"></span></summary>
+       <p>La estimación calcula principalmente el coste variable de la energía del uso indicado. No incorpora automáticamente la potencia contratada, impuestos, alquiler de contador ni otros cargos; además, el consumo real puede variar.</p>
+     </details>
+     <details name="faq-portada">
+       <summary>¿Qué precio del kWh debo introducir?<span class="rf-faq-toggle" aria-hidden="true"></span></summary>
+       <p>Utiliza el precio de energía que figura en tu contrato o factura para el periodo que quieras estudiar. Los valores iniciales son ejemplos editables, no una tarifa actual. Si pagas precios distintos por franjas, calcula cada franja por separado.</p>
+     </details>
+     <details name="faq-portada">
+       <summary>¿Cómo calculáis el coste de una ducha?<span class="rf-faq-toggle" aria-hidden="true"></span></summary>
+       <p>Primero estimamos los litros a partir del caudal y los minutos. Después distinguimos el coste variable del agua y saneamiento de la energía necesaria para calentarla. Puedes modificar los precios y el rendimiento del sistema.</p>
+     </details>
+     <details name="faq-portada">
+       <summary>¿Puedo comparar dos electrodomésticos o alternativas?<span class="rf-faq-toggle" aria-hidden="true"></span></summary>
+       <p>Sí, cuando la comparativa está disponible. Usa condiciones equivalentes, como la misma cantidad de cocciones o un periodo de uso comparable, y revisa los supuestos antes de interpretar la diferencia de coste.</p>
+     </details>
+     <details name="faq-portada">
+       <summary>¿Las calculadoras son gratis y sin registro?<span class="rf-faq-toggle" aria-hidden="true"></span></summary>
+       <p>Sí. Puedes utilizarlas gratuitamente, sin crear una cuenta y sin subir tus facturas. Los resultados son estimaciones orientativas y las fórmulas se muestran para que puedas comprobarlas.</p>
+     </details>
+   </div>
+ </section>
+
  <section class="rf-topics rf-section rf-container"><div class="rf-section-top"><div><span class="rf-chip">✦ Áreas de ahorro</span><h2>Cada gasto tiene<br/>una explicación.</h2></div><div><p>La mejor herramienta depende del problema. Explora las principales categorías del portal.</p><a class="rf-underlink" href="/categorias/">Todas las categorías →</a></div></div><div class="rf-topic-grid"><a href="/categorias/electricidad/" class="rf-topic-card"><img src="/images/placas-tejado.webp" alt="Placas solares instaladas en el tejado de una vivienda" loading="lazy" width="680" height="550"/><div><small>01 / ELECTRICIDAD</small><h3>Entiende cuánto consumes</h3><span>↗</span></div></a><a href="/categorias/climatizacion/" class="rf-topic-card"><img src="/images/radiador-hogar.webp" alt="Radiador blanco bajo una ventana" loading="lazy" width="680" height="550"/><div><small>02 / CLIMATIZACIÓN</small><h3>Calor, frío y coste real</h3><span>↗</span></div></a><a href="/categorias/agua/" class="rf-topic-card"><img src="/images/agua-hogar.webp" alt="Persona sirviendo agua en la cocina de su casa" loading="lazy" width="680" height="550"/><div><small>03 / AGUA</small><h3>Litros y energía de calentamiento</h3><span>↗</span></div></a></div></section>
 
 
- <section class="rf-faq rf-section rf-container"><div class="rf-faq-left"><span class="rf-chip">✦ Preguntas frecuentes</span><h2>Tus dudas,<br/>sin letra pequeña.</h2><p>Cada resultado es una estimación que depende de las condiciones de uso y del precio introducido.</p><a class="rf-underlink" href="/guias/">Explorar nuestras guías →</a></div><div class="rf-faq-list"><details open><summary>¿Qué necesito para calcular el gasto de un aparato?<span>+</span></summary><p>Su consumo medido o su potencia eléctrica, el tiempo de uso y el precio por kWh. Si tiene termostato o ciclos, puedes ajustar su factor de funcionamiento.</p></details><details><summary>¿El resultado coincide con toda mi factura?<span>+</span></summary><p>No necesariamente. El cálculo de energía variable no incluye por defecto potencia contratada, alquiler del contador, impuestos ni otros cargos.</p></details><details><summary>¿Los precios son reales y actuales?<span>+</span></summary><p>Los valores de inicio son ejemplos editables. Sustitúyelos por el importe por kWh de tu contrato; no mostramos un precio diario sin fuente y fecha.</p></details><details><summary>¿Las calculadoras son gratuitas?<span>+</span></summary><p>Sí. No requieren cuenta, suscripción ni compartir facturas.</p></details></div></section>
 
  <section class="rf-cta rf-container"><div><span class="rf-chip">✦ Empieza por una pregunta</span><h2>¿Cuánto te cuesta<br/>de verdad cada uso?</h2><p>Prueba los simuladores y encuentra una respuesta adaptada a tu hogar.</p><a class="rf-button" href="/herramientas/">Empezar a calcular ↗</a></div><div class="rf-cta-photo"><img src="/images/hero-renovables.webp" alt="Instalación renovable" loading="lazy" width="720" height="550"/></div></section>
 
