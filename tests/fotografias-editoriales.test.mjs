@@ -58,6 +58,7 @@ test('cada guía presenta su propio tema visual y un texto alternativo específi
 
 test('el blog y las comparativas consumen fotos locales del catálogo y no hotlinks',()=>{
  assert.match(get('src/pages/guias/[slug].astro'), /photoUrls\[post\.data\.imageName\]/);
- assert.match(get('src/pages/comparativas/[slug].astro'), /photoUrls\.fryer/);
+ assert.match(get('src/pages/comparativas/[slug].astro'), /photoUrls\[tool\.image/);
+ assert.match(get('src/layouts/ContentLayout.astro'), /src=\{heroImage\}/);
  assert.match(get('package.json'), /"prebuild": "node scripts\/descargar-fotografias\.mjs"/);
 });

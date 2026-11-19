@@ -1,20 +1,109 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import ToolCalculator from '../../components/ToolCalculator.astro';
-import ToolCard from '../../components/ToolCard.astro';
-import Icon from '../../components/Icon.astro';
-import {tools,byId,pathOf,sources} from '../../data/tools';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import {comparisons, type ComparisonArticle} from '../../data/comparativas';
+import {byId, sources} from '../../data/tools';
 import {photoUrls} from '../../data/categories';
-export function getStaticPaths(){return tools.filter(t=>t.group==='comparativas').map(tool=>({params:{slug:tool.slug},props:{tool}}));}
-const {tool}=Astro.props;const related=tool.related.map(byId).filter(Boolean);
-const schema={"@context":"https://schema.org","@type":"WebApplication",name:tool.title,applicationCategory:'UtilitiesApplication',operatingSystem:'Web',inLanguage:'es-ES',isAccessibleForFree:true,description:tool.description,url:new URL(pathOf(tool).replace(/^\/+/,''),new URL(import.meta.env.BASE_URL,Astro.site)).toString()};
+export function getStaticPaths(){
+  return comparisons.map(article=>({params:{slug:article.slug},props:{article}}));
+}
+const {article}=Astro.props as {article: ComparisonArticle};
+const tool=byId(article.toolId);
+if(!tool) throw new Error('Falta la ficha de referencia para '+article.slug);
+const related=comparisons.filter(item=>item.slug!==article.slug);
+const pageUrl=new URL('comparativas/'+article.slug+'/',new URL(import.meta.env.BASE_URL,Astro.site)).toString();
+const schema={
+  '@context':'https://schema.org',
+  '@graph':[
+    {'@type':'Article',mainEntityOfPage:pageUrl,headline:article.title,description:article.description,
+      inLanguage:'es-ES',dateModified:'2026-11-19',
+      author:{'@type':'Organization',name:'Tu Ahorro Eficiente'},
+      publisher:{'@type':'Organization',name:'Tu Ahorro Eficiente',url:'https://tuahorroeficiente.es/'}},
+    {'@type':'BreadcrumbList',itemListElement:[
+      {'@type':'ListItem',position:1,name:'Comparativas',item:new URL('comparativas/',new URL(import.meta.env.BASE_URL,Astro.site)).toString()},
+      {'@type':'ListItem',position:2,name:article.cardTitle,item:pageUrl}
+    ]}
+  ]
+};
 ---
-<BaseLayout title={tool.title} description={tool.description} image={photoUrls.fryer} schema={schema}>
-<section class="tool-hero comparison-hero"><img class="rf-inner-bgimage" src={photoUrls.oven} alt="" aria-hidden="true"/><div class="wrap"><Breadcrumbs items={[{label:'Comparativas',url:'/comparativas/'},{label:tool.title}]}/><div class="tool-hero-grid"><div><span class="eyebrow">COMPARATIVA / COCINA</span><h1>{tool.title}</h1><p class="lead">{tool.intro}</p><div class="hero-meta"><span><Icon name="calculator" size={17}/> Datos por cocción</span><span><Icon name="shield" size={17}/> Sin promesas universales</span></div><a href="#calculadora" class="btn btn-lime">Comparar mis consumos <Icon name="arrow" size={17}/></a></div><div class="comparison-visual"><img src={photoUrls.fryer} alt="Freidora de aire sobre una encimera de cocina" width="650" height="480"/><span>Compara la misma receta y raciones</span></div></div></div></section>
-<div class="wrap"><ToolCalculator tool={tool}/></div>
-<section class="section explain-section"><div class="wrap"><div class="explain-layout"><article class="explain-main"><span class="eyebrow">· ANÁLISIS</span><h2>La unidad justa es la <span class="purple-text">cocción equivalente.</span></h2><p>{tool.model}</p><div class="method-card"><span class="small-label">FÓRMULA DE COMPARACIÓN</span><p>{tool.formula}</p></div><h3>Ejemplo matemático, no dato medio</h3><p>{tool.example}</p><h3>Cuándo cambia la respuesta</h3><ul class="article-bullets">{tool.limits.map(l=><li>{l}</li>)}</ul></article><aside class="explain-sidebar"><span class="eyebrow">ANTES DE DECIDIR</span>{tool.keyTakeaways.map((s,i)=><div class="sidebar-point"><span>{String(i+1).padStart(2,'0')}</span><p>{s}</p></div>)}</aside></div></div></section>
-<section class="section faqs-section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">· RESOLVEMOS DUDAS</span><h2>Preguntas frecuentes.</h2></div></div><div class="faq-list">{tool.questions.map(qa=><details><summary>{qa.q}<span aria-hidden="true">+</span></summary><p>{qa.a}</p></details>)}</div></div></section>
-<section class="section source-section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">· FUENTES</span><h2>Más información <span class="purple-text">verificable.</span></h2></div></div><div class="source-rows">{tool.src.map(id=><a href={sources[id].url} target="_blank" rel="noopener noreferrer"><span><Icon name="book" size={19}/></span><div><strong>{sources[id].name}</strong><p>{sources[id].note}</p></div><Icon name="arrowUp" size={18}/></a>)}</div><p class="source-fineprint">Modelo revisado el 18/11/2026. Los números iniciales son ficticios; no atribuidos a estos organismos. <a href="/metodologia/">Metodología</a>.</p></div></section>
-<section class="section related-section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">· HERRAMIENTAS RELACIONADAS</span><h2>Amplía <span class="purple-text">la comparación.</span></h2></div></div><div class="tool-grid">{related.map(t=><ToolCard tool={t}/>)}</div></div></section>
-</BaseLayout>
+<ContentLayout
+  title={article.title}
+  description={article.description}
+  category="Comparativas"
+  breadcrumbs={[{label:'Comparativas',url:'/comparativas/'},{label:article.cardTitle}]}
+  eyebrow={`ANÁLISIS EDITORIAL · ${article.category.toUpperCase()}`}
+  schema={schema}
+  image={photoUrls[tool.image as keyof typeof photoUrls]??photoUrls.hero}
+>
+<section class="cmp-article-section">
+  <div class="wrap cmp-reading-layout">
+    <article class="cmp-article">
+      <div class="cmp-article-meta"><span>{article.category}</span><span>{article.readTime}</span><span>Revisión: 19/11/2026</span></div>
+      <p class="cmp-article-lead">{article.lead}</p>
+
+      <section class="cmp-verdict" aria-labelledby="cmp-verdict-title">
+        <span class="cmp-overline">LA RESPUESTA EN DOS IDEAS</span>
+        <h2 id="cmp-verdict-title">{article.verdict}</h2>
+        <p>{article.verdictDetail}</p>
+      </section>
+
+      <section class="cmp-reading-section" id="diferencias">
+        <span class="cmp-overline">DIFERENCIAS REALES</span>
+        <h2>{article.cardTitle}: cara a cara</h2>
+        <p>La tabla resume el contexto de uso de cada opción. No sustituye las especificaciones del equipo que tengas o pienses adquirir.</p>
+        <div class="cmp-table-scroll" tabindex="0" role="region" aria-label="Tabla de diferencias entre alternativas">
+          <table class="cmp-table">
+            <thead><tr><th scope="col">Aspecto</th><th scope="col">Primera opción</th><th scope="col">Segunda opción</th></tr></thead>
+            <tbody>{article.matrix.map(row=><tr><th scope="row">{row[0]}</th><td>{row[1]}</td><td>{row[2]}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </section>
+
+      {article.sections.map((section,index)=>(
+        <section class="cmp-reading-section" id={`criterio-${index+1}`}>
+          <span class="cmp-overline">ANÁLISIS / {String(index+1).padStart(2,'0')}</span>
+          <h2>{section.heading}</h2>
+          {section.paragraphs.map(paragraph=><p>{paragraph}</p>)}
+        </section>
+      ))}
+
+      <section class="cmp-reading-section" id="ejemplo">
+        <span class="cmp-overline">EJEMPLO CON SUPUESTOS VISIBLES</span>
+        <h2>{article.exampleTitle}</h2>
+        <p>{article.exampleLead}</p>
+        <p class="cmp-caution"><strong>Cómo interpretarlo:</strong> el ejemplo ilustra una operación matemática concreta. No es un ensayo propio, una media nacional ni una garantía sobre un modelo comercial.</p>
+      </section>
+
+      <section class="cmp-reading-section" id="preguntas">
+        <span class="cmp-overline">PREGUNTAS FRECUENTES</span>
+        <h2>Respuestas a dudas habituales</h2>
+        <div class="cmp-faq">{tool.questions.map(qa=><div class="cmp-faq-item"><h3>{qa.q}</h3><p>{qa.a}</p></div>)}</div>
+      </section>
+
+      <section class="cmp-reading-section" id="fuentes">
+        <span class="cmp-overline">TRANSPARENCIA EDITORIAL</span>
+        <h2>Fuentes y límites de esta comparación</h2>
+        <p>Utilizamos documentación de referencia para conceptos de consumo y eficiencia. Las cifras de los ejemplos son supuestos didácticos, no resultados medidos por los organismos enlazados.</p>
+        <ul class="cmp-sources">
+          {tool.src.map(id=><li><a href={sources[id].url} target="_blank" rel="noopener noreferrer">{sources[id].name}<span aria-hidden="true">↗</span></a><span>{sources[id].note}</span></li>)}
+        </ul>
+        <p class="cmp-revision">Responsable editorial: Tu Ahorro Eficiente · Última revisión: 19/11/2026. Para correcciones, <a href="/contacto/">contacta con nosotros</a>.</p>
+      </section>
+    </article>
+    <aside class="cmp-aside" aria-label="Claves de la comparación">
+      <div class="cmp-aside-card">
+        <span class="cmp-overline">ANTES DE DECIDIR</span>
+        <h2>Qué debes comprobar</h2>
+        <ol>{article.conditions.map(item=><li>{item}</li>)}</ol>
+        <a href="/comparativas/">Ver todas las comparativas <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+  </div>
+</section>
+<section class="cmp-related-section">
+  <div class="wrap">
+    <span class="cmp-overline">MÁS ANÁLISIS</span>
+    <h2>Otras decisiones para tu hogar</h2>
+    <div class="cmp-related-grid">{related.map(other=><a href={`/comparativas/${other.slug}/`}><span>{other.category}</span><strong>{other.cardTitle}</strong><small>Leer comparativa ↗</small></a>)}</div>
+  </div>
+</section>
+</ContentLayout>

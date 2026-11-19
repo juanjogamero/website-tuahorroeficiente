@@ -3,10 +3,11 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 interface Props { title:string; description:string; category:string; breadcrumbs:{label:string;url?:string}[];reading?:string;eyebrow?:string;image?:string;schema?:Record<string,unknown> }
 const {title,description,category,breadcrumbs,reading='Lectura útil',eyebrow='GUÍA PRÁCTICA',image,schema}=Astro.props;
+const heroImage=image??'/images/hero-renovables.webp';
 ---
 <BaseLayout title={title} description={description} image={image} schema={schema}>
  <section class="rf-innerhero" aria-label={category}>
-   <img class="rf-inner-bgimage" src="/images/hero-renovables.webp" alt="" aria-hidden="true"/>
+   <img class="rf-inner-bgimage" src={heroImage} alt="" aria-hidden="true"/>
    <div class="rf-innerhero-backdrop"></div>
    <div class="rf-container rf-innerhero-content">
      <Breadcrumbs items={breadcrumbs}/>

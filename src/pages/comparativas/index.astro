@@ -1,8 +1,53 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
-import ToolCard from '../../components/ToolCard.astro';
-import {tools} from '../../data/tools';
+import {comparisons} from '../../data/comparativas';
+const schema={
+  '@context':'https://schema.org',
+  '@type':'CollectionPage',
+  name:'Comparativas de consumo y alternativas domésticas',
+  description:'Guías editoriales sobre consumo doméstico, ventajas, inconvenientes y costes de distintas alternativas.',
+  mainEntity:{'@type':'ItemList',itemListElement:comparisons.map((article,index)=>({
+    '@type':'ListItem',position:index+1,name:article.title,
+    url:new URL('comparativas/'+article.slug+'/',new URL(import.meta.env.BASE_URL,Astro.site)).toString()
+  }))}
+};
 ---
-<ContentLayout title="Comparativas de consumo eléctrico y alternativas domésticas" description="Calculadoras de comparación gratuitas: horno frente a freidora, iluminación LED y bomba de calor frente a radiador, con escenarios y fórmulas editables." category="Comparativas" breadcrumbs={[{label:'Comparativas'}]} eyebrow="DECISIONES COMPARADAS">
-<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">NO TODO ES MÁS EFICIENTE SIEMPRE</span><h2>Comparar bien cambia <span class="purple-text">la respuesta.</span></h2><p>Solo publicamos comparativas con calculadoras realmente operativas y una unidad de comparación justa.</p></div></div><div class="tool-grid">{tools.filter(t=>t.group==='comparativas').map(t=><ToolCard tool={t}/>)}</div><div class="wide-tip"><h3>¿Cómo interpretar una comparación?</h3><p>Los resultados muestran diferencias de coste bajo tus supuestos, no promesas de ahorro. Si comparas bomba de calor y radiador, introduce una misma demanda de calor útil y revisa qué queda fuera del cálculo.</p><p><a class="inline-link" href="/metodologia/">Leer la metodología completa →</a></p></div></div></section>
+<ContentLayout
+ title="Comparativas de consumo eléctrico y alternativas domésticas"
+ description="Comparativas y guías prácticas para elegir entre alternativas del hogar: consumo, coste real, ventajas, inconvenientes y criterios para decidir mejor."
+ category="Comparativas"
+ breadcrumbs={[{label:'Comparativas'}]}
+ eyebrow="DECISIONES COMPARADAS"
+ schema={schema}
+>
+  <section class="cmp-intro-section" aria-labelledby="cmp-index-title">
+    <div class="wrap">
+      <div class="cmp-index-intro">
+        <span class="eyebrow">NO TODO ES MÁS EFICIENTE SIEMPRE</span>
+        <h2 id="cmp-index-title">Comparar bien cambia <span class="cmp-highlight">la respuesta.</span></h2>
+        <p>Solo publicamos análisis útiles, con criterios claros, ejemplos reproducibles y fuentes verificables. Antes de decidir, descubre qué diferencia a cada opción y en qué situaciones conviene.</p>
+      </div>
+      <div class="cmp-cards">
+        {comparisons.map((article,index)=>(
+          <article class="cmp-card">
+            <div class="cmp-card-top"><span class="cmp-category">{article.category}</span><span class="cmp-no">{String(index+1).padStart(2,'0')} / {String(comparisons.length).padStart(2,'0')}</span></div>
+            <h3><a href={`/comparativas/${article.slug}/`}>{article.cardTitle}</a></h3>
+            <p>{article.lead}</p>
+            <div class="cmp-card-takeaway"><span>LO ESENCIAL</span><strong>{article.verdict}</strong></div>
+            <a class="cmp-card-link" href={`/comparativas/${article.slug}/`} aria-label={`Leer el análisis: ${article.cardTitle}`}>Leer análisis completo <span aria-hidden="true">↗</span></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="cmp-criteria-section" aria-labelledby="cmp-criteria-title">
+    <div class="wrap cmp-criteria-grid">
+      <div><span class="eyebrow">NUESTRO CRITERIO EDITORIAL</span><h2 id="cmp-criteria-title">Una buena comparación no tiene ganador universal.</h2></div>
+      <div>
+        <p>Evaluamos el servicio que ofrece cada alternativa, su consumo, las condiciones de uso y los costes que quedan fuera de la cifra principal. No atribuimos a los fabricantes resultados que no hemos medido.</p>
+        <p>Los importes numéricos son escenarios didácticos, no tarifas actuales ni promesas de ahorro. La conclusión puede cambiar con el número de personas, el clima, el equipo o la frecuencia de uso.</p>
+        <a class="cmp-method-link" href="/metodologia/">Consultar nuestra metodología <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
 </ContentLayout>
