@@ -1,4 +1,4 @@
-/* ADR 34 — Primera sección de Nosotros. Página en blanco tras hero hasta nuevas indicaciones. */
+/* ADR 34 y 36 — Hero y presentación editorial de Nosotros. */
 .page-about main#contenido {
   min-height: 100svh;
 }
@@ -144,4 +144,234 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .ta-about-breadcrumb a { scroll-behavior: auto; }
+}
+
+
+/* ADR 36 — Nuestra misión, composición asimétrica distinta de la home.
+   Mantiene DM Sans, lima, bordes redondeados y lenguaje editorial del portal. */
+.page-about .ta-about-story {
+  width: min(1240px, calc(100% - 80px));
+  margin: clamp(92px, 8vw, 130px) auto 0;
+  padding: 0 0 clamp(96px, 8vw, 136px);
+  color: #202527;
+}
+.page-about .ta-about-story-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  gap: clamp(46px, 5.3vw, 90px);
+  align-items: center;
+}
+.page-about .ta-about-story-editorial { min-width: 0; }
+.page-about .ta-about-story-editorial .rf-chip {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+.page-about .ta-about-story h2 {
+  max-width: 680px;
+  margin: 29px 0 30px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: clamp(42px, 3.5vw, 62px);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -.052em;
+  text-wrap: pretty;
+}
+.page-about .ta-about-story-accent {
+  color: inherit;
+  background: linear-gradient(transparent 75%, #e1ff57 75%, #e1ff57 95%, transparent 95%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.page-about .ta-about-story-lead {
+  max-width: 615px;
+  margin: 0 0 17px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #3d494b;
+}
+.page-about .ta-about-story-description {
+  max-width: 615px;
+  margin: 0 0 26px;
+  font-size: 15px;
+  line-height: 1.72;
+  color: #687174;
+}
+.page-about .ta-about-story-primary {
+  display: inline-flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #202b2d;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color .18s ease;
+}
+.page-about .ta-about-story-primary:hover { background: #39585c; }
+.page-about .ta-about-story-primary:focus-visible,
+.page-about .ta-about-story-principle a:focus-visible {
+  outline: 3px solid #276b78;
+  outline-offset: 4px;
+}
+.page-about .ta-about-story-visual {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  min-height: 485px;
+  aspect-ratio: 1.02 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #dce6e2;
+}
+.page-about .ta-about-story-visual::after {
+  content: '';
+  position: absolute;
+  inset: 35% 0 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(15,33,36,.28));
+}
+.page-about .ta-about-story-visual > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: 52% center;
+}
+.page-about .ta-about-story-note {
+  position: absolute;
+  z-index: 1;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 22px 21px;
+  border-radius: 16px;
+  color: #202b2d;
+  background: rgba(247,248,243,.91);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.page-about .ta-about-story-note-symbol {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  flex: 0 0 39px;
+  color: #152624;
+  background: #e1ff57;
+  font-size: 23px;
+  line-height: 1;
+}
+.page-about .ta-about-story-note strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -.035em;
+  line-height: 1.25;
+}
+.page-about .ta-about-story-note small {
+  display: block;
+  margin-top: 6px;
+  color: #4d5b5a;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.page-about .ta-about-story-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: clamp(24px, 3vw, 44px);
+  margin-top: clamp(58px, 6vw, 90px);
+}
+.page-about .ta-about-story-principle {
+  min-width: 0;
+  padding-top: 22px;
+  border-top: 1px solid #cad0cd;
+}
+.page-about .ta-about-story-principle-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #496164;
+  font-size: 12px;
+  letter-spacing: .055em;
+  font-weight: 700;
+}
+.page-about .ta-about-story-principle-head span:last-child {
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 400;
+}
+.page-about .ta-about-story-principle h3 {
+  margin: 29px 0 12px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: clamp(22px, 1.45vw, 27px);
+  line-height: 1.2;
+  letter-spacing: -.036em;
+  font-weight: 500;
+}
+.page-about .ta-about-story-principle p {
+  max-width: 350px;
+  margin: 0 0 20px;
+  color: #697275;
+  font-size: 14px;
+  line-height: 1.67;
+}
+.page-about .ta-about-story-principle a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 9px;
+  color: #233b41;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.page-about .ta-about-story-principle a:hover { color: #187182; }
+@media (max-width: 1050px) {
+  .page-about .ta-about-story { width: min(880px, calc(100% - 56px)); }
+  .page-about .ta-about-story-top { grid-template-columns: minmax(0,1fr) minmax(0,.88fr); gap: 30px; }
+  .page-about .ta-about-story h2 { font-size: clamp(37px,4.5vw,51px); }
+  .page-about .ta-about-story-lead { font-size: 15px; }
+  .page-about .ta-about-story-description { font-size: 14px; }
+  .page-about .ta-about-story-visual { min-height: 395px; }
+  .page-about .ta-about-story-note { padding: 16px; }
+  .page-about .ta-about-story-note strong { font-size: 16px; }
+}
+@media (max-width: 760px) {
+  .page-about .ta-about-story {
+    width: calc(100% - 40px);
+    margin-top: 78px;
+    padding-bottom: 90px;
+  }
+  .page-about .ta-about-story-top { grid-template-columns: minmax(0,1fr); gap: 34px; }
+  .page-about .ta-about-story-editorial .rf-chip { font-size: 11px; }
+  .page-about .ta-about-story h2 { margin: 22px 0 23px; font-size: clamp(35px,8.1vw,46px); }
+  .page-about .ta-about-story-lead { font-size: 15px; }
+  .page-about .ta-about-story-description { font-size: 14px; }
+  .page-about .ta-about-story-primary { min-height: 50px; font-size: 13px; }
+  .page-about .ta-about-story-visual { min-height: 330px; aspect-ratio: 1.18 / 1; }
+  .page-about .ta-about-story-principles { grid-template-columns: minmax(0,1fr); gap: 30px; margin-top: 50px; }
+  .page-about .ta-about-story-principle h3 { margin-top: 18px; font-size: 24px; }
+  .page-about .ta-about-story-principle p { max-width: 550px; }
+}
+@media (max-width: 380px) {
+  .page-about .ta-about-story h2 { font-size: 34px; }
+  .page-about .ta-about-story-note { bottom: 10px; left: 10px; right: 10px; padding: 13px; gap: 10px; }
+  .page-about .ta-about-story-note-symbol { width: 32px; height: 32px; flex-basis: 32px; font-size: 19px; }
+  .page-about .ta-about-story-note strong { font-size: 15px; }
+  .page-about .ta-about-story-note small { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-about .ta-about-story-primary { transition: none; }
 }

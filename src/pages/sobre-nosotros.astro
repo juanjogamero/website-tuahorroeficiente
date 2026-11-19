@@ -32,4 +32,45 @@ import Icon from '../components/Icon.astro';
       <div class="ta-about-hero-rule" aria-hidden="true"></div>
     </div>
   </section>
+
+  <section class="ta-about-story" aria-labelledby="ta-about-story-title">
+    <div class="ta-about-story-top">
+      <div class="ta-about-story-editorial">
+        <span class="rf-chip">✦ Nuestro propósito</span>
+        <h2 id="ta-about-story-title">Ahorrar empieza por <span class="ta-about-story-accent">comprender</span> lo que consume tu hogar.</h2>
+        <p class="ta-about-story-lead">Tu Ahorro Eficiente es un proyecto editorial español que transforma datos cotidianos —potencia, tiempo de uso, litros y precios— en estimaciones que puedes entender y revisar.</p>
+        <p class="ta-about-story-description">Queremos ayudarte a identificar qué influye en tus gastos de electricidad, climatización, electrodomésticos y agua. Sin prometer ahorros garantizados: cada cálculo depende de los datos que introduces y de sus supuestos.</p>
+        <a class="ta-about-story-primary" href="/metodologia/">Descubre nuestra metodología <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <figure class="ta-about-story-visual">
+        <img src="/images/agua-hogar.webp" alt="Una persona llena un vaso de agua en el grifo de su cocina" loading="lazy" decoding="async" width="1200" height="920"/>
+        <figcaption class="ta-about-story-note">
+          <span class="ta-about-story-note-symbol" aria-hidden="true">✳</span>
+          <span><strong>Las cifras necesitan contexto.</strong><small>Variables editables, fórmulas visibles y resultados orientativos.</small></span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="ta-about-story-principles" aria-label="Cómo trabajamos">
+      <article class="ta-about-story-principle">
+        <div class="ta-about-story-principle-head"><span>01 / DATOS</span><span aria-hidden="true">↗</span></div>
+        <h3>Empieza con tus números.</h3>
+        <p>Introduce el consumo, las horas, los minutos o el precio de tu suministro. Los valores de ejemplo siempre se pueden modificar.</p>
+        <a href="/herramientas/">Explorar calculadoras <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="ta-about-story-principle">
+        <div class="ta-about-story-principle-head"><span>02 / MÉTODO</span><span aria-hidden="true">↗</span></div>
+        <h3>Comprueba cada resultado.</h3>
+        <p>Explicamos las operaciones, las unidades y los supuestos para diferenciar el coste estimado de una factura completa.</p>
+        <a href="/metodologia/">Ver cómo calculamos <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="ta-about-story-principle">
+        <div class="ta-about-story-principle-head"><span>03 / DECISIONES</span><span aria-hidden="true">↗</span></div>
+        <h3>Compara sin prisas.</h3>
+        <p>Contrasta alternativas en condiciones equivalentes y decide qué tiene sentido para tu vivienda y tus hábitos.</p>
+        <a href="/comparativas/">Consultar comparativas <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </section>
 </BaseLayout>

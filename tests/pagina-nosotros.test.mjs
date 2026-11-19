@@ -6,10 +6,10 @@ const about=src('pages/sobre-nosotros.astro');
 const css=src('styles/pagina-nosotros.css');
 const base=src('layouts/BaseLayout.astro');
 
-test('Nosotros se reinicia con un único hero y sin secciones antiguas',()=>{
+test('Nosotros conserva su hero y suma la presentación editorial sin secciones antiguas',()=>{
   assert.match(about, /<BaseLayout/);
   assert.doesNotMatch(about, /<ContentLayout|feature-split|value-grid|PRINCIPIOS EDITORIALES|NUESTRO PUNTO DE PARTIDA/);
-  assert.equal((about.match(/<section\b/g)||[]).length,1);
+  assert.equal((about.match(/<section\b/g)||[]).length,2);
   assert.match(about, /<section class="ta-about-hero"/);
   assert.match(about, /<h1 id="ta-about-title">Nosotros<\/h1>/);
 });
