@@ -1,0 +1,131 @@
+/* ADR 30 · Casos prácticos con fotografía. Diseño limpio según captura, sin testimonios ficticios. */
+.rf-showcase.rf-section{
+  width:min(1175px,calc(100% - 72px));
+  max-width:none;
+  margin:0 auto;
+  padding:0 0 clamp(104px,9vw,156px);
+  background:#fff;
+}
+.rf-showcase-container{width:100%}
+.rf-showcase-heading{text-align:center;max-width:1050px;margin:0 auto}
+.rf-showcase-heading .rf-chip{font-size:12px;font-weight:700;padding:8px 17px}
+.rf-showcase-heading h2{
+  margin:31px auto 0;
+  max-width:1050px;
+  font-family:'DM Sans',Arial,sans-serif;
+  font-size:clamp(43px,3.35vw,62px);
+  line-height:1.19;
+  font-weight:500;
+  letter-spacing:-.045em;
+  color:#282929;
+  text-wrap:balance;
+}
+.rf-showcase-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+  margin-top:68px;
+}
+.rf-showcase-card{
+  position:relative;
+  isolation:isolate;
+  min-width:0;
+  display:block;
+  height:clamp(345px,28vw,388px);
+  overflow:hidden;
+  border-radius:18px;
+  color:#1b2324;
+  background:#dce5e5;
+  text-decoration:none;
+}
+.rf-showcase-card>img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .3s ease;
+}
+.rf-showcase-card::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:40% 0 0;
+  background:linear-gradient(to bottom,transparent,rgba(9,22,26,.28));
+  pointer-events:none;
+}
+.rf-showcase-arrow{
+  position:absolute;
+  z-index:3;
+  top:17px;
+  right:17px;
+  width:47px;
+  height:47px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#e7ff54;
+  color:#101d19;
+  transition:background-color .2s ease,transform .2s ease;
+}
+.rf-showcase-arrow svg{width:25px;height:25px;display:block}
+.rf-showcase-glass{
+  position:absolute;
+  z-index:2;
+  inset:auto 9px 9px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:11px;
+  min-height:115px;
+  padding:19px 18px 17px;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:15px;
+  background:rgba(242,246,246,.78);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+}
+.rf-showcase-glass strong{
+  display:block;
+  font-family:'DM Sans',Arial,sans-serif;
+  font-size:clamp(18px,1.22vw,23px);
+  line-height:1.27;
+  letter-spacing:-.032em;
+  font-weight:500;
+  color:#242829;
+}
+.rf-showcase-detail{
+  display:flex;
+  gap:9px;
+  align-items:center;
+  color:#4d575a;
+  font-size:12px;
+  line-height:1.4;
+}
+.rf-showcase-detail [aria-hidden]{font-size:15px;color:#24363a}
+.rf-showcase-card:hover>img{transform:scale(1.04)}
+.rf-showcase-card:hover .rf-showcase-arrow{background:#d7f744;transform:translate(2px,-2px)}
+.rf-showcase-card:focus-visible{outline:4px solid #246c72;outline-offset:5px}
+@media(max-width:980px){
+  .rf-showcase.rf-section{width:min(800px,calc(100% - 52px))}
+  .rf-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px;margin-top:52px}
+  .rf-showcase-card{height:350px}
+  .rf-showcase-heading h2{font-size:clamp(39px,5.1vw,53px)}
+  .rf-showcase-glass strong{font-size:20px}
+}
+@media(max-width:640px){
+  .rf-showcase.rf-section{width:calc(100% - 40px);padding-bottom:78px}
+  .rf-showcase-heading h2{font-size:clamp(34px,8.2vw,45px);margin-top:22px}
+  .rf-showcase-heading .rf-chip{font-size:11px}
+  .rf-showcase-grid{grid-template-columns:minmax(0,1fr);gap:18px;margin-top:38px}
+  .rf-showcase-card{height:360px;border-radius:16px}
+  .rf-showcase-arrow{top:14px;right:14px;width:46px;height:46px}
+  .rf-showcase-glass{inset:auto 8px 8px;min-height:105px;padding:16px 16px 15px}
+  .rf-showcase-glass strong{font-size:21px}
+  .rf-showcase-detail{font-size:12px}
+}
+@media(max-width:350px){.rf-showcase-card{height:320px}.rf-showcase-glass strong{font-size:19px}}
+@media(prefers-reduced-motion:reduce){
+  .rf-showcase-card>img,.rf-showcase-arrow{transition:none}
+  .rf-showcase-card:hover>img{transform:none}
+  .rf-showcase-card:hover .rf-showcase-arrow{transform:none}
+}

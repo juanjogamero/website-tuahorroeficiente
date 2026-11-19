@@ -153,9 +153,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
    </div>
  </section>
 
+
+ <section class="rf-showcase rf-section" aria-labelledby="rf-showcase-title">
+   <div class="rf-showcase-container">
+     <header class="rf-showcase-heading">
+       <span class="rf-chip">✦ Ejemplos para tu hogar</span>
+       <h2 id="rf-showcase-title">Situaciones cotidianas<br/>que puedes calcular.</h2>
+     </header>
+     <div class="rf-showcase-grid">
+       <a class="rf-showcase-card" href="/herramientas/cuanto-gasta-aire-acondicionado/" aria-label="Calcular el coste de usar el aire acondicionado">
+         <img src="/images/climatizacion-exterior.webp" alt="Unidad exterior de aire acondicionado instalada en un edificio" width="680" height="700" loading="lazy" decoding="async"/>
+         <span class="rf-showcase-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg></span>
+         <span class="rf-showcase-glass">
+           <strong>¿Cuánto cuesta el aire acondicionado?</strong>
+           <span class="rf-showcase-detail"><span aria-hidden="true">◈</span> Horas, potencia y precio por kWh</span>
+         </span>
+       </a>
+       <a class="rf-showcase-card" href="/herramientas/calculadora-gasto-ducha/" aria-label="Calcular los litros y el coste de una ducha">
+         <img src="/images/grifo-agua.webp" alt="Grifo con agua corriente para representar el consumo doméstico" width="680" height="700" loading="lazy" decoding="async"/>
+         <span class="rf-showcase-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg></span>
+         <span class="rf-showcase-glass">
+           <strong>¿Cuánta agua consume una ducha?</strong>
+           <span class="rf-showcase-detail"><span aria-hidden="true">◈</span> Caudal, minutos y coste estimado</span>
+         </span>
+       </a>
+       <a class="rf-showcase-card" href="/comparativas/freidora-aire-vs-horno/" aria-label="Comparar el coste de cocinar con horno o freidora de aire">
+         <img src="/images/horno-cocina.webp" alt="Horno doméstico instalado en una cocina" width="680" height="700" loading="lazy" decoding="async"/>
+         <span class="rf-showcase-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M8 5h11v11"/></svg></span>
+         <span class="rf-showcase-glass">
+           <strong>Horno o freidora: compara el gasto</strong>
+           <span class="rf-showcase-detail"><span aria-hidden="true">◈</span> Consumo por cocción y coste anual</span>
+         </span>
+       </a>
+     </div>
+   </div>
+ </section>
+
  <section class="rf-topics rf-section rf-container"><div class="rf-section-top"><div><span class="rf-chip">✦ Áreas de ahorro</span><h2>Cada gasto tiene<br/>una explicación.</h2></div><div><p>La mejor herramienta depende del problema. Explora las principales categorías del portal.</p><a class="rf-underlink" href="/categorias/">Todas las categorías →</a></div></div><div class="rf-topic-grid"><a href="/categorias/electricidad/" class="rf-topic-card"><img src="/images/placas-tejado.webp" alt="Placas solares instaladas en el tejado de una vivienda" loading="lazy" width="680" height="550"/><div><small>01 / ELECTRICIDAD</small><h3>Entiende cuánto consumes</h3><span>↗</span></div></a><a href="/categorias/climatizacion/" class="rf-topic-card"><img src="/images/radiador-hogar.webp" alt="Radiador blanco bajo una ventana" loading="lazy" width="680" height="550"/><div><small>02 / CLIMATIZACIÓN</small><h3>Calor, frío y coste real</h3><span>↗</span></div></a><a href="/categorias/agua/" class="rf-topic-card"><img src="/images/agua-hogar.webp" alt="Persona sirviendo agua en la cocina de su casa" loading="lazy" width="680" height="550"/><div><small>03 / AGUA</small><h3>Litros y energía de calentamiento</h3><span>↗</span></div></a></div></section>
 
- <section class="rf-cases rf-section"><div class="rf-container"><div class="rf-section-top"><div><span class="rf-chip">✦ Escenarios comprobables</span><h2>Así se entienden<br/>mejor los números.</h2></div><p>Ejemplos didácticos, no resultados de clientes ni ahorros garantizados. Abre cada herramienta y cambia sus supuestos.</p></div><div class="rf-cases-grid"><a href="/herramientas/cuanto-gasta-radiador-electrico/"><small>Radiador eléctrico</small><strong>90 kWh</strong><span>1.500 W × 3 horas × 20 días</span><b>Comprobar escenario ↗</b></a><a href="/herramientas/calculadora-gasto-ducha/"><small>Agua doméstica</small><strong>2.400 L</strong><span>10 L/min × 8 min × 30 usos</span><b>Comprobar escenario ↗</b></a><a href="/comparativas/freidora-aire-vs-horno/"><small>Comparativa de cocina</small><strong>20,80 €</strong><span>Diferencia anual en un ejemplo de 208 cocciones</span><b>Comprobar escenario ↗</b></a></div></div></section>
 
  <section class="rf-faq rf-section rf-container"><div class="rf-faq-left"><span class="rf-chip">✦ Preguntas frecuentes</span><h2>Tus dudas,<br/>sin letra pequeña.</h2><p>Cada resultado es una estimación que depende de las condiciones de uso y del precio introducido.</p><a class="rf-underlink" href="/guias/">Explorar nuestras guías →</a></div><div class="rf-faq-list"><details open><summary>¿Qué necesito para calcular el gasto de un aparato?<span>+</span></summary><p>Su consumo medido o su potencia eléctrica, el tiempo de uso y el precio por kWh. Si tiene termostato o ciclos, puedes ajustar su factor de funcionamiento.</p></details><details><summary>¿El resultado coincide con toda mi factura?<span>+</span></summary><p>No necesariamente. El cálculo de energía variable no incluye por defecto potencia contratada, alquiler del contador, impuestos ni otros cargos.</p></details><details><summary>¿Los precios son reales y actuales?<span>+</span></summary><p>Los valores de inicio son ejemplos editables. Sustitúyelos por el importe por kWh de tu contrato; no mostramos un precio diario sin fuente y fecha.</p></details><details><summary>¿Las calculadoras son gratuitas?<span>+</span></summary><p>Sí. No requieren cuenta, suscripción ni compartir facturas.</p></details></div></section>
 
