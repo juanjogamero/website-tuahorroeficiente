@@ -45,7 +45,7 @@ test('en portada la cápsula empieza dentro del hero y se fija arriba tras scrol
 
 test('comparativas: header dentro del hero sin modificar el estado al hacer scroll', () => {
  const cmpCss = src('styles/comparativas-editoriales.css');
- assert.match(cmpCss, /\\.page-comparisons \\.rf-header:not\\(\\.is-scrolled\\) \\{ top: 42px !important; \\}/);
+ assert.ok(cmpCss.includes('.page-comparisons .rf-header:not(.is-scrolled) { top: 42px !important; }'));
  assert.match(cmpCss, /top: 34px !important/);
  assert.ok(layout.indexOf("comparativas-editoriales.css")>layout.indexOf("catalogo-calculadoras.css"));
 });
