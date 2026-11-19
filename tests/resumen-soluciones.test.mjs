@@ -11,7 +11,7 @@ test('cuatro indicadores reales siguen después de la presentación editorial', 
   const stats = home.indexOf('class="rf-kpi-grid"');
   const dark = home.indexOf('class="rf-dark-solutions rf-section"');
   assert.ok(cards >= 0 && cards < stats && stats < dark);
-  for (const value of ['Calculadoras disponibles','Guías editoriales','Áreas de consumo','Gratis'])
+  for (const value of ['Herramientas disponibles','Guías editoriales','Áreas de consumo','Gratis'])
     assert.ok(home.includes(value));
 });
 
