@@ -19,7 +19,8 @@ export const images = [
   ['lavanderia.webp', 'https://images.unsplash.com/photo-1758279745240-b75977c88fa8?fm=webp&fit=crop&w=1200&q=76', 'image/webp'],
   ['vida-hogar.webp', 'https://images.unsplash.com/photo-1770364321618-09af20458226?fm=webp&fit=crop&w=1200&q=76', 'image/webp'],
   ['placas-tejado.webp', 'https://images.unsplash.com/photo-1745187946672-2c1d8cf26a2b?fm=webp&fit=crop&w=1200&q=76', 'image/webp'],
-  ['agua-hogar.webp', 'https://images.unsplash.com/photo-1756312177990-d771bfeaa030?fm=webp&fit=crop&w=1200&q=76', 'image/webp']
+  ['agua-hogar.webp', 'https://images.unsplash.com/photo-1756312177990-d771bfeaa030?fm=webp&fit=crop&w=1200&q=76', 'image/webp'],
+  ['nosotros-parque-eolico.jpg', 'https://images.pexels.com/photos/28652561/pexels-photo-28652561.jpeg?auto=compress&dpr=1&w=2400', 'image/jpeg']
 ];
 
 const out = resolve('public/images');

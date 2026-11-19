@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync, existsSync} from 'node:fs';
+import {readFileSync} from 'node:fs';
 const src=p=>readFileSync(new URL('../src/'+p,import.meta.url),'utf8');
 const about=src('pages/sobre-nosotros.astro');
 const css=src('styles/pagina-nosotros.css');
@@ -18,8 +18,14 @@ test('Breadcrumb semántico, accesible y sin enlaces rotos',()=>{
   assert.match(about,/href="\/"/);
   assert.match(about,/aria-current="page"/);
   assert.match(about,/class="ta-about-hero-rule"/);
-  assert.match(about,/src="\/images\/aerogenerador\.webp"/);
-  assert.ok(existsSync(new URL('../public/images/aerogenerador.webp',import.meta.url)));
+  assert.match(about,/src="\/images\/nosotros-parque-eolico\.jpg"/);
+  assert.doesNotMatch(about,/src="\/images\/aerogenerador\.webp"/);
+  const photos=readFileSync(new URL('../scripts/descargar-fotografias.mjs',import.meta.url),'utf8');
+  assert.match(photos,/nosotros-parque-eolico\.jpg/);
+  assert.match(photos,/photos\/28652561\/pexels-photo-28652561\.jpeg\?auto=compress&dpr=1&w=2400/);
+  const provenance=readFileSync(new URL('../docs/22-fotografia-editorial-y-licencias.md',import.meta.url),'utf8');
+  assert.match(provenance,/Satvinder Ghotra/);
+  assert.match(provenance,/28652561/);
   assert.match(about,/fetchpriority="high"/);
 });
 test('Hero se adapta a móvil y respeta cabecera de la plantilla',()=>{
@@ -28,6 +34,12 @@ test('Hero se adapta a móvil y respeta cabecera de la plantilla',()=>{
   assert.match(css,/@media \(max-width: 720px\)/);
   assert.match(css,/height: 332px/);
   assert.match(css,/object-fit: cover/);
+  assert.match(css,/margin: 24px auto 0/);
+  assert.match(css,/margin-top: 18px/);
+  assert.match(css,/margin-top: 14px/);
+  assert.match(css,/top: 40px !important/);
+  assert.match(css,/top: 32px !important/);
+  assert.match(css,/top: 28px !important/);
   assert.match(base,/const isAboutPage/);
   assert.match(base,/page-about/);
   assert.ok(base.indexOf("pagina-nosotros.css")>base.indexOf("banner-pie-final.css"));

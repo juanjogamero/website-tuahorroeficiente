@@ -37,6 +37,7 @@ La web reutilizaba una misma fotografía de aerogenerador o instalaciones solare
 | `vida-hogar.webp` | Actividad familiar en la cocina | F aint · Unsplash | https://unsplash.com/photos/two-people-in-a-modern-kitchen-setting-Gb-0qjnOSAM |
 | `placas-tejado.webp` | Placas solares sobre tejado | Rafael Moreno · Unsplash | https://unsplash.com/photos/solar-panels-are-installed-on-a-rooftop-73JOOymZQTQ |
 | `agua-hogar.webp` | Uso cotidiano de agua | Centre for Ageing Better · Unsplash (también dominio público según ficha) | https://unsplash.com/photos/woman-filling-a-glass-with-water-from-a-kitchen-faucet-EFr2VO8st2U |
+| `nosotros-parque-eolico.jpg` | Aerogeneradores en un paisaje abierto y cielo azul (hero «Nosotros», resolución de descarga 2400 px) | Satvinder Ghotra · Pexels | https://www.pexels.com/photo/wind-turbines-against-blue-sky-in-open-landscape-28652561/ |
 
 ## Validación de publicación
 
@@ -47,3 +48,7 @@ La web reutilizaba una misma fotografía de aerogenerador o instalaciones solare
 - [ ] Confirmar descarga de 12 imágenes en GitHub Actions.
 - [ ] Confirmar compilación Astro y auditoría de imágenes enlazadas.
 - [ ] Inspección visual final con fotos cargadas en la web publicada.
+
+### Actualización 35 — imagen del hero «Nosotros»
+
+Se sustituye `aerogenerador.webp` como imagen de esta página, porque su resolución aparente resulta insuficiente para un banner panorámico a pantalla ancha. La nueva fotografía del banco Pexels (original 3520 × 1980 px) se descarga a 2400 px de ancho durante el build y se entrega localmente desde GitHub Pages. Se conserva la fotografía antigua en el repositorio por si la necesita otro bloque; no se declara como fotografía propia ni se atribuyen proyectos al portal.

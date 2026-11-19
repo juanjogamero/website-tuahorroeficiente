@@ -19,3 +19,12 @@ Eliminar las secciones actuales de la página Nosotros y construir únicamente l
 ## Verificación
 
 Tests de estructura de la página, ruta de migas, fotografía local, breakpoint móvil y aislamiento del layout. GitHub Actions confirma compilación Astro y auditoría de URLs; validación manual de aspecto en navegador tras el despliegue.
+
+
+## Ajuste 35 · Fotografía nítida y margen superior
+
+**Fecha:** 19/11/2026. Nuevo recurso descargado durante build: `nosotros-parque-eolico.jpg` (Pexels, Satvinder Ghotra, ficha 28652561; imagen original 3520 × 1980, versión 2400 px de ancho). Se evita ampliar la miniatura anterior de 28 KB en pantallas panorámicas. Archivo servido localmente, sin hotlinking al navegar.
+
+El hero se separa del borde superior mediante 24 px en escritorio, 18 px en tablet y 14 px en móvil. El header inicial se sitúa dentro de la fotografía (40/32/28 px desde el borde superior del viewport, respectivamente), conservando el estado negro fijado durante el scroll. Se mantiene la sección única y sus migas de pan; resto de página vacío.
+
+Verificar descarga en Actions, 13 imágenes locales, pruebas y publicación. Revisión visual manual en pantalla 1920+ y móvil sigue pendiente.
