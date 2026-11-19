@@ -11,7 +11,7 @@ test('las proporciones del hero se cargan después del CSS base', () => {
 });
 
 test('hero de escritorio proporcionado a la referencia, con márgenes y esquinas redondeadas', () => {
-  assert.match(proportions, /height:\s*clamp\(780px,\s*calc\(100svh - 84px\),\s*840px\)/);
+  assert.match(proportions, /height:\s*max\(780px,\s*calc\(100svh - 22px\)\)/);
   assert.match(proportions, /margin:\s*22px 20px 0/);
   assert.match(proportions, /border-radius:\s*20px/);
   assert.match(proportions, /font-size:\s*clamp\(58px,\s*3\.8vw,\s*70px\)/);
@@ -31,4 +31,13 @@ test('se conserva el contenido y se adapta a pantallas estrechas', () => {
   assert.match(home, /class="rf-hero-tiles"/);
   assert.match(proportions, /@media \(max-width: 420px\)/);
   assert.match(proportions, /@media \(max-width: 350px\)/);
+});
+
+
+test('el hero cubre la altura visible sin límite superior en escritorio y portátil', () => {
+  assert.match(proportions, /height:\s*max\(780px,\s*calc\(100svh - 22px\)\)/);
+  assert.match(proportions, /height:\s*max\(720px,\s*calc\(100svh - 18px\)\)/);
+  assert.match(proportions, /min-height:\s*max\(760px,\s*calc\(100svh - 14px\)\)/);
+  assert.doesNotMatch(proportions, /calc\(100svh - 84px\)/);
+  assert.match(proportions, /\.rf-hero-word\s*\{/);
 });
