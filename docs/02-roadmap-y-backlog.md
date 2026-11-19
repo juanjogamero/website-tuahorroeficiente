@@ -41,3 +41,14 @@ Página funcional, render HTML completo, foco de intención, ejemplos auditables
 - **PROBADO:** 10/10 pruebas del motor, tsc selectivo, referencias internas 0 rotas, revisión visual en memoria en 5 URLs a dos tamaños sin overflow.
 - **PENDIENTE:** build Astro con npm, QA con fotos reales, auditoría contraste WCAG, Search Console, revisión legal y validación de migración GitHub Pages.
 - **NO DESPLEGADO:** ningún commit o cambio en producción.
+
+## Actualización 19/11/2026 · Plataforma de calculadoras
+
+- **IMPLEMENTADO Y DESPLEGADO EN STAGING:** índice /herramientas/ rediseñado, buscador progresivo, filtros de seis grupos, 15 herramientas enlazadas, tres destacadas y sección editorial de método.
+- **IMPLEMENTADO Y PROBADO EN CI:** ocho modelos nuevos con ejemplos y unidades correctas, añadidos a las siete herramientas existentes. Novedades: frigorífico, lavadora, lavavajillas, secadora, LED, bomba de calor frente a radiador, fuga de grifo y ventilador. Las dos nuevas comparativas también aparecen en su índice.
+- **VERIFICADO DOCUMENTALMENTE:** etiquetas de electrodomésticos (Comisión Europea y EPREL), suministro y saneamiento (INE). Los datos iniciales son ejemplos editables, no resultados medidos en equipos reales.
+- **IMPLEMENTADO:** metadatos para nuevas páginas y CollectionPage+ItemList del catálogo, cálculos locales en navegador, mejor legibilidad del simulador en móvil y enlaces de portada actualizados al total dinámico.
+- **PENDIENTE:** QA visual funcional en navegadores móviles reales, accesibilidad WCAG con tecnologías asistivas, validación cuantitativa SEO/GSC, rendimiento Core Web Vitals p75 y cumplimiento de requisitos legales para mover producción.
+- **PRODUCCIÓN:** el dominio tuahorroeficiente.es no ha cambiado. No confundir el despliegue de prueba en GitHub Pages con un lanzamiento público indexable.
+
+Detalles técnicos y fuentes en docs/37-calculadoras-ampliacion.md y docs/38-hub-calculadoras.md. La primera versión de las funciones puras está probada; no implica que el resultado real de un electrodoméstico pueda estimarse sin conocer los datos de su modelo.

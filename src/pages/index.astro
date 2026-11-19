@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import {tools} from '../data/tools';
 ---
 <BaseLayout title="Calculadoras de consumo eléctrico y ahorro en casa | Tu Ahorro Eficiente" description="Calcula el gasto de luz, calefacción, aire acondicionado y agua con tus precios y hábitos. Herramientas gratis con fórmulas explicadas y comparativas útiles.">
  <section class="rf-hero" aria-labelledby="rf-title">
@@ -14,13 +15,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
          <div class="rf-feature-thumbnail"><img src="/images/medidor-consumo.webp" alt="" loading="eager" width="160" height="160" /></div>
          <div><strong>¿Cuánto cuesta usar tus aparatos?</strong><small>Calcula los kWh y euros según tu consumo y tu tarifa.</small></div>
        </a>
-       <a class="rf-numeric-tile" href="/herramientas/" aria-label="Explorar las siete calculadoras gratuitas">
+       <a class="rf-numeric-tile" href="/herramientas/" aria-label={"Explorar las "+tools.length+" herramientas gratuitas"}>
          <div class="rf-bubbles" aria-hidden="true">
            <img src="/images/medidor-consumo.webp" alt="" width="30" height="30"/>
            <img src="/images/radiador-hogar.webp" alt="" width="30" height="30"/>
            <img src="/images/grifo-agua.webp" alt="" width="30" height="30"/>
          </div>
-         <strong>7</strong><small>calculadoras gratis</small>
+         <strong>{tools.length}</strong><small>herramientas gratis</small>
        </a>
      </div>
    </div>
@@ -50,7 +51,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
      <article class="rf-bento rf-bento-cream"><span class="rf-bento-name">Lo que hacemos</span><p>Transformamos potencia, horas, litros y precios en resultados comprensibles.</p><a class="rf-underlink" href="/metodologia/">Ver cómo calculamos <span aria-hidden="true">→</span></a><div class="rf-tags"><span>#Electricidad</span><span>#Climatización</span><span>#Agua</span><span>#Comparativas</span></div></article>
    </div>
    <div class="rf-kpi-grid" aria-label="Contenido disponible en el proyecto">
-     <div><span>Calculadoras disponibles</span><strong>7</strong></div><div><span>Guías editoriales</span><strong>9</strong></div><div><span>Áreas de consumo</span><strong>4</strong></div><div><span>Acceso a las herramientas</span><strong>Gratis</strong></div>
+     <div><span>Herramientas disponibles</span><strong>{tools.length}</strong></div><div><span>Guías editoriales</span><strong>9</strong></div><div><span>Áreas de consumo</span><strong>4</strong></div><div><span>Acceso a las herramientas</span><strong>Gratis</strong></div>
    </div>
  </section>
 
