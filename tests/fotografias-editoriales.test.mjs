@@ -27,7 +27,12 @@ test('el catálogo tiene fotografías variadas de bancos con licencia identifica
 test('la portada utiliza fotografías vinculadas a cada tema, no aerogeneradores genéricos',()=>{
  assert.match(homepage,/rf-bento rf-bento-image[^\n]+\/images\/ducha-bano\.webp/);
  assert.match(homepage,/\/images\/grifo-agua\.webp/);
- assert.match(homepage,/\/images\/aire-acondicionado\.webp/);
+ const dark=homepage.split('<section class="rf-dark-solutions')[1]?.split('</section>')[0] ?? '';
+ assert.ok(dark, 'La sección oscura debe mantenerse');
+ for (const photo of ['medidor-consumo.webp','radiador-hogar.webp','ducha-bano.webp','freidora-aire.jpg']) {
+  assert.ok(dark.includes('/images/'+photo), 'Falta fotografía temática '+photo);
+ }
+ assert.doesNotMatch(homepage, /class="rf-service-card"/);
  assert.match(homepage,/\/images\/freidora-aire\.jpg/);
  assert.match(homepage,/\/images\/medidor-consumo\.webp/);
  assert.match(homepage,/\/images\/radiador-hogar\.webp/);
