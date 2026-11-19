@@ -100,7 +100,7 @@ export const extraTools:Tool[]=[
  keyTakeaways:['Compara etiquetas del mismo formato.','Mide cada modelo en kWh por 100 ciclos.','No confundas ahorro energético con amortización de compra.']
  }),
  define({
- id:'iluminacion',slug:'calculadora-ahorro-bombillas-led',group:'comparativas',category:'Electricidad',categorySlug:'electricidad',tag:'Amortización simple',
+ id:'iluminacion',slug:'calculadora-ahorro-bombillas-led',group:'herramientas',category:'Electricidad',categorySlug:'electricidad',tag:'Amortización simple',
  title:'Calculadora de ahorro al cambiar bombillas por LED',
  short:'Compara vatios, horas, puntos de luz y coste de compra para estimar el retorno.',
  description:'Comparador de iluminación LED frente a bombillas antiguas: kWh anuales, euros y amortización simple con tus vatios, horas y precio.',
@@ -124,7 +124,7 @@ export const extraTools:Tool[]=[
  keyTakeaways:['Compara lúmenes antes que vatios.','Introduce horas de uso reales.','Un retorno simple no es una garantía financiera.']
  }),
  define({
- id:'bomba-calor',slug:'bomba-calor-vs-radiador-electrico',group:'comparativas',category:'Climatización',categorySlug:'climatizacion',tag:'Igual demanda térmica',
+ id:'bomba-calor',slug:'bomba-calor-vs-radiador-electrico',group:'herramientas',category:'Climatización',categorySlug:'climatizacion',tag:'Igual demanda térmica',
  title:'Bomba de calor vs radiador eléctrico: compara el coste',
  short:'Calcula kWh eléctricos para aportar igual cantidad de calor con SCOP editable.',
  description:'Comparador de coste eléctrico de bomba de calor frente a radiador resistivo, con demanda térmica, SCOP y rendimiento eléctrico configurables.',
