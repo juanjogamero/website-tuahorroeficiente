@@ -55,6 +55,43 @@ export function calculate(type:string,x:Numbers):Outcome{
    const e=w/1000*h*n*days;
    return {primary:e*p,primaryLabel:'Coste anual en espera',secondary:[{label:'Consumo anual',value:e,unit:'kwh'},{label:'Coste mensual medio',value:e*p/12,unit:'eur'},{label:'Coste diario de uso',value:days?e*p/days:0,unit:'eur'}],note:'Supone potencia en espera constante durante las horas indicadas. Mide los W de standby con un medidor cuando sea posible.'};
   }
+  case 'frigorifico': {
+   const energy=requireRange('kWh al año',x.energyYear,0,3000),units=requireRange('Número de equipos',x.units,0,30),years=requireRange('Años',x.years,0,30),p=sharedPrice(x);
+   const year=energy*units*p;
+   return {primary:year,primaryLabel:'Coste variable anual',secondary:[{label:'Coste mensual medio',value:year/12,unit:'eur'},{label:'Consumo anual',value:energy*units,unit:'kwh'},{label:'Coste del periodo',value:year*years,unit:'eur'}],note:'La etiqueta de refrigeración muestra kWh/año en condiciones de ensayo. Uso real y tarifa pueden modificar el resultado.'};
+  }
+  case 'lavadora':
+  case 'lavavajillas': {
+   const energy100=requireRange('kWh por 100 ciclos',x.energy100,0,1500),litres=requireRange('Agua por ciclo L',x.litresCycle,0,250),cycles=requireRange('Ciclos por semana',x.cyclesWeek,0,35),water=requireRange('Agua €/m³',x.water,0,30),sewer=requireRange('Saneamiento €/m³',x.sewer,0,30),p=sharedPrice(x);
+   const kwh=energy100/100, costEnergy=kwh*p, costWater=litres/1000*(water+sewer), uses=cycles*52;
+   return {primary:costEnergy+costWater,primaryLabel:'Coste variable por ciclo',secondary:[{label:'Coste anual',value:(costEnergy+costWater)*uses,unit:'eur'},{label:'Consumo anual de energía',value:kwh*uses,unit:'kwh'},{label:'Agua al año',value:litres*uses,unit:'litres'}],note:'Modelo de etiqueta del programa eco: divide kWh/100 ciclos entre 100. No incluye detergentes, cuotas fijas o consumo de otros programas.'};
+  }
+  case 'secadora': {
+   const e=requireRange('Secadora A kWh/100 ciclos',x.energy100,0,2000),alt=requireRange('Secadora B kWh/100 ciclos',x.alternative100,0,2000),cycles=requireRange('Ciclos por semana',x.cyclesWeek,0,35),p=sharedPrice(x);
+   const yearly=cycles*52,annualA=e/100*yearly*p,annualB=alt/100*yearly*p;
+   return {primary:annualA,primaryLabel:'Coste anual secadora A',secondary:[{label:'Coste anual secadora B',value:annualB,unit:'eur'},{label:'Coste por ciclo A',value:e/100*p,unit:'eur'},{label:'Consumo anual A',value:e/100*yearly,unit:'kwh'}],difference:annualA-annualB,differenceLabel:'Diferencia A menos B por año',note:'Compara datos de etiquetas nuevas compatibles (kWh/100 ciclos), sin costes de compra ni garantía de igual rendimiento.'};
+  }
+  case 'iluminacion': {
+   const old=requireRange('Bombilla actual W',x.oldWatts,0,500),newW=requireRange('LED W',x.newWatts,0,500),n=requireRange('Número de puntos',x.units,0,300),hours=requireRange('Horas diarias',x.hours,0,24),days=requireRange('Días por año',x.days,0,366),p=sharedPrice(x),investment=requireRange('Coste adicional €',x.investment,0,100000);
+   const base=hours*days*n/1000,eA=old*base,eB=newW*base,costA=eA*p,costB=eB*p,diff=costA-costB;
+   const amort=diff>0 && investment>0 ? 'Retorno simple hipotético: '+number(investment/diff)+' años.' : diff<=0 ? 'No hay retorno positivo por consumo bajo estos supuestos.' : 'No se ha indicado una inversión adicional.';
+   return {primary:costA,primaryLabel:'Coste anual iluminación actual',secondary:[{label:'Coste anual alternativa',value:costB,unit:'eur'},{label:'Consumo anual actual',value:eA,unit:'kwh'},{label:'Consumo anual alternativa',value:eB,unit:'kwh'}],difference:diff,differenceLabel:'Diferencia anual (actual menos alternativa)',note:amort+' Comprueba lúmenes equivalentes. No se modelan vida útil ni costes de mantenimiento.'};
+  }
+  case 'bomba-calor': {
+   const heat=requireRange('Calor útil kWh térmicos',x.heat,0,100000),scop=requireRange('SCOP',x.scop,1,8),res=requireRange('Rendimiento %',x.resistance,1,100)/100,p=sharedPrice(x);
+   const pump=heat/scop,resist=heat/res;
+   return {primary:pump*p,primaryLabel:'Coste eléctrico de bomba de calor',secondary:[{label:'Radiador: coste variable',value:resist*p,unit:'eur'},{label:'Bomba: electricidad',value:pump,unit:'kwh'},{label:'Radiador: electricidad',value:resist,unit:'kwh'}],difference:(resist-pump)*p,differenceLabel:'Diferencia radiador menos bomba',note:'Supone la misma demanda térmica anual y SCOP elegido por ti. No incluye instalación, mantenimiento ni equivalencia de confort garantizada.'};
+  }
+  case 'fuga-agua': {
+   const ml=requireRange('Caudal mL/min',x.mlMin,0,200000),hours=requireRange('Horas al día',x.hours,0,24),days=requireRange('Días',x.days,0,366),water=requireRange('Agua €/m³',x.water,0,30),sewer=requireRange('Saneamiento €/m³',x.sewer,0,30);
+   const daily=ml/1000*60*hours,litres=daily*days,m3=litres/1000;
+   return {primary:m3*(water+sewer),primaryLabel:'Coste variable de la fuga en el periodo',secondary:[{label:'Agua perdida',value:litres,unit:'litres'},{label:'Equivalente en m³',value:m3,unit:'m3'},{label:'Litros por día de fuga',value:daily,unit:'litres'}],note:'El caudal debe medirse en mL/min con un recipiente. Tarifa local variable: no incluye cuotas fijas, bloques ni daños.'};
+  }
+  case 'ventilador': {
+   const w=requireRange('Potencia W',x.watts,0,1000),h=requireRange('Horas diarias',x.hours,0,24),days=requireRange('Días',x.days,0,366),units=requireRange('Equipos',x.units,0,30),p=sharedPrice(x);
+   const e=w/1000*h*days*units;
+   return {primary:e*p,primaryLabel:'Coste variable por temporada',secondary:[{label:'Consumo de temporada',value:e,unit:'kwh'},{label:'Coste por día de uso',value:days?e*p/days:0,unit:'eur'},{label:'Coste de una hora (todos)',value:w/1000*units*p,unit:'eur'}],note:'Potencia de ventiladores a velocidad seleccionada. Un ventilador y el aire acondicionado no aportan el mismo enfriamiento.'};
+  }
   default: throw new Error('Herramienta desconocida');
  }
 }
