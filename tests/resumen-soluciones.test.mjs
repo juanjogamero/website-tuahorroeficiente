@@ -34,3 +34,10 @@ test('las estadísticas y tarjetas son responsive sin scroll horizontal', () => 
 test('la hoja de la sección se aplica al final, después de las capas anteriores', () => {
   assert.ok(layout.indexOf('resumen-soluciones.css')>layout.indexOf('presentacion-editorial.css'));
 });
+
+test('los indicadores aumentan su lectura en escritorio y conservan escala móvil', () => {
+  assert.match(styles, /font-size: clamp\(40px, 3\.8vw, 60px\)/);
+  assert.match(styles, /min-height: 23px;\n  font-size: 14px;/);
+  assert.match(styles, /@media \(max-width: 720px\)/);
+  assert.match(styles, /font-size: 12px; min-height: 36px/);
+});

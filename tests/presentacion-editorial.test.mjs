@@ -17,16 +17,23 @@ test('la sección editorial sigue inmediatamente a las referencias con margen co
   assert.ok(home.indexOf('class="rf-trust rf-container"') < home.indexOf('class="rf-intro rf-container"'));
   assert.match(css, /\.rf-trust\.rf-container \{ padding-bottom: 8px; \}/);
   assert.match(css, /padding-top: 30px/);
-  assert.match(css, /width: min\(968px, calc\(100% - 56px\)\)/);
+  assert.match(css, /width: min\(1200px, calc\(100% - 64px\)\)/);
 });
 test('tres tarjetas y datos reales del proyecto se conservan', () => {
   const intro = home.split('<section class="rf-intro')[1].split('</section>')[0];
   assert.match(intro, /18 €/);
   assert.match(intro, /2,4 m³/);
   assert.equal((intro.match(/class="rf-bento /g) ?? []).length, 3);
-  assert.match(css, /min-height: 292px/);
+  assert.match(css, /min-height: clamp\(292px, 19\.6vw, 358px\)/);
   assert.match(css, /grid-template-columns: 1fr/);
 });
 test('el CSS editorial se carga al final, sobre los estilos históricos', () => {
   assert.ok(layout.indexOf('presentacion-editorial.css') > layout.indexOf('cabecera-referencias.css'));
+});
+
+test('la presentación crece de forma proporcional en escritorios anchos sin agrandar móvil', () => {
+  assert.match(css, /font-size: clamp\(38px, 2\.9vw, 54px\)/);
+  assert.match(css, /font-size: 22px/);
+  assert.match(css, /@media \(max-width: 720px\)/);
+  assert.match(css, /grid-template-columns: 1fr/);
 });

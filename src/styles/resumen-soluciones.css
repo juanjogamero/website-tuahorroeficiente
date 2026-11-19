@@ -9,8 +9,8 @@
 .rf-intro .rf-kpi-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 28px;
-  margin-top: 77px;
+  gap: 32px;
+  margin-top: 80px;
 }
 .rf-intro .rf-kpi-grid > div {
   min-width: 0;
@@ -19,16 +19,16 @@
 }
 .rf-intro .rf-kpi-grid span {
   display: block;
-  min-height: 21px;
-  font-size: 12px;
+  min-height: 23px;
+  font-size: 14px;
   line-height: 1.45;
   font-weight: 500;
   color: #596363;
 }
 .rf-intro .rf-kpi-grid strong {
   display: block;
-  margin-top: 10px;
-  font-size: clamp(36px, 3.4vw, 52px);
+  margin-top: 12px;
+  font-size: clamp(40px, 3.8vw, 60px);
   line-height: 1.05;
   font-weight: 500;
   color: #202728;

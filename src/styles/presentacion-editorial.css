@@ -1,7 +1,7 @@
 /*
  * Presentación editorial y menú desplegable.
  * La referencia visual sitúa la presentación cerca de la banda de fuentes,
- * con contenedor de 968 px y tres tarjetas proporcionadas.
+ * con contenedor adaptable hasta 1200 px y tres tarjetas proporcionadas.
  * No se modifica ningún resultado de cálculo ni el contenido del sitio.
  */
 
@@ -40,48 +40,48 @@
  * no dos secciones enteras de separación. */
 .rf-trust.rf-container { padding-bottom: 8px; }
 .rf-intro.rf-container {
-  width: min(968px, calc(100% - 56px));
+  width: min(1200px, calc(100% - 64px));
   max-width: none;
   padding-top: 30px;
 }
-.rf-intro .rf-chip { font-size: 11px; line-height: 1.25; padding: 6px 14px; }
+.rf-intro .rf-chip { font-size: 12px; line-height: 1.25; padding: 7px 15px; }
 .rf-intro h2 {
-  max-width: 968px;
-  margin: 22px 0 48px;
-  font-size: clamp(36px, 2.5vw, 48px);
+  max-width: 1170px;
+  margin: 24px 0 50px;
+  font-size: clamp(38px, 2.9vw, 54px);
   line-height: 1.14;
   font-weight: 500;
   letter-spacing: -.043em;
   text-wrap: pretty;
 }
 .rf-intro .rf-inline-photo {
-  width: 105px;
-  height: 49px;
+  width: 122px;
+  height: 55px;
   margin: 0 5px 4px;
 }
 .rf-intro .rf-bento-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+  gap: 24px;
 }
 .rf-intro .rf-bento {
   min-width: 0;
-  min-height: 292px;
-  padding: 22px;
-  border-radius: 15px;
+  min-height: clamp(292px, 19.6vw, 358px);
+  padding: 25px;
+  border-radius: 16px;
 }
-.rf-intro .rf-bento-name { font-size: 20px; line-height: 1.27; }
-.rf-intro .rf-bento-lime .rf-bento-tag { margin-top: 48px; margin-bottom: 18px; }
-.rf-intro .rf-bento-lime > strong { font-size: 36px; }
-.rf-intro .rf-bento-lime p { font-size: 12px; line-height: 1.52; }
+.rf-intro .rf-bento-name { font-size: 22px; line-height: 1.27; }
+.rf-intro .rf-bento-lime .rf-bento-tag { margin-top: 54px; margin-bottom: 19px; }
+.rf-intro .rf-bento-lime > strong { font-size: 43px; }
+.rf-intro .rf-bento-lime p { font-size: 14px; line-height: 1.52; }
 .rf-intro .rf-bento-image { padding: 0; }
-.rf-intro .rf-bento-image > div { left: 22px; bottom: 20px; }
-.rf-intro .rf-bento-image strong { font-size: 36px; }
-.rf-intro .rf-bento-cream > p { font-size: 12.5px; line-height: 1.65; }
+.rf-intro .rf-bento-image > div { left: 25px; bottom: 23px; }
+.rf-intro .rf-bento-image strong { font-size: 43px; }
+.rf-intro .rf-bento-cream > p { font-size: 14px; line-height: 1.65; }
 .rf-intro .rf-tags { gap: 8px; }
-.rf-intro .rf-tags span { font-size: 10px; padding: 4px 9px; }
+.rf-intro .rf-tags span { font-size: 11px; padding: 5px 10px; }
 .rf-intro .rf-tags span:nth-child(odd) { transform: rotate(5deg); }
 .rf-intro .rf-tags span:nth-child(even) { transform: rotate(-4deg); }
-.rf-intro .rf-kpi-grid { margin-top: 70px; gap: 32px; }
+.rf-intro .rf-kpi-grid { margin-top: 80px; gap: 32px; }
 
 @media (min-width: 721px) and (max-width: 980px) {
   .rf-trust.rf-container { padding-bottom: 8px; }
@@ -90,6 +90,8 @@
   .rf-intro .rf-bento-grid { gap: 14px; }
   .rf-intro .rf-bento { padding: 17px; min-height: 290px; }
   .rf-intro .rf-bento-name { font-size: 17px; }
+  .rf-intro .rf-bento-lime > strong,
+  .rf-intro .rf-bento-image strong { font-size: 36px; }
   .rf-intro .rf-bento-lime .rf-bento-tag { margin-top: 38px; }
   .rf-intro .rf-bento-lime p,
   .rf-intro .rf-bento-cream > p { font-size: 11px; }
@@ -104,6 +106,8 @@
   .rf-intro .rf-bento-grid { grid-template-columns: 1fr; gap: 14px; }
   .rf-intro .rf-bento { padding: 22px; min-height: 265px; }
   .rf-intro .rf-bento-image { min-height: 290px; padding: 0; }
+  .rf-intro .rf-bento-lime > strong,
+  .rf-intro .rf-bento-image strong { font-size: 36px; }
   .rf-intro .rf-bento-lime .rf-bento-tag { margin-top: 40px; }
   .rf-intro .rf-bento-lime p, .rf-intro .rf-bento-cream > p { font-size: 14px; }
   .rf-intro .rf-tags span { font-size: 11px; }
