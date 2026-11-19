@@ -1,11 +1,107 @@
 ---
-import ContentLayout from '../../layouts/ContentLayout.astro';
-import ToolCard from '../../components/ToolCard.astro';
-import {tools} from '../../data/tools';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import {tools,byId,pathOf,type Tool} from '../../data/tools';
+const featured=['electricidad','lavadora','ducha'].map(byId).filter((x):x is Tool=>Boolean(x));
+const tabs=[
+ {key:'todos',label:'Todas',count:tools.length},
+ {key:'electricidad',label:'Electricidad',count:tools.filter(t=>t.categorySlug==='electricidad').length},
+ {key:'climatizacion',label:'Climatización',count:tools.filter(t=>t.categorySlug==='climatizacion').length},
+ {key:'agua',label:'Agua',count:tools.filter(t=>t.categorySlug==='agua').length},
+ {key:'electrodomesticos',label:'Electrodomésticos',count:tools.filter(t=>t.categorySlug==='electrodomesticos').length},
+ {key:'comparativas',label:'Comparativas',count:tools.filter(t=>t.group==='comparativas').length}
+];
+const schema={'@context':'https://schema.org','@type':'CollectionPage',
+ name:'Calculadoras de consumo y ahorro doméstico',
+ description:'Simuladores gratuitos con datos editables y fórmulas abiertas',
+ mainEntity:{'@type':'ItemList',itemListElement:tools.map((t,i)=>({
+  '@type':'ListItem',position:i+1,name:t.title,
+  url:new URL(pathOf(t).slice(1),new URL(import.meta.env.BASE_URL,Astro.site)).toString()
+ }))}};
 ---
-<ContentLayout title="Calculadoras de consumo y ahorro doméstico" description="Explora calculadoras gratuitas para electricidad, climatización y agua. Coste por uso, mes o año con metodología y parámetros editables." category="Herramientas" breadcrumbs={[{label:'Herramientas'}]} eyebrow="EXPLORA NUESTRAS HERRAMIENTAS">
-<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">HECHAS PARA TU CASO</span><h2>Elige qué quieres <span class="purple-text">calcular.</span></h2><p>Cada herramienta incluye contexto, fórmula, ejemplo y límites; no requiere registro.</p></div></div>
-<div class="tool-grid">{tools.filter(t=>t.group==='herramientas').map(t=><ToolCard tool={t}/>)}</div>
-<div class="wide-tip"><h3>¿No sabes por dónde empezar?</h3><p>Si quieres calcular el gasto de un dispositivo cualquiera, usa la calculadora eléctrica general. Si tu aparato tiene termostato, consumo medido por ciclo o agua caliente, elige una herramienta especializada.</p><a class="inline-link" href="/guias/que-es-kwh/">Aprender qué es un kWh →</a></div>
-</div></section>
-</ContentLayout>
+<BaseLayout title="Calculadoras de consumo eléctrico, agua y electrodomésticos" description="15 calculadoras y comparativas gratuitas de electricidad, climatización, agua y electrodomésticos. Introduce tus datos y consulta fórmulas y resultados." schema={schema}>
+ <section class="ta-tools-hero" aria-labelledby="ta-tools-title">
+  <div class="ta-tools-hero-layout">
+   <div class="ta-tools-hero-copy">
+    <span class="ta-tools-eyebrow"><Icon name="sparkle" size={17}/> TU LABORATORIO DE AHORRO DOMÉSTICO</span>
+    <h1 id="ta-tools-title">Descubre lo que gastas.<br/><em>Calcula lo que importa.</em></h1>
+    <p>De los vatios de un ventilador a los litros de una ducha. Introduce tus hábitos y el precio de tus suministros: verás consumos y costes calculados con fórmulas claras y datos editables.</p>
+    <div class="ta-tools-hero-actions">
+      <a class="ta-tools-hero-cta" href="#catalogo">Explorar calculadoras <Icon name="arrowUp" size={19}/></a>
+      <a class="ta-tools-hero-link" href="#como-funciona">Cómo funciona <Icon name="arrow" size={18}/></a>
+    </div>
+    <div class="ta-tools-hero-metrics" aria-label="Características del catálogo">
+      <div><strong>{tools.length}</strong><span>herramientas reales</span></div>
+      <div><strong>4</strong><span>áreas domésticas</span></div>
+      <div><strong>Gratis</strong><span>sin registro</span></div>
+    </div>
+   </div>
+   <div class="ta-tools-hero-picture" aria-hidden="true">
+     <img src="/images/lavanderia.webp" width="700" height="850" fetchpriority="high" decoding="async" alt=""/>
+     <div class="ta-tools-floating ta-tools-floating-top"><Icon name="calculator" size={23}/><span><strong>Tu casa, tus datos</strong><small>Resultados en tu navegador</small></span></div>
+     <div class="ta-tools-floating ta-tools-floating-bottom"><Icon name="check" size={20}/> Fórmulas y límites visibles</div>
+   </div>
+  </div>
+  <span class="ta-tools-hero-mark" aria-hidden="true">CALCULA CON CRITERIO</span>
+ </section>
+ <div class="ta-tools-trust" aria-label="Ventajas de las calculadoras">
+  <span><Icon name="check" size={18}/> Precios editables</span>
+  <span><Icon name="check" size={18}/> Sin enviar facturas</span>
+  <span><Icon name="check" size={18}/> Fórmulas comprobables</span>
+  <span><Icon name="check" size={18}/> Sin registro</span>
+ </div>
+
+ <section class="ta-tools-featured" aria-labelledby="ta-tools-featured-title">
+   <div class="ta-tools-title-row">
+     <div><span class="rf-chip">✦ PARA EMPEZAR</span><h2 id="ta-tools-featured-title">Resuelve una duda.<br/>Entiende el resultado.</h2></div>
+     <p>Elige un caso cotidiano. En cada simulador puedes modificar los valores y consultar las fórmulas y limitaciones del cálculo.</p>
+   </div>
+   <div class="ta-tools-featured-grid">
+   {featured.map((tool,i)=>(
+    <a class="ta-tools-featured-card" href={pathOf(tool)}>
+      <img src={i===0?'/images/medidor-consumo.webp':i===1?'/images/lavanderia.webp':'/images/grifo-agua.webp'} alt="" width="650" height="580" loading="lazy" decoding="async"/>
+      <span class="ta-tools-featured-number">{String(i+1).padStart(2,'0')}</span>
+      <span class="ta-tools-featured-arrow"><Icon name="arrowUp" size={23}/></span>
+      <span class="ta-tools-featured-caption"><small>{tool.category}</small><strong>{tool.title}</strong><span>Calcular ahora <Icon name="arrow" size={17}/></span></span>
+    </a>
+   ))}
+   </div>
+ </section>
+
+ <section class="ta-tools-catalog" id="catalogo" data-tools-catalog aria-labelledby="ta-tools-catalog-title">
+   <div class="ta-tools-title-row">
+     <div><span class="rf-chip">✦ HERRAMIENTAS GRATUITAS</span><h2 id="ta-tools-catalog-title">Encuentra tu cálculo.<br/><span>En pocos segundos.</span></h2></div>
+     <p>Busca por aparato o tema, o filtra por área. Todos los precios y consumos iniciales son ejemplos que puedes sustituir por los tuyos.</p>
+   </div>
+   <div class="ta-tools-search-panel">
+     <label for="ta-tools-search"><Icon name="search" size={19}/> ¿Qué quieres calcular?</label>
+     <input id="ta-tools-search" type="search" data-tool-search placeholder="Ej.: lavadora, LED, agua caliente…" autocomplete="off" spellcheck="false"/>
+     <div class="ta-tools-filter-list" role="group" aria-label="Filtrar calculadoras por área">
+       {tabs.map(tab=><button type="button" data-catalog-filter={tab.key} aria-pressed={tab.key==='todos'?'true':'false'}>{tab.label}<span>{tab.count}</span></button>)}
+     </div>
+     <div class="ta-tools-filter-status"><p role="status" aria-live="polite"><strong data-catalog-count>{tools.length}</strong> herramientas disponibles</p><button data-catalog-reset type="button" hidden>Limpiar filtros</button></div>
+   </div>
+   <div class="ta-tools-catalog-grid">
+    {tools.map((tool,i)=>(
+     <a class:list={['ta-tools-catalog-card','ta-tools-category-'+tool.categorySlug]} href={pathOf(tool)}
+      data-catalog-item data-category={tool.categorySlug} data-kind={tool.group}
+      data-search={[tool.title,tool.short,tool.category,tool.tag,tool.intro].join(' ')}>
+      <div class="ta-tools-catalog-top"><span>{String(i+1).padStart(2,'0')}</span><span class="ta-tools-catalog-icon"><Icon name={tool.icon} size={23}/></span></div>
+      <small>{tool.group==='comparativas'?'COMPARATIVA':'CALCULADORA'} · {tool.category}</small>
+      <h3>{tool.title}</h3><p>{tool.short}</p>
+      <span class="ta-tools-card-link">Abrir herramienta <Icon name="arrowUp" size={21}/></span>
+     </a>
+    ))}
+   </div>
+   <div data-catalog-empty class="ta-tools-catalog-empty" hidden><Icon name="search" size={31}/><h3>No encontramos esa combinación.</h3><p>Prueba con otro aparato o elimina los filtros para ver el catálogo completo.</p><button type="button" data-catalog-empty-reset>Ver todas las herramientas</button></div>
+ </section>
+ <section class="ta-tools-how" id="como-funciona" aria-labelledby="ta-tools-how-title">
+  <div><span class="rf-chip">✦ METODOLOGÍA CLARA</span><h2 id="ta-tools-how-title">Números sencillos.<br/>Explicaciones serias.</h2><p>No sustituimos tu factura ni prometemos un ahorro fijo. Queremos que puedas tomar decisiones con datos y supuestos explícitos.</p><a href="/metodologia/">Ver cómo calculamos <Icon name="arrowUp" size={18}/></a></div>
+  <div class="ta-tools-how-steps">
+   <article><strong>01</strong><div><h3>Personaliza</h3><p>Potencia, kWh de etiqueta, litros, horas y el precio de tu suministro.</p></div></article>
+   <article><strong>02</strong><div><h3>Comprueba</h3><p>Consulta consumo, coste variable y fórmula. Mira qué no incluye la estimación.</p></div></article>
+   <article><strong>03</strong><div><h3>Compara</h3><p>Cambia un parámetro y observa qué ocurre con tu gasto en ese escenario.</p></div></article>
+  </div>
+ </section>
+</BaseLayout>
+<script>import '../../scripts/tools-catalog-client.ts';</script>
