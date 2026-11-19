@@ -10,8 +10,8 @@ test('bloque oscuro sigue inmediatamente a la presentación con indicadores', ()
   const stats=home.indexOf('class="rf-kpi-grid"');
   const introEnd=home.indexOf('</section>',stats);
   const dark=home.indexOf('<section class="rf-dark-solutions rf-section"', introEnd);
-  const categories=home.indexOf('class="rf-topics rf-section rf-container"');
-  assert.ok(stats >= 0 && introEnd > stats && dark > introEnd && categories > dark);
+  const benefits=home.indexOf('class="rf-benefits rf-section"');
+  assert.ok(stats >= 0 && introEnd > stats && dark > introEnd && benefits > dark);
   assert.equal(home.slice(introEnd+'</section>'.length, dark).trim(), '');
   assert.doesNotMatch(home, /class="rf-services rf-section rf-container"/);
   assert.doesNotMatch(home, /<section class="rf-why rf-section"/);

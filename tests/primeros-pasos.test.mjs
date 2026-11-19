@@ -9,8 +9,8 @@ const layout=src('layouts/BaseLayout.astro');
 test('dos rutas gratuitas entre los casos fotográficos y las categorías',()=>{
  const photos=home.indexOf('<section class="rf-showcase rf-section"');
  const routes=home.indexOf('<section class="rf-pathways rf-section"');
- const topics=home.indexOf('<section class="rf-topics rf-section');
- assert.ok(photos>=0&&routes>photos&&topics>routes);
+ const faq=home.indexOf('<section class="rf-faq rf-section');
+ assert.ok(photos>=0&&routes>photos&&faq>routes);
  assert.equal((home.slice(photos,routes).match(/<\/section>/g)||[]).length,1);
  assert.match(home,/aria-labelledby="rf-pathways-title"/);
 });

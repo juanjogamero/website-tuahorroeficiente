@@ -10,8 +10,8 @@ const faq=home.split('<section class="rf-faq rf-section rf-container rf-faq-mode
 test('un único FAQ tras las rutas de entrada y antes de categorías',()=>{
  const routes=home.indexOf('<section class="rf-pathways rf-section"');
  const faqs=home.indexOf('<section class="rf-faq rf-section rf-container rf-faq-modern"');
- const topics=home.indexOf('<section class="rf-topics rf-section rf-container"');
- assert.ok(routes>=0 && faqs>routes && topics>faqs);
+ const banner=home.indexOf('<section class="rf-final-banner rf-section"');
+ assert.ok(routes>=0 && faqs>routes && banner>faqs);
  assert.equal((home.match(/<section class="rf-faq /g)||[]).length,1);
  assert.equal(home.slice(home.indexOf('</section>',routes)+'</section>'.length,faqs).trim(),'');
 });

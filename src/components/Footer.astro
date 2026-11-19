@@ -1,4 +1,67 @@
 ---
 import Icon from './Icon.astro';
 ---
-<footer class="site-footer sv-footer"><div class="sv-wrap"><div class="sv-footer-top"><div><span class="sv-eyebrow sv-eyebrow-light">TU HOGAR. TUS NÚMEROS.</span><h2>La mejor decisión empieza <em>por entender.</em></h2></div><a class="sv-btn sv-btn-primary" href="/herramientas/">Explorar herramientas ↗</a></div><div class="sv-footer-columns"><div class="sv-footer-about"><a class="sv-brand sv-brand-footer" href="/"><span class="sv-brand-symbol">✳</span><span>TU AHORRO <b>EFICIENTE</b><small>CALCULA · COMPARA · DECIDE</small></span></a><p>Portal gratuito de calculadoras, comparativas y guías para comprender el coste real del consumo doméstico en España.</p><span>ESTIMACIONES, NO AHORROS GARANTIZADOS</span></div><div><h3>Navegación</h3><a href="/">Inicio</a><a href="/herramientas/">Herramientas</a><a href="/categorias/">Categorías</a><a href="/comparativas/">Comparativas</a><a href="/guias/">Blog</a></div><div><h3>El proyecto</h3><a href="/sobre-nosotros/">Nosotros</a><a href="/metodologia/">Metodología</a><a href="/fuentes/">Fuentes contrastables</a><a href="/contacto/">Contacto y correcciones</a></div><div><h3>Información legal</h3><a href="/aviso-legal/">Aviso legal</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a></div></div><div class="sv-footer-bottom"><span>© {new Date().getFullYear()} Tu Ahorro Eficiente. Todos los derechos reservados.</span><span>Calcula. Compara. Decide. <Icon name="leaf" size={15}/></span></div></div></footer>
+<footer class="site-footer ta-footer" aria-labelledby="ta-footer-title">
+  <div class="ta-footer-photo" aria-hidden="true"></div>
+  <div class="ta-footer-overlay" aria-hidden="true"></div>
+  <div class="ta-footer-content">
+    <div class="ta-footer-top">
+      <div class="ta-footer-statement">
+        <span class="ta-footer-overline">TU HOGAR · TUS DATOS</span>
+        <h2 id="ta-footer-title">El siguiente ahorro empieza por comprender.</h2>
+      </div>
+      <div class="ta-footer-discover">
+        <h3>Todo lo que necesitas para empezar</h3>
+        <p>Calculadoras gratuitas, explicaciones claras y comparativas de consumo doméstico. Sin cuentas ni promesas de ahorro garantizado.</p>
+        <div class="ta-footer-actions">
+          <a href="/herramientas/">Ver calculadoras <span aria-hidden="true">↗</span></a>
+          <a href="/guias/">Leer las guías <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ta-footer-columns">
+      <div class="ta-footer-identity">
+        <a class="ta-footer-brand" href="/" aria-label="Tu Ahorro Eficiente, inicio">
+          <span class="ta-footer-brand-icon" aria-hidden="true"><Icon name="zap" size={39}/></span>
+          <span><b>Tu Ahorro</b><small>EFICIENTE</small></span>
+        </a>
+        <p>Un portal español para entender cuánto cuesta la luz, el agua, la climatización y los electrodomésticos. Resultados orientativos con metodología abierta.</p>
+        <a class="ta-footer-about-link" href="/metodologia/">Conoce cómo calculamos <span aria-hidden="true">↗</span></a>
+      </div>
+      <nav aria-label="Enlaces para explorar" class="ta-footer-col">
+        <h3>Explorar</h3>
+        <a href="/herramientas/">Calculadoras</a>
+        <a href="/comparativas/">Comparativas</a>
+        <a href="/categorias/">Categorías</a>
+        <a href="/guias/">Blog y guías</a>
+      </nav>
+      <nav aria-label="Información del proyecto" class="ta-footer-col">
+        <h3>El proyecto</h3>
+        <a href="/sobre-nosotros/">Sobre nosotros</a>
+        <a href="/metodologia/">Metodología</a>
+        <a href="/fuentes/">Fuentes públicas</a>
+        <a href="/contacto/">Contacto</a>
+      </nav>
+      <nav aria-label="Información legal" class="ta-footer-col">
+        <h3>Información legal</h3>
+        <a href="/aviso-legal/">Aviso legal</a>
+        <a href="/privacidad/">Privacidad</a>
+        <a href="/cookies/">Cookies</a>
+        <a href="/contacto/">Correcciones y sugerencias</a>
+      </nav>
+    </div>
+
+    <div class="ta-footer-copyright">
+      <span>© {new Date().getFullYear()} Tu Ahorro Eficiente. Todos los derechos reservados.</span>
+      <span>Gratis · Sin registro · Fórmulas abiertas</span>
+    </div>
+  </div>
+
+  <div class="ta-footer-marquee" aria-hidden="true">
+    <div class="ta-footer-marquee-track">
+      <span>Calcula con datos <i>✳</i> Compara con criterio <i>✳</i> Decide mejor <i>✳</i>&nbsp;</span>
+      <span>Calcula con datos <i>✳</i> Compara con criterio <i>✳</i> Decide mejor <i>✳</i>&nbsp;</span>
+    </div>
+  </div>
+</footer>

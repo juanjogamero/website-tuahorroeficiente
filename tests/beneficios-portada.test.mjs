@@ -10,8 +10,8 @@ const layout=get('layouts/BaseLayout.astro');
 test('beneficios se ubica justo después del bloque oscuro y antes de categorías',()=>{
  const dark=home.indexOf('class="rf-dark-solutions rf-section"');
  const benefits=home.indexOf('<section class="rf-benefits rf-section"');
- const topics=home.indexOf('<section class="rf-topics rf-section');
- assert.ok(dark>=0&&benefits>dark&&topics>benefits);
+ const cases=home.indexOf('<section class="rf-showcase rf-section"');
+ assert.ok(dark>=0&&benefits>dark&&cases>benefits);
  const between=home.slice(dark,benefits);
  assert.equal((between.match(/<\/section>/g)??[]).length,1);
  assert.match(home,/aria-labelledby="rf-benefits-title"/);

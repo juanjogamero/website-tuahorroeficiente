@@ -9,8 +9,8 @@ const layout=file('layouts/BaseLayout.astro');
 test('sección fotográfica inmediatamente después de beneficios, antes de categorías',()=>{
  const benefits=home.indexOf('<section class="rf-benefits rf-section"');
  const cases=home.indexOf('<section class="rf-showcase rf-section"');
- const topics=home.indexOf('<section class="rf-topics rf-section');
- assert.ok(benefits>=0&&cases>benefits&&topics>cases);
+ const routes=home.indexOf('<section class="rf-pathways rf-section"');
+ assert.ok(benefits>=0&&cases>benefits&&routes>cases);
  const between=home.slice(benefits,cases);
  assert.equal((between.match(/<\/section>/g)||[]).length,1);
  assert.doesNotMatch(home,/class="rf-cases rf-section"/);
