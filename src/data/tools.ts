@@ -1,4 +1,4 @@
-import {extraTools} from './extra-tools';
+import {extraTools} from './extra-tools.ts';
 export type Field = {key:string,label:string,unit:string,value:string,help:string};
 export type Tool = {
  id:string;slug:string;group:'herramientas'|'comparativas';category:string;categorySlug:string;tag:string;
