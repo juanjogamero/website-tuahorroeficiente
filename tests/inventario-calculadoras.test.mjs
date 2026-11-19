@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {tools} from '../src/data/tools.ts';
 const file=p=>readFileSync(new URL('../src/'+p,import.meta.url),'utf8');
-const home=file('pages/index.astro'),header=file('components/Header.astro'),comparison=file('pages/comparativas/index.astro');
+const home=file('pages/index.astro'),header=file('components/Header.astro'),comparison=file('pages/comparativas/index.astro'),comparisonDetail=file('pages/comparativas/[slug].astro'),editorialData=file('data/comparativas.ts');
 test('portada refleja total de herramientas sin números fijos obsoletos',()=>{
  assert.equal(tools.length,15);
  assert.match(home,/import \{tools\} from '\.\.\/data\/tools'/);
@@ -15,8 +15,10 @@ test('cabecera añade rutas reales nuevas sin eliminar los enlaces principales',
  for(const url of ['/herramientas/calculadora-consumo-lavadora/','/herramientas/cuanto-gasta-frigorifico/','/comparativas/calculadora-ahorro-bombillas-led/','/comparativas/bomba-calor-vs-radiador-electrico/'])assert.ok(header.includes(url));
  assert.match(header,/href="\/herramientas\/"/);
 });
-test('índice de comparativas no conserva afirmaciones obsoletas',()=>{
- assert.doesNotMatch(comparison,/están en investigación|modelos de bomba de calor frente a radiadores.*investigación/);
- assert.match(comparison,/bomba de calor frente a radiador/);
- assert.match(comparison,/tools\.filter\(t=>t\.group==='comparativas'\)/);
+test('las comparativas muestran guías editoriales sin formularios',()=>{
+ assert.match(comparison,/cmp-cards/);
+ assert.match(editorialData,/bomba de calor frente a radiador/i);
+ assert.match(comparisonDetail,/cmp-reading-layout/);
+ assert.doesNotMatch(comparison+comparisonDetail,/ToolCalculator|ToolCard|tools\\.filter/);
+ assert.equal(tools.filter(t=>t.group==='comparativas').length,0);
 });
