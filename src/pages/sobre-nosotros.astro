@@ -1,9 +1,35 @@
 ---
-import ContentLayout from '../layouts/ContentLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
-import {photoUrls} from '../data/categories';
 ---
-<ContentLayout title="Sobre Tu Ahorro Eficiente" description="Qué estamos construyendo, cómo seleccionamos herramientas y por qué preferimos estimaciones auditables a promesas de ahorro." category="Sobre nosotros" breadcrumbs={[{label:'Sobre nosotros'}]} eyebrow="QUIÉNES SOMOS">
-<section class="section"><div class="wrap"><div class="feature-split"><div class="feature-photo"><img src={photoUrls.home} alt="Dos personas en una cocina doméstica" width="700" height="520" loading="lazy"/></div><div class="feature-copy"><span class="eyebrow">· NUESTRO PUNTO DE PARTIDA</span><h2>Calculadoras, no <span class="purple-text">promesas.</span></h2><p>Tu Ahorro Eficiente es un proyecto editorial independiente dedicado a explicar el coste del consumo doméstico en España. Su función principal es que puedas introducir tus circunstancias y comprender qué parte de un gasto puede variar.</p><p>No vendemos contratos eléctricos, ni pedimos que subas facturas, ni monetizamoscon llamadas comerciales. Las herramientas del portal se diseñan para funcionar sin registro ni backend.</p><a href="/metodologia/" class="btn btn-lime">Ver cómo trabajamos <Icon name="arrow" size={17}/></a></div></div></div></section>
-<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">· PRINCIPIOS EDITORIALES</span><h2>El criterio detrás de <span class="purple-text">cada página.</span></h2></div></div><div class="value-grid"><div class="value-card"><span class="value-icon"><Icon name="calculator"/></span><h3>Utilidad antes que volumen</h3><p>Una herramienta que resuelve una decisión concreta vale más que muchas páginas repetitivas.</p></div><div class="value-card value-highlight"><span class="value-icon"><Icon name="shield"/></span><h3>Datos sin maquillaje</h3><p>No inventamos usuarios, ahorros medios, resultados de clientes ni aprobación de organismos.</p></div><div class="value-card"><span class="value-icon"><Icon name="book"/></span><h3>Fuentes y revisión</h3><p>Documentamos supuestos, métodos, fecha y límites para facilitar correcciones.</p></div><div class="value-card"><span class="value-icon"><Icon name="leaf"/></span><h3>Negocio responsable</h3><p>Primero construimos contenido útil; cualquier monetización futura deberá identificarse claramente.</p></div></div></div></section>
-</ContentLayout>
+<BaseLayout
+  title="Sobre nosotros | Tu Ahorro Eficiente"
+  description="Conoce Tu Ahorro Eficiente, el proyecto editorial de calculadoras gratuitas y comparativas para entender el consumo doméstico en España."
+>
+  <section class="ta-about-hero" aria-labelledby="ta-about-title">
+    <img
+      class="ta-about-hero-photo"
+      src="/images/aerogenerador.webp"
+      alt=""
+      aria-hidden="true"
+      width="1600"
+      height="950"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="ta-about-hero-content">
+      <h1 id="ta-about-title">Nosotros</h1>
+      <nav class="ta-about-breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">
+          <Icon name="home" size={19}/>
+          <span>Inicio</span>
+        </a>
+        <svg class="ta-about-breadcrumb-chevron" viewBox="0 0 12 20" aria-hidden="true" focusable="false">
+          <path d="M2 2 10 10 2 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span aria-current="page">Nosotros</span>
+      </nav>
+      <div class="ta-about-hero-rule" aria-hidden="true"></div>
+    </div>
+  </section>
+</BaseLayout>

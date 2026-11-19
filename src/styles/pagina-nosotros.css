@@ -1,0 +1,141 @@
+/* ADR 34 — Primera sección de Nosotros. Página en blanco tras hero hasta nuevas indicaciones. */
+.page-about main#contenido {
+  min-height: 100svh;
+}
+.ta-about-hero {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  width: calc(100% - 48px);
+  height: clamp(380px, 19vw, 410px);
+  margin: 0 auto;
+  border-radius: 18px;
+  background: #718ba4;
+  color: #fff;
+}
+.ta-about-hero-photo {
+  display: block;
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 49%;
+}
+.ta-about-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg,rgba(61,91,116,.60) 0%,rgba(76,100,122,.47) 55%,rgba(72,91,112,.45) 100%);
+}
+.ta-about-hero-content {
+  width: min(1220px, calc(100% - 96px));
+  margin: 0 auto;
+  padding-top: 145px;
+}
+.ta-about-hero h1 {
+  margin: 0 0 30px;
+  color: #fff;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: clamp(60px, 4vw, 78px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -.055em;
+}
+.ta-about-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.ta-about-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  color: #fff;
+  text-decoration: none;
+}
+.ta-about-breadcrumb a:hover,
+.ta-about-breadcrumb a:focus-visible {
+  color: #eaff57;
+}
+.ta-about-breadcrumb a:focus-visible {
+  outline: 3px solid #eaff57;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.ta-about-breadcrumb-chevron {
+  display: block;
+  flex: none;
+  width: 9px;
+  height: 15px;
+}
+.ta-about-hero-rule {
+  width: 100%;
+  height: 1px;
+  margin-top: 13px;
+  background: rgba(255,255,255,.46);
+}
+/* En la referencia la cápsula empieza por dentro de la fotografía, más ancha que en portada. */
+@media (min-width: 1101px) {
+  .page-about .rf-header:not(.is-scrolled) {
+    top: 18px !important;
+    width: min(1218px, calc(100% - 96px)) !important;
+  }
+  .page-about .rf-header:not(.is-scrolled) .rf-header-pill {
+    height: 70px;
+    padding-left: 34px;
+    padding-right: 26px;
+  }
+}
+@media (max-width: 1100px) {
+  .ta-about-hero {
+    width: calc(100% - 32px);
+    height: 365px;
+    border-radius: 17px;
+  }
+  .ta-about-hero-content {
+    width: calc(100% - 80px);
+    padding-top: 140px;
+  }
+  .ta-about-hero h1 {
+    font-size: clamp(52px, 6.5vw, 66px);
+  }
+}
+@media (max-width: 720px) {
+  .ta-about-hero {
+    width: calc(100% - 24px);
+    height: 332px;
+    border-radius: 15px;
+  }
+  .ta-about-hero-photo { object-position: 58% center; }
+  .ta-about-hero-content {
+    width: calc(100% - 42px);
+    padding-top: 125px;
+  }
+  .ta-about-hero h1 {
+    margin-bottom: 18px;
+    font-size: clamp(39px, 10vw, 51px);
+    line-height: 1.12;
+  }
+  .ta-about-breadcrumb {
+    gap: 9px;
+    font-size: 15px;
+  }
+  .ta-about-hero-rule { margin-top: 12px; }
+}
+@media (max-width: 360px) {
+  .ta-about-hero-content { width: calc(100% - 28px); }
+  .ta-about-hero h1 { font-size: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ta-about-breadcrumb a { scroll-behavior: auto; }
+}

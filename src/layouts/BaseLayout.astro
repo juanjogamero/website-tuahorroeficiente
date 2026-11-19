@@ -14,6 +14,7 @@ import '../styles/casos-fotograficos.css';
 import '../styles/primeros-pasos.css';
 import '../styles/preguntas-frecuentes-portada.css';
 import '../styles/banner-pie-final.css';
+import '../styles/pagina-nosotros.css';
 interface Props{title:string;description:string;image?:string;ogType?:string;canonical?:string;schema?:Record<string,unknown>|Array<Record<string,unknown>>;noindex?:boolean}
 const {title,description,image,ogType='website',canonical,schema,noindex=false}=Astro.props;
 const isPreview=process.env.PUBLICATION_MODE !== 'production';
@@ -24,6 +25,7 @@ const localPath=(basePath!=='/' && originalPath.startsWith(basePath))
   ? originalPath.slice(basePath.length)
   : originalPath.replace(/^\/+/, '');
 const isHomePage = localPath === '' || localPath === 'index.html';
+const isAboutPage = ['sobre-nosotros', 'sobre-nosotros/', 'sobre-nosotros/index.html'].includes(localPath);
 const url=canonical??new URL(localPath, demoBase).toString();
 const siteTitle=title.includes('Tu Ahorro Eficiente')?title:`${title} | Tu Ahorro Eficiente`;
 const ogImage=image?new URL(image.replace(/^\/+/,''),demoBase).toString():undefined;
@@ -48,7 +50,7 @@ const defaultSchema={"@context":"https://schema.org","@type":"WebSite",name:'Tu 
 {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 {!schema && (Astro.url.pathname==='/' || Astro.url.pathname===import.meta.env.BASE_URL) && <script type="application/ld+json" set:html={JSON.stringify(defaultSchema)} />}
 </head>
-<body class={isHomePage ? 'page-home' : undefined}>
+<body class={isHomePage ? 'page-home' : isAboutPage ? 'page-about' : undefined}>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <Header/>
 <main id="contenido"><slot/></main>
