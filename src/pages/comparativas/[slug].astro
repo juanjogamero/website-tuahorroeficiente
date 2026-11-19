@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import {comparisons, type ComparisonArticle} from '../../data/comparativas';
 import {byId, sources} from '../../data/tools';
+import {photoUrls} from '../../data/categories';
 export function getStaticPaths(){
   return comparisons.map(article=>({params:{slug:article.slug},props:{article}}));
 }
@@ -31,6 +32,7 @@ const schema={
   breadcrumbs={[{label:'Comparativas',url:'/comparativas/'},{label:article.cardTitle}]}
   eyebrow={`ANÁLISIS EDITORIAL · ${article.category.toUpperCase()}`}
   schema={schema}
+  image={photoUrls[tool.image as keyof typeof photoUrls]??photoUrls.hero}
 >
 <section class="cmp-article-section">
   <div class="wrap cmp-reading-layout">
