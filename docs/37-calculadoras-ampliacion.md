@@ -30,3 +30,6 @@ Comisión Europea: [frigoríficos](https://energy-efficient-products.ec.europa.e
 
 ## Calidad
 Funciones puras añadidas en `src/lib/calculators.ts`, herramientas en `src/data/extra-tools.ts`, tests y metadatos con fuentes. El hub/rediseño del catálogo es un commit independiente. Pendiente QA funcional real en móvil/teclado y métricas de Search Console.
+
+## Revisión de fuentes del agua (19/11/2026)
+El INE distingue el abastecimiento y el saneamiento en su Estadística sobre el Suministro y Saneamiento del Agua, año 2024: https://www.ine.es/dyngs/Prensa/ESSA2024.htm. No usar promedios agregados como tarifa municipal. La calculadora de fugas enlaza esta fuente en lugar de la CNMC eléctrica.

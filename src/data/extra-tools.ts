@@ -163,7 +163,7 @@ export const extraTools:Tool[]=[
  limits:['No uses un número fijo de gotas por litro sin medir el volumen: el tamaño de cada gota cambia.','No incluye mínimos de consumo, bloques, cuotas fijas ni impuestos municipales.','Una fuga en una tubería puede tener caudal muy superior y causar daños: busca ayuda técnica si procede.'],
  example:'Ejemplo: 30 mL/min todo el día durante 365 días ⇒ 15.768 litros (15,768 m³); con 1,50 + 0,70 €/m³, 34,69 € variables.',
  questions:[{q:'¿Cómo mido un grifo que gotea?',a:'Coloca un recipiente graduado y mide los mililitros durante uno o varios minutos, sin desperdiciar agua adicional.'},{q:'¿Incluye toda mi factura de agua?',a:'No: las cuotas fijas y bloques de facturación suelen depender del municipio.'},{q:'¿Y si la fuga no es constante?',a:'Usa un periodo representativo o compara varias mediciones para no extrapolar una excepción.'}],
- related:['ducha','lavadora','lavavajillas'],src:['cnmc'],
+ related:['ducha','lavadora','lavavajillas'],src:['aguaINE'],
  keyTakeaways:['Mide caudal, no «gotas universales».','Separa agua y saneamiento.','Las tarifas municipales son distintas.']
  }),
  define({

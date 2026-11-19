@@ -141,6 +141,7 @@
 }
 @media(max-width:680px){
  .page-tools .rf-header:not(.is-scrolled),.page-calculator .rf-header:not(.is-scrolled){top:28px!important}
+ .page-tools .rf-header:not(.is-scrolled){width:calc(100% - 30px)!important}
  .ta-tools-hero{width:calc(100% - 24px);margin:14px auto 0;border-radius:16px;padding:121px 22px 38px}
  .ta-tools-eyebrow{font-size:10px;letter-spacing:.025em}
  .ta-tools-hero h1{font-size:clamp(36px,8.6vw,50px);letter-spacing:-.049em;margin:20px 0}
