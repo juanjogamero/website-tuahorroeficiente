@@ -2,18 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import {tools} from '../data/tools';
 ---
-<BaseLayout title="Calculadoras de consumo eléctrico y ahorro en casa | Tu Ahorro Eficiente" description="Calcula el gasto de luz, calefacción, aire acondicionado y agua con tus precios y hábitos. Herramientas gratis con fórmulas explicadas y comparativas útiles.">
+<BaseLayout title="Tu Ahorro Eficiente: casa virtual y decisiones para ahorrar" description="Entra en una casa virtual en 3D, explora aparatos y compara decisiones de electricidad, climatización y agua con escenarios gratuitos y fórmulas verificables.">
  <section class="rf-hero" aria-labelledby="rf-title">
    <div class="rf-hero-photo"><img src="/images/hero-renovables.webp" alt="" aria-hidden="true" width="1672" height="941" fetchpriority="high" /></div>
    <div class="rf-hero-tint"></div>
    <div class="rf-container rf-hero-body">
-     <h1 id="rf-title">Calcula cuánto gastas<br/>en luz, agua y calefacción</h1>
-     <p>Calcula el consumo eléctrico de tus aparatos, el coste de usar la calefacción o el aire acondicionado y los litros de una ducha. Introduce potencia, horas de uso y precios de tu suministro para comparar kWh, litros y euros con fórmulas claras. Los resultados estiman el coste variable, no toda tu factura.</p>
-     <a class="rf-button" href="/herramientas/">Calcular gratis</a>
+     <h1 id="rf-title">Recorre tu casa.<br/>Descubre dónde puedes ahorrar.</h1>
+     <p>Entra en nuestra casa virtual, explora cuatro estancias y descubre qué decisiones de luz, calefacción y agua puedes estudiar. Compara escenarios con tus propios datos y fórmulas claras. Sin registro ni ahorros garantizados.</p>
+     <a class="rf-button" href="/casa-virtual/">Explorar mi casa virtual <span aria-hidden="true">↗</span></a>
+     <a class="ta-vr-home-secondary" href="/herramientas/">Prefiero las calculadoras <span aria-hidden="true">→</span></a>
      <div class="rf-hero-tiles">
        <a class="rf-feature-tile" href="/herramientas/calculadora-consumo-electrico/">
          <div class="rf-feature-thumbnail"><img src="/images/medidor-consumo.webp" alt="" loading="eager" width="160" height="160" /></div>
-         <div><strong>¿Cuánto cuesta usar tus aparatos?</strong><small>Calcula los kWh y euros según tu consumo y tu tarifa.</small></div>
+         <div><strong>Entiende los gastos de tu hogar</strong><small>Selecciona un aparato, compara opciones y revisa los supuestos.</small></div>
        </a>
        <a class="rf-numeric-tile" href="/herramientas/" aria-label={"Explorar las "+tools.length+" herramientas gratuitas"}>
          <div class="rf-bubbles" aria-hidden="true">
@@ -25,7 +26,7 @@ import {tools} from '../data/tools';
        </a>
      </div>
    </div>
-   <div class="rf-hero-word" aria-hidden="true">AHORRO REAL</div>
+   <div class="rf-hero-word" aria-hidden="true">EXPLORA TU HOGAR</div>
  </section>
 
  <section class="rf-trust rf-container" aria-labelledby="rf-trust-title">
@@ -282,4 +283,5 @@ import {tools} from '../data/tools';
      </div>
    </div>
  </section>
+<section class="ta-vr-home-feature" aria-labelledby="ta-vr-home-title"><div class="ta-vr-home-feature-inner"><div><span>✳ NUESTRA EXPERIENCIA PRINCIPAL</span><h2 id="ta-vr-home-title">Tu casa, vista desde otra perspectiva.</h2><p>Una maqueta virtual con puntos de interés: radiador, frigorífico, cocina, ducha y aire acondicionado. Elige uno y modifica los datos para comprender de dónde viene el gasto.</p><a href="/casa-virtual/">Entrar en la casa virtual <span aria-hidden="true">↗</span></a></div><div class="ta-vr-home-feature-art" aria-hidden="true"><span>01 · SALÓN</span><span>02 · COCINA</span><span>03 · BAÑO</span><span>04 · DORMITORIO</span><b>6</b><small>DECISIONES INTERACTIVAS</small></div></div></section>
 </BaseLayout>
