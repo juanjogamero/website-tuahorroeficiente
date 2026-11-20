@@ -18,6 +18,8 @@ import '../styles/pagina-nosotros.css';
 import '../styles/catalogo-calculadoras.css';
 import '../styles/comparativas-editoriales.css';
 import '../styles/blog-editorial.css';
+import '../styles/casa-virtual.css';
+import '../styles/casa-virtual-integration.css';
 interface Props{title:string;description:string;image?:string;ogType?:string;canonical?:string;schema?:Record<string,unknown>|Array<Record<string,unknown>>;noindex?:boolean}
 const {title,description,image,ogType='website',canonical,schema,noindex=false}=Astro.props;
 const isPreview=process.env.PUBLICATION_MODE !== 'production';
@@ -32,6 +34,7 @@ const isAboutPage = ['sobre-nosotros', 'sobre-nosotros/', 'sobre-nosotros/index.
 const isToolsPage = ['herramientas', 'herramientas/', 'herramientas/index.html'].includes(localPath);
 const isComparisonPage = /^comparativas(?:\/[^/]+)?\/?$/.test(localPath);
 const isBlogIndex = ['guias','guias/','guias/index.html'].includes(localPath);
+const isVirtualHome = ['casa-virtual','casa-virtual/','casa-virtual/index.html'].includes(localPath);
 const isCalculatorPage = /^herramientas\/[^/]+\/?$/.test(localPath) || /^comparativas\/[^/]+\/?$/.test(localPath);
 const url=canonical??new URL(localPath, demoBase).toString();
 const siteTitle=title.includes('Tu Ahorro Eficiente')?title:`${title} | Tu Ahorro Eficiente`;
@@ -57,7 +60,7 @@ const defaultSchema={"@context":"https://schema.org","@type":"WebSite",name:'Tu 
 {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 {!schema && (Astro.url.pathname==='/' || Astro.url.pathname===import.meta.env.BASE_URL) && <script type="application/ld+json" set:html={JSON.stringify(defaultSchema)} />}
 </head>
-<body class={isHomePage ? 'page-home' : isAboutPage ? 'page-about' : isToolsPage ? 'page-tools' : isComparisonPage ? 'page-comparisons' : isBlogIndex ? 'page-blog' : isCalculatorPage ? 'page-calculator' : undefined}>
+<body class={isHomePage ? 'page-home' : isAboutPage ? 'page-about' : isToolsPage ? 'page-tools' : isComparisonPage ? 'page-comparisons' : isBlogIndex ? 'page-blog' : isVirtualHome ? 'page-virtual' : isCalculatorPage ? 'page-calculator' : undefined}>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <Header/>
 <main id="contenido"><slot/></main>
