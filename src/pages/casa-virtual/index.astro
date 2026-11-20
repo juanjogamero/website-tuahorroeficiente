@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {rooms,virtualDevices,defaultValues,evaluateVirtualDevice,formatEur} from '../../lib/casa-virtual';
+const first=virtualDevices[0];
+const initial=evaluateVirtualDevice(first.id,defaultValues(first));
+const schema={
+ '@context':'https://schema.org','@type':'WebApplication',
+ name:'Casa virtual del ahorro doméstico',applicationCategory:'EducationalApplication',operatingSystem:'Web',
+ description:'Explora una casa virtual 3D, selecciona electrodomésticos y compara escenarios de electricidad y agua con fórmulas públicas.',
+ inLanguage:'es-ES',isAccessibleForFree:true,
+ offers:{'@type':'Offer',price:'0',priceCurrency:'EUR'}
+};
+---
+<BaseLayout title="Casa virtual del ahorro: explora tu hogar en 3D" description="Recorre una vivienda virtual interactiva, elige aparatos y comprueba escenarios de consumo de electricidad y agua. Gratis, sin registro y con cálculos verificables." schema={schema}>
+  <section class="ta-vr-hero" aria-labelledby="ta-vr-hero-title">
+    <div class="ta-vr-hero-light" aria-hidden="true"></div>
+    <div class="ta-vr-hero-content">
+      <nav class="ta-vr-breadcrumb" aria-label="Ruta de navegación"><a href="/">Inicio</a><span aria-hidden="true">/</span><span>Casa virtual</span></nav>
+      <span class="ta-vr-eyebrow"><span aria-hidden="true">✳</span> UNA NUEVA FORMA DE ENTENDER TU HOGAR</span>
+      <h1 id="ta-vr-hero-title">Tu casa tiene respuestas.<br/><em>Descúbrelas en 3D.</em></h1>
+      <p>Recorre una vivienda virtual, pulsa sobre los aparatos y compara decisiones que pueden afectar a tus gastos de luz y agua. Modifica los datos para estudiar tu situación, sin registro ni promesas de ahorro.</p>
+      <div class="ta-vr-hero-actions">
+        <a class="ta-vr-button-primary" href="#explorar-casa">Entrar en la casa <span aria-hidden="true">↗</span></a>
+        <a class="ta-vr-button-secondary" href="#como-se-calcula">Ver cómo funciona <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="ta-vr-hero-notes"><span>✳ 4 estancias</span><span>✳ 6 decisiones</span><span>✳ Cálculos en tu navegador</span></div>
+    </div>
+    <div class="ta-vr-hero-ornament" aria-hidden="true">
+      <div class="ta-vr-ornament-card"><span>01 / HOGAR VIRTUAL</span><strong>Explora.<br/>Compara.<br/>Decide.</strong><div class="ta-vr-ornament-lines"><i></i><i></i><i></i><i></i></div></div>
+      <div class="ta-vr-ornament-circle"><span>100%</span><small>Gratis</small></div>
+    </div>
+    <span class="ta-vr-hero-watermark" aria-hidden="true">ENTIENDE TU CASA</span>
+  </section>
+
+  <section class="ta-vr-section" id="explorar-casa" aria-labelledby="ta-vr-section-heading" data-virtual-app>
+    <div class="ta-vr-section-intro">
+      <div><span class="ta-vr-small-label">EL LABORATORIO DEL HOGAR</span><h2 id="ta-vr-section-heading">Entra en tu casa.<br/><span>Selecciona qué quieres entender.</span></h2></div>
+      <p>El plano es una vivienda ilustrativa, no una reproducción de tu domicilio. Los importes iniciales son supuestos didácticos editables.</p>
+    </div>
+    <div class="ta-vr-workbench">
+      <div class="ta-vr-house-panel">
+        <div class="ta-vr-toolbar">
+          <div class="ta-vr-toolbar-identity"><span class="ta-vr-live-dot" aria-hidden="true"></span><span>EXPLORADOR DE LA VIVIENDA</span></div>
+          <div class="ta-vr-toolbar-actions">
+            <button type="button" class="ta-vr-mode" data-virtual-reset-view>Recentrar vista</button>
+            <button type="button" class="ta-vr-mode ta-vr-mode-immersive" data-virtual-immersive hidden>Entrar en RV</button>
+          </div>
+        </div>
+        <div class="ta-vr-scene" data-virtual-stage>
+          <div class="ta-vr-scene-canvas" data-virtual-canvas aria-label="Maqueta tridimensional de cuatro estancias" role="group">
+            <div class="ta-vr-fallback" data-virtual-fallback>
+              {rooms.map(room=>(
+                <div class={'ta-vr-fallback-room ta-vr-fallback-'+room.id}>
+                  <span>{room.number} / {room.name}</span>
+                  <strong>{room.intro}</strong>
+                  <div class="ta-vr-fallback-dots">{virtualDevices.filter(device=>device.room===room.id).map(device=>(
+                    <button type="button" data-virtual-choose={device.id} aria-label={'Explorar '+device.label}>{device.icon} {device.short}</button>
+                  ))}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="ta-vr-scene-caption"><span data-virtual-scene-status aria-live="polite">Pulsa una estancia o un elemento de la casa para ver sus datos.</span><span class="ta-vr-scene-hint">Girar: arrastrar · Acercar: rueda o pellizco</span></div>
+        </div>
+        <div class="ta-vr-room-switch" role="group" aria-label="Cambiar de estancia">
+          {rooms.map(room=>(
+            <button type="button" data-virtual-room={room.id} class:active={room.id==='salon'} aria-pressed={room.id==='salon'?'true':'false'}><small>{room.number}</small>{room.name}</button>
+          ))}
+        </div>
+        <div class="ta-vr-device-switch" aria-label="Aparatos de la estancia" data-virtual-device-switch>
+          {virtualDevices.filter(device=>device.room==='salon').map(device=>(
+            <button type="button" data-virtual-choose={device.id} aria-pressed={device.id===first.id?'true':'false'}>{device.short}<span aria-hidden="true">↗</span></button>
+          ))}
+        </div>
+        <p class="ta-vr-privacy">Vista 3D opcional: funciona en el navegador. La experiencia inmersiva solo aparece si el dispositivo admite WebXR sobre HTTPS. No solicitamos datos de tu vivienda.</p>
+      </div>
+
+      <aside class="ta-vr-inspector" aria-label="Analizar aparato seleccionado">
+        <div class="ta-vr-inspector-heading">
+          <span class="ta-vr-small-label" data-virtual-category>SALÓN · CALEFACCIÓN</span>
+          <h3 data-virtual-title>{first.label}</h3>
+          <p data-virtual-description>{first.description}</p>
+        </div>
+        <div class="ta-vr-inspector-results" aria-live="polite" aria-atomic="true">
+          <div class="ta-vr-result-main"><span>Diferencia anual del escenario</span><strong data-virtual-difference>{formatEur(initial.differenceAnnual)}</strong><small data-virtual-diff-caption>Escenario actual menos alternativa. Puede ser negativa.</small></div>
+          <div class="ta-vr-result-comparison">
+            <div><span>Escenario actual</span><strong data-virtual-current>{formatEur(initial.currentAnnual)}</strong></div>
+            <div><span>Alternativa</span><strong data-virtual-alt>{formatEur(initial.alternativeAnnual)}</strong></div>
+          </div>
+          <div class="ta-vr-bars" aria-hidden="true"><div class="ta-vr-bar-track"><span data-virtual-bar-current style="width:100%"></span></div><div class="ta-vr-bar-track"><span class="ta-vr-bar-alt" data-virtual-bar-alt style="width:75%"></span></div></div>
+        </div>
+        <details class="ta-vr-fields-details" open>
+          <summary>Ajustar mis datos <span aria-hidden="true">↘</span></summary>
+          <form data-virtual-form novalidate>
+            <div class="ta-vr-inputs" data-virtual-fields>
+              {first.fields.map(field=>(
+                <label class="ta-vr-field"><span>{field.label}<small>{field.unit}</small></span><input type="number" inputmode="decimal" name={field.key} value={field.defaultValue} min={field.min} max={field.max} step={field.step} aria-describedby={'vr-help-'+field.key}/><small id={'vr-help-'+field.key}>{field.hint}</small></label>
+              ))}
+            </div>
+            <p class="ta-vr-error" data-virtual-error role="alert" hidden></p>
+            <button type="button" class="ta-vr-reset" data-virtual-reset-values>Restaurar valores de ejemplo</button>
+          </form>
+        </details>
+        <div class="ta-vr-inspector-advice"><span class="ta-vr-small-label">QUÉ SIGNIFICA</span><p data-virtual-explanation>{initial.explanation}</p><p data-virtual-recommendation>{first.recommendation}</p><a href={first.learnMore} data-virtual-learn>Ver análisis completo <span aria-hidden="true">↗</span></a></div>
+        <button class="ta-vr-save" type="button" data-virtual-save aria-pressed="false">Añadir este escenario a mi plan <span aria-hidden="true">＋</span></button>
+      </aside>
+    </div>
+  </section>
+
+  <section class="ta-vr-plan-section" id="mi-plan" aria-labelledby="ta-vr-plan-title">
+    <div class="ta-vr-plan-layout">
+      <div><span class="ta-vr-small-label">TU PLAN · SIN REGISTRO</span><h2 id="ta-vr-plan-title">De explorar a decidir.</h2><p>Guarda los escenarios que quieras estudiar y consulta sus diferencias bajo los supuestos que has introducido. No sumes estos resultados a tu factura real: pueden existir efectos compartidos o confort diferente.</p></div>
+      <div class="ta-vr-plan-card"><span>ESCENARIOS SELECCIONADOS</span><strong data-virtual-plan-count>0</strong><span>DIFERENCIA NETA ESTIMADA · NO GARANTIZADA</span><strong data-virtual-plan-total>0,00 €</strong><div data-virtual-plan-list class="ta-vr-plan-list"><p>Selecciona un aparato en la casa y añádelo a tu plan.</p></div><button type="button" data-virtual-clear-plan>Vaciar plan <span aria-hidden="true">↗</span></button></div>
+    </div>
+  </section>
+  <section class="ta-vr-method" id="como-se-calcula" aria-labelledby="ta-vr-method-title">
+    <div class="ta-vr-method-heading"><span class="ta-vr-small-label">METODOLOGÍA ABIERTA</span><h2 id="ta-vr-method-title">No es magia 3D.<br/>Son datos que puedes comprobar.</h2></div>
+    <div class="ta-vr-method-grid">
+      <article><strong>01</strong><h3>Escoge una decisión</h3><p>Entra en el salón, la cocina, el baño o el dormitorio. No partimos de una vivienda real ni de sus facturas privadas.</p></article>
+      <article><strong>02</strong><h3>Introduce tus condiciones</h3><p>Cambia potencia, horas, consumo medido, caudal y precios. Cada variable tiene límites y una explicación.</p></article>
+      <article><strong>03</strong><h3>Interpreta la diferencia</h3><p>Compara dos escenarios con sus limitaciones. Si una opción ofrece distinto confort, no se considera ahorro garantizado.</p></article>
+    </div>
+    <p class="ta-vr-method-footnote">Esta es una maqueta educativa y no un gemelo digital de tu hogar. No sustituye una auditoría energética. <a href="/metodologia/">Lee las fórmulas y la metodología del portal ↗</a></p>
+  </section>
+  <section class="ta-vr-crosslinks" aria-label="Seguir explorando">
+    <div><span class="ta-vr-small-label">SIGUE EXPLORANDO</span><h2>¿Quieres profundizar?</h2></div>
+    <a href="/herramientas/"><span>15 herramientas específicas</span><span aria-hidden="true">↗</span></a>
+    <a href="/comparativas/"><span>Comparativas sin prisas</span><span aria-hidden="true">↗</span></a>
+    <a href="/guias/"><span>Guías para entender tus gastos</span><span aria-hidden="true">↗</span></a>
+  </section>
+</BaseLayout>
+<script>import '../../scripts/casa-virtual-client.ts';</script>
