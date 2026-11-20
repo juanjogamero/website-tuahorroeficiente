@@ -1,22 +1,127 @@
 ---
-import ContentLayout from '../../layouts/ContentLayout.astro';
-import Icon from '../../components/Icon.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import {getCollection} from 'astro:content';
 import {photoUrls} from '../../data/categories';
-const posts=(await getCollection('guias')).filter(p=>!p.data.draft).sort((a,b)=>b.data.order-a.data.order);
+
+const posts=(await getCollection('guias')).filter(post=>!post.data.draft).sort((a,b)=>b.data.order-a.data.order);
+const featured=posts.find(post=>post.id==='como-leer-factura-luz')??posts[0];
+const cards=posts.filter(post=>post.id!==featured?.id);
+const pageSize=6;
+const totalPages=Math.ceil(cards.length/pageSize);
+const dateLabel=(value:string)=>new Intl.DateTimeFormat('es-ES',{day:'numeric',month:'short',year:'numeric'}).format(new Date(value+'T12:00:00'));
+const schema={
+  '@context':'https://schema.org',
+  '@type':'CollectionPage',
+  name:'Blog de ahorro y consumo doméstico',
+  description:'Guías prácticas sobre electricidad, agua, climatización y electrodomésticos para entender mejor el consumo en casa.',
+  mainEntity:{'@type':'ItemList',itemListElement:posts.map((post,i)=>({
+    '@type':'ListItem',position:i+1,name:post.data.title,
+    url:new URL('guias/'+post.id+'/',new URL(import.meta.env.BASE_URL,Astro.site)).toString()
+  }))}
+};
 ---
-<ContentLayout title="Blog de ahorro y consumo doméstico" description="Guías originales sobre el coste de luz y agua, climatización, electrodomésticos y cómo entender facturas. Fórmulas, ejemplos y herramientas relacionadas." category="Blog y guías" breadcrumbs={[{label:'Blog y guías'}]} eyebrow="ARTÍCULOS QUE TE SIRVEN">
-<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">· CONTENIDO ORIGINAL</span><h2>Aprender también <span class="purple-text">ahorra dudas.</span></h2><p>Sin trucos universales ni cifras sin contexto. Elige un tema y encuentra un ejemplo verificable.</p></div></div>
-<div class="search-tools"><label class="sr-only" for="guide-search">Buscar guías</label><Icon name="search" size={19}/><input id="guide-search" data-guide-search type="search" placeholder="Busca por energía, ducha, factura, kWh…" autocomplete="off"/></div>
-<div class="article-cards article-index" data-guides>{posts.map((g,i)=><a href={`/guias/${g.id}/`} class="article-card" data-search-text={`${g.data.title} ${g.data.description} ${g.data.category}`.toLowerCase()}><div class="article-art"><img src={photoUrls[g.data.imageName]} alt={g.data.imageAlt} width="600" height="370" loading="lazy"/></div><div class="article-card-body"><span class="small-label">{g.data.category.toUpperCase()} · {g.data.reading}</span><h3>{g.data.title}</h3><p>{g.data.description}</p><span class="inline-link">Leer guía <Icon name="arrowUp" size={17}/></span></div></a>)}</div>
-<p class="search-empty" data-empty hidden>No hay guías que coincidan. Prueba con una palabra diferente.</p>
-</div></section>
-</ContentLayout>
+<BaseLayout
+  title="Blog de ahorro en casa: electricidad, agua y electrodomésticos"
+  description="Artículos y guías para entender tus gastos de electricidad, climatización, electrodomésticos y agua. Explicaciones claras, fuentes y ejemplos prácticos."
+  image={featured?photoUrls[featured.data.imageName]:undefined}
+  schema={schema}
+>
+  <section class="ta-blog-panel" aria-labelledby="ta-blog-heading">
+    <div class="ta-blog-inner">
+      <div class="ta-blog-masthead">
+        <span class="ta-blog-rule" aria-hidden="true"><span>✳</span></span>
+        <h1 id="ta-blog-heading">BLOG</h1>
+        <span class="ta-blog-rule" aria-hidden="true"><span>✳</span></span>
+      </div>
+
+      {featured && (
+        <article class="ta-blog-featured" aria-label="Artículo destacado">
+          <div class="ta-blog-featured-copy">
+            <div class="ta-blog-meta">
+              <span class="ta-blog-tag">{featured.data.category}</span>
+              <time class="ta-blog-tag" datetime={featured.data.published}>{dateLabel(featured.data.published)}</time>
+            </div>
+            <h2><a href={'/guias/'+featured.id+'/'}>{featured.data.title}</a></h2>
+            <p>{featured.data.description}</p>
+            <a class="ta-blog-read" href={'/guias/'+featured.id+'/'}>
+              <span class="ta-blog-read-dot" aria-hidden="true"></span> Leer artículo <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <a class="ta-blog-featured-media" href={'/guias/'+featured.id+'/'} aria-label={'Leer artículo destacado: '+featured.data.title}>
+            <img src={photoUrls[featured.data.imageName]} alt={featured.data.imageAlt} width="900" height="680" fetchpriority="high" decoding="async"/>
+          </a>
+        </article>
+      )}
+
+      <div class="ta-blog-cards" id="blog-articulos" data-blog-cards aria-label="Artículos del blog">
+        {cards.map((post)=>(
+          <a class="ta-blog-card" href={'/guias/'+post.id+'/'} data-blog-card>
+            <img src={photoUrls[post.data.imageName]} alt={post.data.imageAlt} width="620" height="480" loading="lazy" decoding="async"/>
+            <div class="ta-blog-card-content">
+              <span class="ta-blog-tag">{post.data.category}</span>
+              <h2>{post.data.title}</h2>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {totalPages>1 && (
+        <nav class="ta-blog-pagination" aria-label="Páginas de artículos" data-blog-pagination hidden>
+          <button type="button" class="ta-blog-page-arrow" data-blog-prev aria-label="Página anterior">←</button>
+          {Array.from({length:totalPages},(_,i)=>i+1).map(page=>(
+            <button type="button" class="ta-blog-page-number" data-blog-page={page} aria-label={'Página '+page} aria-current={page===1?'page':undefined}>{page}</button>
+          ))}
+          <button type="button" class="ta-blog-page-arrow" data-blog-next aria-label="Página siguiente">→</button>
+        </nav>
+      )}
+      <p class="sr-only" data-blog-status aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="ta-blog-signature" aria-label="Tu Ahorro Eficiente: información para decidir mejor">
+    <span class="ta-blog-signature-word">AHORRO</span>
+    <span class="ta-blog-signature-image" aria-hidden="true"><img src={photoUrls.homeLiving} alt="" width="220" height="320" loading="lazy"/></span>
+    <span class="ta-blog-signature-word">EFICIENTE</span>
+  </section>
+</BaseLayout>
+
 <script>
-const field=document.querySelector<HTMLInputElement>('[data-guide-search]');
-field?.addEventListener('input',()=>{
- const q=(field.value||'').toLocaleLowerCase('es').trim();let found=0;
- document.querySelectorAll<HTMLElement>('[data-guides] [data-search-text]').forEach(el=>{const hit=(el.dataset.searchText??'').toLocaleLowerCase('es').includes(q);el.hidden=!hit;if(hit)found++;});
- const empty=document.querySelector<HTMLElement>('[data-empty]');if(empty)empty.hidden=found>0;
-});
+const list=[...document.querySelectorAll<HTMLElement>('[data-blog-card]')];
+const pager=document.querySelector<HTMLElement>('[data-blog-pagination]');
+const grid=document.querySelector<HTMLElement>('[data-blog-cards]');
+const status=document.querySelector<HTMLElement>('[data-blog-status]');
+const perPage=6;
+const pageCount=Math.ceil(list.length/perPage);
+if(pager&&pageCount>1){
+  pager.hidden=false;
+  const prev=pager.querySelector<HTMLButtonElement>('[data-blog-prev]');
+  const next=pager.querySelector<HTMLButtonElement>('[data-blog-next]');
+  const pageButtons=[...pager.querySelectorAll<HTMLButtonElement>('[data-blog-page]')];
+  let active=1;
+  const render=(page:number,updateUrl=false,scroll=false)=>{
+    active=Math.max(1,Math.min(pageCount,page));
+    list.forEach((item,i)=>{item.hidden=Math.floor(i/perPage)+1!==active;});
+    if(prev)prev.disabled=active===1;
+    if(next)next.disabled=active===pageCount;
+    pageButtons.forEach(button=>{
+      const current=Number(button.dataset.blogPage)===active;
+      if(current)button.setAttribute('aria-current','page');
+      else button.removeAttribute('aria-current');
+    });
+    if(status)status.textContent='Página '+active+' de '+pageCount+'.';
+    if(updateUrl){
+      const url=new URL(window.location.href);
+      if(active===1)url.searchParams.delete('pagina');
+      else url.searchParams.set('pagina',String(active));
+      history.pushState({pagina:active},'',url);
+    }
+    if(scroll)grid?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  };
+  const getPage=()=>Number(new URLSearchParams(location.search).get('pagina'))||1;
+  render(getPage());
+  prev?.addEventListener('click',()=>render(active-1,true,true));
+  next?.addEventListener('click',()=>render(active+1,true,true));
+  pageButtons.forEach(button=>button.addEventListener('click',()=>render(Number(button.dataset.blogPage),true,true)));
+  window.addEventListener('popstate',()=>render(getPage()));
+}
 </script>
