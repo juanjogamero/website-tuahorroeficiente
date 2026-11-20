@@ -19,9 +19,11 @@
   },
   "dependencies": {
     "astro": "^5.16.0",
-    "@astrojs/sitemap": "^3.2.1"
+    "@astrojs/sitemap": "^3.2.1",
+    "three": "^0.187.0"
   },
   "devDependencies": {
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "@types/three": "^0.187.0"
   }
 }
