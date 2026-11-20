@@ -64,7 +64,7 @@ const schema={
         </div>
         <div class="ta-vr-room-switch" role="group" aria-label="Cambiar de estancia">
           {rooms.map(room=>(
-            <button type="button" data-virtual-room={room.id} class:active={room.id==='salon'} aria-pressed={room.id==='salon'?'true':'false'}><small>{room.number}</small>{room.name}</button>
+            <button type="button" data-virtual-room={room.id} class={room.id==='salon'?'active':''} aria-pressed={room.id==='salon'?'true':'false'}><small>{room.number}</small>{room.name}</button>
           ))}
         </div>
         <div class="ta-vr-device-switch" aria-label="Aparatos de la estancia" data-virtual-device-switch>
