@@ -4,5 +4,5 @@ import CategoryCard from '../../components/CategoryCard.astro';
 import {categories} from '../../data/categories';
 ---
 <ContentLayout title="Categorías de ahorro en casa" description="Electricidad, climatización, agua y electrodomésticos: calcula el gasto, encuentra guías útiles y compara alternativas por temática." category="Categorías" breadcrumbs={[{label:'Categorías'}]} eyebrow="TODO EN SU SITIO">
-<section class="section"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">NAVEGA POR TU CASA</span><h2>Un tema. Muchas <span class="purple-text">decisiones útiles.</span></h2></div></div><div class="category-grid">{categories.map(c=><CategoryCard category={c}/>)}</div></div></section>
+<section class="section"><div class="wrap"><div class="ta-vr-category-lead"><span>✳ AHORA TAMBIÉN EN 3D</span><p>Estas categorías están representadas en nuestra casa virtual. Puedes empezar explorando una estancia y después profundizar por temática.</p><a href="/casa-virtual/">Entrar en la casa virtual ↗</a></div><div class="section-heading"><div><span class="eyebrow">NAVEGA POR TU CASA</span><h2>Un tema. Muchas <span class="purple-text">decisiones útiles.</span></h2></div></div><div class="category-grid">{categories.map(c=><CategoryCard category={c}/>)}</div></div></section>
 </ContentLayout>
